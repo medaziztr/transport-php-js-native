@@ -1,4 +1,4 @@
-        <footer class="copyright-section">
+<footer class="copyright-section">
 			        	<div class="container text-center">
                             
                             <div class="col-xs-12">
@@ -6,7 +6,7 @@
 			        				<li><a href="condition.php">Conditions générales d'utilisation</a></li>
 			        				<li><a href="mention-legal.php">Mentions légales</a></li>
 									<?php if((isset($_SESSION['login_user'])) AND ($_SESSION['type']=="transporteur")) { ?>
-                                        <li><a href="packs.php">Abonnez-vous</a></li>
+                                       
 										<li><a href="mon-compte.php">Mon compte</a></li>
                                     <?php } ?>
 									<?php if((isset($_SESSION['login_user'])) AND ($_SESSION['type']=="client")) { ?>
@@ -51,7 +51,7 @@
 			        	<button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
 			        </div>
 			        <ul id ="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
-			            <li class=""><a href="index.php">Home<span class="sr-only"></span></a></li>
+			            <li class=""><a href="index.php">Accueil<span class="sr-only"></span></a></li>
                         
                         
                         <?php 
@@ -92,11 +92,15 @@
                                              if((isset($_SESSION['login_user'])) AND ($_SESSION['type']!="admin")) {
                                                  if ($_SESSION['type']=="transporteur"){
                                         ?>
-                                                     <li><a href="abonnement.php">Votre abonnement</a></li>
+                                                   
                                                 <?php } ?>
-                                        <li><a href="historique.php" >Votre historique</a></li>
+                                                
+                                                 <li><a href="historique_client.php?telephone=<?php echo $_SESSION['telephone'] ?>">Mon historique</a></li>
+													
+                          
+                                       <li><a href="abonnement.php" >Mes Vehicules</a></li>
 										<!--<li><a href="mon-compte.php">Mon compte</a></li>-->
-										<li><a href="http://www.fleet.tn/fl">GPS Tracking</a></li>
+										<li><a href="https://m.fleet.tn/">Tracking</a></li>
 										<?php if((isset($_SESSION['login_user'])) AND ($_SESSION['type']=="transporteur")) { ?>
                                         <!--<li><a href="packs.php">Abonnez-vous</a></li>-->
 										<?php } ?>
@@ -104,7 +108,7 @@
                                         <?php
                                              }
                                         ?>
-						
+						c
                         <!--<li><a href="apropo.php">à Propos</a></li>-->
                         <li><a href="contact.php">Contactez-Nous</a></li>
 			            
@@ -211,7 +215,7 @@
                         $("#r_s").remove();
                     }
                     else if (this.value == 'entreprise') {
-                        $("#position").append('<input type="text" id="r_s" name="r_s" placeholder="Raison Sociale">');
+                        $("#position").append('<input type="text" id="r_s" name="r_s" placeholder="Nom Entreprise">');
                     }
                 });
 				
@@ -225,6 +229,30 @@
                 });
             });
         </script>
+        
+        <!-- Aziz -->
+        
+        <script>
+            $(document).ready(function() {
+  $('input[name=content_type]').on('change', function() {
+    var n = $(this).val();
+    
+    switch (n) {
+      case '1':
+        $('#show').html("<select type='text' name='indicatif' id='pays1' required onchange='changePays(1)'><option value='00237'  no-repeat; width:30px; height:30px;' selected>Cameroun</option><option value='Congo' no-repeat; width:30px; height:30px;'>Congo</option><option value='Gabon'  no-repeat; width:30px; height:30px;'>Gabon</option><option value='Tchad' no-repeat; width:30px; height:30px;'>Tchad</option><option value='République centrafricaine'  no-repeat; width:30px; height:30px;'>République centrafricaine</option><option value='Guinée équatoriale'  no-repeat; width:30px; height:30px;'>Guinée équatoriale</option><option value='00216' no-repeat; width:30px; height:30px;'>Tunisie</option></select></div><input type='text' id='telephone' name='telephone' placeholder='Numéro de Téléphone sans indicatif *' required></div> ");
+        break;
+      case '2':
+        $('#show').html("<input type='text' id='user' name='user' placeholder='Email *' required>");
+        break;
+      case '3':
+        $('#show').html("3rd radio button");
+        break;
+    }
+  });
+});
+
+        </script>
+          <!-- Aziz -->
         
 		<script>
             function messaffect(a) {
@@ -569,7 +597,51 @@
 				/*#endregion responsive code end*/
 			};
 		</script>
+		<!-- -->
 		<script type="text/javascript">jssor_1_slider_init();
 		</script>
+		<!-- liste deroulante pour le camion -->
+	<script>
+var VehiculesByPoid = {
+    Fourgon: ["2 Tonnes", "3 Tonnes", "5 Tonnes", "8 Tonnes","10 Tonnes","15 Tonnes","20 Tonnes","24 Tonnes","27 Tonnes","30 Tonnes"],
+    plateau: ["20 Tonnes", "27 Tonnes", "30 Tonnes", "32 Tonnes"],
+    Benne: ["7 Tonnes", "15 Tonnes", "20 Tonnes", "30 Tonnes", "35 Tonnes"],
+    carrosserie: ["3 Tonnes", "5 Tonnes", "7 Tonnes", "12 Tonnes", "15 Tonnes","20 Tonnes","27 Tonnes","30 Tonnes"],
+    frigorifique: ["7 Tonnes", "15 Tonnes", "20 Tonnes", "30 Tonnes", "35 Tonnes"],
+    citerne: ["10000 Litres","20000 Litres","33000 Litres"],
+    portechar: ["30 - 35 Tonnes", "35 - 40 Tonnes", "40 - 45 Tonnes", "45 - 50 Tonnes"]
+}
+
+    function changecat(value) {
+        if (value.length == 0) document.getElementById("Poid").innerHTML = "<option></option>";
+        else {
+            var catOptions = "";
+            for (PoidId in VehiculesByPoid[value]) {
+                catOptions += "<option>" + VehiculesByPoid[value][PoidId] + "</option>";
+            }
+            document.getElementById("Poid").innerHTML = catOptions;
+        }
+    }
+
+</script>
+<!-- Fin liste deroulante pour le camion -->
+<!-- liste autocomplete des villes -->
+<script type="text/javascript" src="js/datatable/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="js/datatable/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/datatable/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/datatable/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="js/datatable/buttons.bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/datatable/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="js/datatable/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="js/datatable/buttons.print.min.js"></script>
+    <script type="text/javascript" src="js/datatable/buttons.colVis.min.js"></script>
+  
+    <!-- <script type="text/javascript" src="scripts/jquery.mockjax.js"></script> -->
+    <script type="text/javascript" src="src/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="scripts/countries.js"></script>
+    <script type="text/javascript" src="scripts/demo.js"></script>
+    <!-- liste autocomplete des villes -->
 	</body>
 </html>

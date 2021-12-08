@@ -23,6 +23,20 @@
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
+
+    <link href="js/datatable/bootstrap.min.css" rel="stylesheet">
+    <link href="js/datatable/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="js/datatable/buttons.bootstrap.min.css" rel="stylesheet">
+
+    <link href='DataTables/datatables.min.css' rel='stylesheet' type='text/css'>
+
+<!-- jQuery Library -->
+<script type="text/javascript" src="js/datatable/jquery-3.5.1.js"></script>
+
+<!-- Datatable JS -->
+<script src="DataTables/datatables.min.js"></script>
+
+
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
 	    <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -30,6 +44,9 @@
 	    <link href="css/animate.css" rel="stylesheet">
 	    <link href="css/language-select.css" rel="stylesheet">
 	    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+	    <!-- auto complete -->
+	  <link href="content/styles.css" rel="stylesheet" /> 
+	     <!-- fin auto complete -->
     	<link href="css/magnific-popup.css" rel="stylesheet">
     	<link href="css/menu.css" rel="stylesheet">
     	<link href="css/template.css" rel="stylesheet">
@@ -38,7 +55,9 @@
         
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         
+        
         <script src="js/jssor.slider-28.0.0.min.js" type="text/javascript"></script>
+         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	    <script src="js/vendor/modernizr-2.8.1.min.js"></script>
         
         <script lang="javascript">
@@ -102,18 +121,40 @@
         </script>   
 
 		<!--Start of Tawk.to Script-->
-		<script type="text/javascript">
-			var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-			(function(){
-				var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-				s1.async=true;
-				s1.src='https://embed.tawk.to/5b731086afc2c34e96e79309/default';
-				s1.charset='UTF-8';
-				s1.setAttribute('crossorigin','*');
-				s0.parentNode.insertBefore(s1,s0);
-			})();
-		</script>
-		<!--End of Tawk.to Script-->
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5fdaff6adf060f156a8de1cd/1epnnbe11';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+<!--End of Tawk.to Script-->
+
+<!--Start whatsapp-->
+<script async data-id="70985" src="https://cdn.widgetwhats.com/script.min.js"></script>
+
+<style>
+    .testclass{
+        background-color: rgba(200,16,16,0.1)!important;
+    }
+    .testclassvalid{
+        background-color: rgba(25,184,53,0.1)!important;
+    }
+    .btn-group, .btn-group-vertical {
+    
+   display: unset!important; 
+}
+table.dataTable,.dataTables_wrapper {
+    width: 100%!important;
+    }
+</style>
+<!--Start of whatsapp-->
         
 	    <!--[if lt IE 9]>
 		    <script src="js/vendor/html5shim.js"></script>
@@ -139,17 +180,19 @@
                                                     <?php
                                                         if((isset($_SESSION['login_user'])) AND ($_SESSION['type']!="admin")) {
 															 ?>
-															 <li><a href="historique.php" class="hidden-xs">Votre historique</a></li>
+															 
+															 <li><a href="historique_client.php?telephone=<?php echo $_SESSION['telephone'] ?>" class="hidden-xs">Mon historique</a></li>
 													<?php
                                                             if ($_SESSION['type']=="transporteur"){
                                                     ?>
 														
-						  							            <li><a href="abonnement.php" class="hidden-xs">Votre abonnement</a></li>
+						  							            <li><a href="abonnement.php" class="hidden-xs">Mes véhicules</a></li>
 															<?php 
 															} 
 															?>
 															
-															<li><a href="http://www.fleet.tn/fl"> GPS Tracking</a></li>
+														
+															<li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
 															
                                                     <?php
                                                         }
@@ -158,7 +201,7 @@
                                                     <?php
                                                         if(!isset($_SESSION['login_user'])) {
 													?>
-															<li class="pull-right"><a data-toggle="modal" data-target="#inscription" class="hidden-lg hidden-md">Créer un compte</a></li>
+															<li class="pull-right"><a data-toggle="modal" data-target="#inscription" class="hidden-lg hidden-md">S'inscrire</a></li>
                                                     <?php
                                                             if(!empty($_GET['message'])) {
 																echo "<li class='pull-right'><a id='logintest' data-toggle='modal' data-target='#login' class='hidden-lg hidden-md'>Réessayer</a></li>" ; 
@@ -245,7 +288,7 @@
                                         ?>
                                         
                                                     <li><a href="espace-transporteur.php">Espace Transporteurs</a></li> 
-													<li><a href="espace-client.php">Espace Expéditeurs</a></li>
+													<li><a href="espace-client.php">Espace Expediteurs</a></li>
 													<!--<li><a href="mon-compte.php">Mon compte</a></li>-->
                                         
                                        <?php    
@@ -253,7 +296,7 @@
                                                 else if($_SESSION['type']=='client'){ 
                                         ?>
                                         
-                                                    <li><a href="espace-client.php">Espace Expéditeurs</a></li>
+                                                    <li><a href="espace-client.php">Espace Expediteurs</a></li>
 													<!-- <li><a href="mon-compte.php">Mon compte</a></li>-->
                                        <?php        
                                                 } 
@@ -262,7 +305,7 @@
                                             else {
                                         ?>
                                             <li><a href="espace-transporteur.php">Espace Transporteurs</a></li>
-                                            <li><a href="espace-client.php">Espace Expéditeurs</a></li>
+                                            <li><a href="espace-client.php">Espace Expediteurs</a></li>
                                         <?php
                                             }
                                         ?>             
@@ -275,7 +318,7 @@
                                         <?php
                                             if(! isset($_SESSION['login_user'])) {
                                                 ?>
-                                                <li><a data-toggle='modal' data-target='#inscription' href='#'>Créer un compte</a></li>
+                                                <li><a data-toggle='modal' data-target='#inscription' href='#'>S'inscrire</a></li>
                                         <?php
                                                 if(!empty($_GET['message'])) {
                                                     echo "<li><a data-toggle='modal' data-target='#login' href='#'>Réessayer</a></li>" ; 
@@ -343,14 +386,46 @@
                                                 </div>
                                                 
                                                 <div class="row form w80">
+                                                   <! --Pour test Yannick -->
                                                     <form name="login" action="login.php" method="POST">
                                                         <div class="col-sm-12">
-                                                            <input type="text" id="user" name="user" placeholder="Numéro de Téléphone ou Email *" required>
+                               
+                                                            Choisiez la methode 
                                                         </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <label>
+                                                                  
+                                                         <p><input type='radio' name='content_type' value='1' checked/>&nbsp;Téléphone&nbsp;&nbsp;&nbsp;&nbsp;
+                                                         <input type='radio' name='content_type' value='2' />&nbsp;Email</p>
 
+                                                            </div>
+                                                           <!-- <div class="desc">
+                                                             <select type='text' name='indicatif' id='pays1' required onchange='changePays(1)'><option value='00237'  no-repeat; width:30px; height:30px selected>Cameroun</option><option value='Congo' no-repeat; width:30px; height:30px;'>Congo</option><option value='Gabon'  no-repeat; width:30px; height:30px;'>Gabon</option><option value='Tchad' no-repeat; width:30px; height:30px;'>Tchad</option><option value='République centrafricaine'  no-repeat; width:30px; height:30px;'>République centrafricaine</option><option value='Guinée équatoriale'  no-repeat; width:30px; height:30px;'>Guinée équatoriale</option><option value='00216' no-repeat; width:30px; height:30px;'>Tunisie</option></select></div><input type='text' id='telephone' name='telephone' placeholder='Numéro de Téléphone sans indicatif *' required></div>
+       
+                                                             <input type='text' id='user' name='user' placeholder='Email *' required> -->
+                                                            </div>
+                                                            <div id='show'>
+                                                             <select type="text" name="indicatif" id="pays1" required onchange="changePays(1)">
+                                                             <option value="00237"  no-repeat; width:30px; height:30px selected>Cameroun</option>
+                                                             <option value="00242" no-repeat; width:30px; height:30px ;>Congo</option>
+                                                             <option value"00241"  no-repeat; width:30px; height:30px;>Gabon</option>
+                                                             <option value="00235" no-repeat; width:30px; height:30px;>Tchad</option>
+                                                             <option value="00236"  no-repeat; width:30px; height:30px;>République centrafricaine</option>
+                                                             <option value="00240"  no-repeat; width:30px; height:30px;>Guinée équatoriale</option>
+                                                             <option value="00216" no-repeat; width:30px; height:30px;>Tunisie</option>
+                                                             </select>
+                                                             <input type="text" id="telephone" name="telephone" placeholder="Numéro de Téléphone sans indicatif *" required>
+                                                            </div>
+                                                            <!-- je suis ici -->
+                                                             
+                                                         
                                                         <div class="col-sm-12">
                                                             <input type="password" name="passwd" placeholder="Mot de Passe" required> 
                                                         </div>
+                                                        
+                                                       
 														<?php
                                                         if(!empty($_GET['verif'])) {
 														?>
@@ -465,7 +540,7 @@
                                             <div class="flxrow form-group">
                                                 <div class="row text-center">
                                                     <div class="col-xs-12">
-                                                      <span class="section-sub sections-title">S'inscrire pour nous joindre</span>
+                                                      <span class="section-sub sections-title">Inscription</span>
                                                         <br>
                                                         <br>
                                                     </div>
@@ -480,28 +555,29 @@
                                                         
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
+                                                                 <label>
+                                                                  <input type="radio"  checked="checked"  name="type" value="client"> Expéditeur
+                                                                  <span class="checkmark"></span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                            <label>
+                                                                  <input type="radio"  checked="checked"  name="genre" value="particulier" id="particulier"> Particulier
+                                                                  <span class="checkmark"></span>
+                                                                </label>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
                                                                 <label>
-                                                                  <input type="radio" checked="checked" name="genre" value="particulier" id="particulier"> Particulier
+                                                                  <input type="radio" name="type" value="transporteur"> Transporteur
                                                                   <span class="checkmark"></span>
                                                                 </label>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label>
                                                                   <input type="radio"  name="genre" value="entreprise" id="entreprise"> Entreprise
-                                                                  <span class="checkmark"></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="col-md-6">
-                                                                <label>
-                                                                  <input type="radio" checked="checked" name="type" value="transporteur"> Transporteur
-                                                                  <span class="checkmark"></span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>
-                                                                  <input type="radio"  name="type" value="client"> Expéditeur
                                                                   <span class="checkmark"></span>
                                                                 </label>
                                                             </div>
@@ -522,23 +598,26 @@
                                                         
                                                         
                                                         <div class="col-sm-12">
-                                                            <select type="text" name="pays" id="pays1" placeholder="Pays *" required onchange="changePays(1)">
-                                                                <option value="Cameroun" style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">Cameroun</option>
-                                                                <option value="Congo" style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">Congo</option>
-                                                                <option value="Gabon" style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">Gabon</option>
-                                                                <option value="Tchad" style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">Tchad</option>
-                                                                <option value="République centrafricaine" style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">République centrafricaine</option>
-                                                                <option value="Guinée équatoriale" style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">Guinée équatoriale</option>
-                                                                <option value="" selected >Votre Pays *</option>
+                                                            <select type="text" name="indicatif" id="pays1" placeholder="Pays *" required onchange="changePays(1)">
+                                                                <option value="00237" style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;" selected>Cameroun</option>
+                                                                <option value="00242" style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">Congo</option>
+                                                                <option value="00241" style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">Gabon</option>
+                                                                <option value="00235" style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">Tchad</option>
+                                                                <option value="00236" style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">République centrafricaine</option>
+                                                                <option value="00240" style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">Guinée équatoriale</option>
+                                                                <option value="00216" style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">Tunisie</option>
+                                                               
+                                                               
                                                             </select>
                                                         </div>
                                                         
                                                         <div class="col-sm-12">
-                                                            <input type="text" name="telephone" id="tel" placeholder="Renseignez votre numéro de téléphone *" value=" " required>
+                                                            <input type="text" name="telephone" id="telephone" placeholder="Renseignez votre numéro de téléphone sans indicatif*" required>
+                                                            Exemple 65655556
                                                         </div>
 
                                                         <div class="col-sm-12">
-                                                            <input type="text" name="adresse" placeholder="Adresse *" required>
+                                                            <input type="text" name="adresse" placeholder="Ville *" required>
                                                         </div>
                                                         
                                                         <div class="col-sm-12">
@@ -552,10 +631,18 @@
 														<div class="col-sm-12">
 															<input type="password" id="confirm" name="confirm" placeholder="Confirmer le mot de passe *" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'vérifier le mot de passe' : '');" required />
                                                         </div>
+                                                        	<br>
+														<div class"col-sm-12"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="subscribeNews" required > &nbsp; J'ai lu et j'accepte <a href="https://telefret.com/condition.php">les conditions générales </a></div>
+                                                        <br>
+                                                        <div class="col-sm-12">
+														<div class="g-recaptcha" data-sitekey="6LfAXwoaAAAAAL4Bp-qVHLhXLzBW-uYcUykT9592" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div> 
+														</div><input class="pull-right" type="submit" value="Valider">
+													
+                                                            
+														
+														
                                                         
-														<div class="col-sm-12 regle-form">
-                                                            <input class="pull-right" type="submit" value="Créer un compte">
-                                                        </div>
+                                                       
                                                     </form>
                                                 </div>
 

@@ -1447,7 +1447,7 @@ Contact Page
     position: relative;
 }
 .right-nav::after{
-    content: :"";
+    content: "";
     width:1px;
     height: 25px;
     background-color: #fff;
@@ -1482,7 +1482,7 @@ Contact Page
     padding-top: 150px;
 }
 .slide-bord::after{
-    content: :"";
+    content: "";
     width:50px;
     height: 3px;
     background-color: #19b835;
@@ -1493,7 +1493,7 @@ Contact Page
 }
 
 .trouvtrans .slide-bord::after{
-    content: :"";
+    content: "";
     width:70px;
     height: 3px;
     background-color: #19b835;
@@ -1545,7 +1545,7 @@ Contact Page
 }
 
 .txt-bord::after {
-    content: :"";
+    content: "";
     width:65px;
     height: 3px;
     background-color: #19b835;
@@ -2264,7 +2264,12 @@ button[type="submit"], button[type="button"] {
     background: rgba(25,184,53,0.1) !important;
 }
 
-
+.trvalide{
+  background-color: rgba(25,184,53,0.1) !important;
+};
+.tinrvalide{
+  background-color: rgba(200,16,16,0.1)!important;
+}
 
 .margb {
     margin-bottom:20px;

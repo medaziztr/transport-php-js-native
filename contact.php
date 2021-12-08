@@ -274,6 +274,7 @@
                             <div class="form-group text-area">
 
                             </div>
+                            <div class="g-recaptcha" data-sitekey="6LfAXwoaAAAAAL4Bp-qVHLhXLzBW-uYcUykT9592"></div>
 
                             <button type="submit" class="btn btn-primary pull-right">ENVOYER</button>
                         </form>

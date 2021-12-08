@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-md-12 m-t-50">
                     <div class="contact-map">
-                        <h3 class="txt-bordure sections-title">Ajoutez un abonnement</h3>
+                        <h3 class="txt-bordure sections-title">Ajoutez un Vehicule</h3>
                         
                         <form id="new_abnmt" action="new_abnmt.php" method="POST" name="new_abnmt" enctype="multipart/form-data">
 
@@ -135,8 +135,9 @@
 									?>
                                 </div>
                             </div>
-
+                         
                             <button type="submit" class="btn btn-primary pull-right">ENVOYER</button>
+                            
                         </form>
                     </div>
                 </div>
@@ -144,6 +145,21 @@
                 
             </div>
         </div>
+        <div >
+                                                                    <div > 
+                                                                    
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSfOfX4x8wc4r0-yXU_Otoj3XUlVDXkMZdw1PEXUPlAQwqUH_Q/viewform?usp=sf_link"">
+    
+
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit"  style="height:50px;width:200px" ><font size="5pt">Cliquer ici </font></button> <font color="red"  size="5pt"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et envoyez les documents ci-dessous pour completer votre abonnement </font>
+   </form>  <font color="green"  size="3pt"><ul><li> &nbsp;&nbsp;&nbsp; * Copie de carte grise du vehicule </li> <li>&nbsp;&nbsp;&nbsp; * Copie de la police d'assurance en cours de validité <li><li>&nbsp;&nbsp;&nbsp;* Copie de la CNI du gerant</li><ul></font></div></div>
+                          
+                           
+  
+                      
+                            
+                          
     </section>
 
 <?php } ?>

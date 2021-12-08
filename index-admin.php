@@ -33,6 +33,15 @@
                   <li role="transporteurs" class="">
                       <a href="#disponibilite" aria-controls="disponibilite" role="tab" data-toggle="tab"> Disponibilités </a>
                   </li>
+                   <li role="transporteurs" class="">
+                      <a href="#pub_disponibilite" aria-controls="pub_disponibilite" role="tab" data-toggle="tab"> Publication Disponiblité </a>
+                  </li>
+                  <li role="transporteurs" class="">
+                      <a href="#ajout_gps" aria-controls="ajout_gps" role="tab" data-toggle="tab">Ajout Gps </a>
+                  </li>
+                  <li role="transporteurs" class="">
+                      <a href="#envoi_sms" aria-controls="envoi_sms" role="tab" data-toggle="tab">Envoi SMS </a>
+                  </li>
                   
               </ul>
 
@@ -145,8 +154,9 @@
                                                 <div class="res-flx-s "><?php echo $r2['adresse']; ?></div>
                                                 <div class="res-flx-s "><?php echo $r2['telephone']; ?></div>
                                                 <div class="res-flx-s "><?php echo $r2['email']; ?></div>
+                                                <div class="res-flx-s "><?php echo $r2['Date_inscri']; ?></div>
                                                 
-                                                <input id=maila<?php echo $nb ; ?> type=text hidden value="<?php echo $r2['telephone']; ?>">
+                                                <input id=maila<?php echo $nb ; ?> type=text hidden value="<?php echo $r2['email']; ?>">
                                                     
                                                 <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-compte.php?tel=<?php echo $r2['telephone']; ?>"><img src="./img/supp.png" ></a>
                                                 <a class="supp" data-toggle="modal" onClick="messaffect('a<?php echo $nb ; ?>');" data-target="#message" href='#'><img src="./img/mail.png" ></a>
@@ -203,8 +213,9 @@
                                                 <div class="res-flx-s "><?php echo $r3['adresse']; ?></div>
                                                 <div class="res-flx-s "><?php echo $r3['telephone']; ?></div>
 												<div class="res-flx-s "><?php echo $r3['email']; ?></div>
+												 <div class="res-flx-s "><?php echo $r3['Date_inscri']; ?></div>
                                                     
-                                                <input id=mailc<?php echo $nb ; ?> type=text hidden value="<?php echo $r3['telephone']; ?>">
+                                                <input id=mailc<?php echo $nb ; ?> type=text hidden value="<?php echo $r3['email']; ?>">
                                                     
                                                 <a class="supp" onclick="return confirm('Êtes-vous sûr de SUPPRIMER ce compte ?')" href="supp-compte.php?tel=<?php echo $r3['telephone']; ?>"><img src="./img/supp.png" ></a>
 												<?php if ($r3['verif']==5) {?>
@@ -335,13 +346,353 @@
                             </div>
                         </div>
                     </div>
-                
+                    
+                    
+                    
+                  
+                 <! -- Ajout Dispoibilité --> 
+                    <div role="tabpanel" class="tab-pane fade in" id="pub_disponibilite">
+                        <div class="css-tab-content">
+                            <div class="tab-pane fade in active">
+                                <div class="css-tab-content formulaires">
+                                    
+                                </div>
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <div class="contact-map">
+                                          
+                                         <! -- Ajout Dispo --> 
+                                           <form id="form1" runat="server" action="post-dispoadm.php" method="POST">
+                                        <h3 class="txt-bordure sections-title">Ajouter Camion</h3>
+                                        <div class="row">
+                                                                        <div class="col-sm-3 col-xs-12  no-padding left-title">
+                                                                            <select name="id_ab">
+                                        <?php 
+                                        $sql = mysqli_query($db, "SELECT * FROM abonnements");
+                                        while ($row = $sql->fetch_assoc()){
+                                        echo "<option value='" . $row['id_abonnement'] . "'>" . $row['matricule'] . "</option>";
+                                         }
+                                         ?>
+                                         </select></div></div>
+                                          <div class="row">
+                                                                        <div class="col-sm-3 col-xs-12  no-padding left-title">Poids Disponible (T) </div>
+                                                                        <div class="col-sm-1 hidden-xs no-padding left-title"><font color="red">*</font></div>
+                                                                        <div class="col-sm-5 col-xs-12 no-padding">
+                                                                            <input step="0.1" min="0.1" type="number" required class="col-xs-12" name="poid_disp" >
+                                                                        </div>
+                                                                    </div>
+
+
+														<div class="col-md-6 col-xs-12 formulaire">
+                                                            <h3 class="txt-bordure sections-title">Chargement</h3>
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Pays de Départ </div>
+                                                                    <div class="col-sm-6 col-xs-12 no-padding">
+                                                                       
+                                                                        
+                                                                        <select type="text" name="pays_dep" id="pays8" placeholder="Pays *" required onchange="changePays(8)" >
+                                                                            <option selected value="Cameroun" style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">Cameroun</option>
+                                                                            <option value="Congo" style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">Congo</option>
+                                                                            <option value="Gabon" style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">Gabon</option>
+                                                                            <option value="Tchad" style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">Tchad</option>
+                                                                            <option value="République centrafricaine" style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">République centrafricaine</option>
+                                                                            <option value="Guinée équatoriale" style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">Guinée équatoriale</option>
+                                                                        </select>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Ville de Départ </div>
+                                                                     <div class="col-sm-6 col-xs-12 no-padding" > 
+            
+            <input type="text" name="ville_dep" id="autocomplete"/>
+        </div>
+       
+                                                                  
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Date de Départ </div>
+                                                                    <div class="col-sm-6 col-xs-12 no-padding">
+                                                                        <input required type="date" name="date_dep">
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Adresse de Départ </div>
+                                                                    <div class="col-sm-8 col-xs-12 no-padding form">
+                                                                        <textarea required placeholder="Votre Adresse de Départ" name="adresse_dep"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-6 col-xs-12 formulaire">
+                                                            <h3 class="txt-bordure sections-title">Arrivée</h3>
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Pays d'arrivée </div>
+                                                                    <div class="col-sm-6 col-xs-12 no-padding">
+                                                                        
+                                                                        
+                                                                        <select type="text" name="pays_arr" id="pays9" placeholder="Pays *" required onchange="changePays(9)" >
+                                                                            <option selected value="Cameroun" style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">Cameroun</option>
+                                                                            <option value="Congo" style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">Congo</option>
+                                                                            <option value="Gabon" style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">Gabon</option>
+                                                                            <option value="Tchad" style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">Tchad</option>
+                                                                            <option value="République centrafricaine" style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">République centrafricaine</option>
+                                                                            <option value="Guinée équatoriale" style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">Guinée équatoriale</option>
+                                                                        </select>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Ville d'arrivée </div>
+                                                                                                 <div class="col-sm-6 col-xs-12 no-padding" >  
+            <input type="text" name="ville_arr" id="autocomplete-dynamic" style="width: 100%; border-width: 5px;"/>
+        </div>
+       
+                                                                
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Au plus tard </div>
+                                                                    <div class="col-sm-6 col-xs-12 no-padding">
+                                                                        <input required type="date" name="date_arr">
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Destination </div>
+                                                                    <div class="col-sm-8 col-xs-12 no-padding form">
+                                                                        <textarea required placeholder="Votre adresse de destination" name="adresse_arr"></textarea>
+                                                                    </div>
+                                                                </div>                                                                
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        
+                                                                  <div class="col-md-8 col-xs-12 formulaire">
+                                                            <h3 class="txt-bordure sections-title">Personne à contacter</h3>
+															<div class="form-group">
+																<div class="row margt">
+																	<div class="col-sm-3 col-xs-12 no-padding left-title">Moi même</div>
+																	<div class="col-sm-7 col-xs-12 no-padding form">
+																		<div class="onoffswitch">
+																			<input type="checkbox" checked="checked" class="onoffswitch-checkbox" name="contactPersonX"  id="contactPersonX" onclick="contactPerson()">
+																			<label class="onoffswitch-label" for="contactPersonX">
+																				<span class="onoffswitch-inner"></span>
+																				<span class="onoffswitch-switch"></span>
+																			</label>
+																		</div>
+																	</div>
+																</div>
+																<div id="meNot" style="display:none">
+																	<div class="row">
+																		<div class="col-sm-3 col-xs-12  no-padding left-title">Nom Complet</div>
+																		<div class="col-sm-1 hidden-xs no-padding left-title"><font color="red">*</font></div>
+																		<div class="col-sm-5 col-xs-12 no-padding">
+																			<input type="text"  id="contact_name" name="contact_name" value="" class="col-xs-12">
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-3 col-xs-12  no-padding left-title">Numéro de téléphone</div>
+																		<div class="col-sm-1 hidden-xs no-padding left-title"><font color="red">*</font></div>
+																		<div class="col-sm-5 col-xs-12 no-padding">
+																			<input type="number"  pattern="[0-9]{15}" value="" id="contact_phone" name="contact_phone" class="col-xs-12">
+																		</div>	
+																	</div>
+																</div>
+															</div></div>
+															
+															
+								<div class="col-md-8 col-xs-12 formulaire">						
+                                                        <div class="col-xs-1 form pull-right hidden-xs">
+                                                            <div class="res-flx petit ">
+                                                                <input type="submit" value="Valider" >
+                                                                    
+                             
+               
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-xs-12 form hidden-lg hidden-sm hidden-md">
+                                                            <div class="res-flx petit ">
+                                                                <input type="submit" value="Postuler" >
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    </form>
+                                           
+                                          <! -- fin Form -->
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <! -- fin --> 
+                   
+                     <!--ajout SMS-->
+                    <div role="tabpanel" class="tab-pane fade in" id="envoi_sms">
+                        <div class="css-tab-content">
+                            <div class="tab-pane fade in active">
+                                <div class="css-tab-content formulaires">
+                                    
+                                </div>
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <div class="contact-map">
+                                            <h3 class=" sections-title">Send SMS</h3>
+                                           <form action="https://api.1s2u.io/bulksms" method="get">
+<input  name="username" type="hidden" value="smscontact020">
+<input  name="password" type="hidden" value="web89355">
+
+	<label for="phone">Votre Numéro</label>
+	<input type="tel" name="mno"/><br/>
+	<label for="body">Votre Message</label>
+     <input  name="sid" type="hidden" value="Telefret">
+	<textarea name="msg" maxlength="160"></textarea><br/>
+    <input  name="mt" type="hidden" value="0">
+    <input  name="fl" type="hidden" value="1">
+	<input type="submit" />
+</form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--fin ajout SMS-->
+                    
+                  <! -- Ajout Gps --> 
+                    <div role="tabpanel" class="tab-pane fade in" id="ajout_gps">
+                        <div class="css-tab-content">
+                            <div class="tab-pane fade in active">
+                                <div class="css-tab-content formulaires">
+                                    
+                                </div>
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <div class="contact-map">
+                                        
+                                            <form id="form1" runat="server" action="ajout-gps.php" method="POST">
+                                        <h3 class="txt-bordure sections-title">Ajouter GPS</h3>
+                                        <div class="row">
+                                                                        <div class="col-sm-3 col-xs-12  no-padding left-title">Matricule abonnement
+                                                                            <select name="id_ab">
+                                        <?php 
+                                        $sql = mysqli_query($db, "SELECT * FROM abonnements");
+                                        while ($row = $sql->fetch_assoc()){
+                                        echo "<option value='" . $row['id_abonnement'] . "'>" . $row['matricule'] . "</option>";
+                                         }
+                                         ?>
+                                         </select></div></div>
+                                             
+                                         	<div class="col-sm-3 col-xs-12  no-padding left-title">ID gps</div>
+																		<div class="col-sm-1 hidden-xs no-padding left-title"><font color="red">*</font></div>
+																		<div class="col-sm-5 col-xs-12 no-padding">
+																			<input type="text"  id="id_gps" name="id_gps" value="" class="col-xs-12">
+																			  <input type="submit" value="Ajout GPS" >
+																		</div>
+																		
+																		
+																		<br><br>
+																		<h3 class="txt-bordure sections-title">Activation Suivi</h3>
+																		 <div class="row">
+                                                                        <div class="col-sm-3 col-xs-12  no-padding left-title">Matricule abonnement 
+                                                                            <select name="id_ab">
+                                        <?php 
+                                        $sql = mysqli_query($db, "SELECT * FROM abonnements");
+                                        while ($row = $sql->fetch_assoc()){
+                                        echo "<option value='" . $row['id_abonnement'] . "'>" . $row['matricule'] . "</option>";
+                                         }
+                                         ?>
+                                         </select></div></div>
+																			<div class="col-sm-3 col-xs-12  no-padding left-title">Activation Suivi</div>
+																		<div class="col-sm-1 hidden-xs no-padding left-title"><font color="red">*</font></div>
+																		<div class="col-sm-5 col-xs-12 no-padding">
+																			<select class="form-control" id="" name="Suivi"> 
+                                                        
+                                              <option value="1" >Active</option>
+                                              <option value="0" >Non-Active</option>
+                                              
+                                             
+                                                        
+                                                    </select>
+                                                       <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Date Début Suivi </div>
+                                                                    <div class="col-sm-6 col-xs-12 no-padding">
+                                                                        <input required type="date" name="date_deb">
+                                                                    </div>
+                                                                </div>
+                                                                   <div class="row">
+                                                                    <div class="col-sm-4 col-xs-12 no-padding left-title">Date Fin Suivi </div>
+                                                                    <div class="col-sm-6 col-xs-12 no-padding">
+                                                                        <input required type="date" name="date_fin">
+                                                                    </div>
+                                                                </div>
+																			  <input type="submit" value="Valider" >
+																		</div>
+                                         
+                                        
+        
+                                        
+                                        
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <! -- fin  -->
+                    
+                    <!--ajout SMS-->
+                    <div role="tabpanel" class="tab-pane fade in" id="Envoi_SMS">
+                        <div class="css-tab-content">
+                            <div class="tab-pane fade in active">
+                                <div class="css-tab-content formulaires">
+                                    
+                                </div>
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <div class="contact-map">
+                                            <h3 class=" sections-title">Send SMS</h3>
+                                           <form action="https://api.1s2u.io/bulksms" method="get">
+<input  name="username" type="hidden" value="smscontact020">
+<input  name="password" type="hidden" value="web89355">
+
+	<label for="phone">Votre Numéro</label>
+	<input type="tel" name="mno"/><br/>
+	<label for="body">Votre Message</label>
+     <input  name="sid" type="hidden" value="Telefret">
+	<textarea name="msg" maxlength="160"></textarea><br/>
+    <input  name="mt" type="hidden" value="0">
+    <input  name="fl" type="hidden" value="1">
+	<input type="submit" />
+</form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--fin ajout SMS-->
                     
                 </div>
               </div>
             </div>
         </div>
     </div>
+   
     
     <div class="modal fade fond" id="message" tabindex="-1" role="dialog" aria-labelledby="quoteModalLabel" aria-hidden="true">
       <div class="w-50">

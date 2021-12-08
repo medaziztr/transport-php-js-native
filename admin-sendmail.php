@@ -8,8 +8,10 @@ session_start();
         
     
         $email=$_SESSION['login_user'];
+        //mailmsg
     
         $to=$_POST['mailmsg'];
+        //$to=$_SESSION['email'];
         $msg=$_POST['msg'];
     
         $sujet="Contact TELEFRET ";

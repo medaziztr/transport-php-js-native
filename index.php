@@ -1,5 +1,14 @@
 <?php include"header.php" ?>
-
+<style>
+	.suivieform{
+		width:30%;
+	}
+	@media screen and (max-width: 768px){
+		.suivieform{
+		width:90%;
+	}
+}
+</style>
 <section class="page-title-section trouvtrans show-xs hidden-md hidden-sm hidden-lg hidden-xs">
     <div class="container hidden-xs slide-bord">
     </div>
@@ -16,13 +25,13 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="img/slider/transport1.jpg" alt="Hero Slide">
+            <img src="img/slider/Transport6.jpeg" alt="Hero Slide">
             <!--Slide Image-->
 
             <div class="container hidden-xs slide-bord">
                 <div class="carousel-caption demo-slides">
                     <div class="animated lightSpeedIn slide-title">Telefret</div>
-                    <p class="lead animated lightSpeedIn fff">TELEFRET est un puissant vecteur de communication pour faire connaître vos services et accroître de manière significative votre visibilité au sein de la chaîne logistique en Afrique et dans le monde.</p>
+                    <p class="lead animated lightSpeedIn fff">TELEFRET est un puissant vecteur de communication pour faire connaître vos services et accroître de manière significative votre visibilité au sein de la chaîne logistique en Afrique et dans le monde.</p><br><br>
                     
                     <?php if(!isset($_SESSION['login_user'])) { ?>
                     
@@ -31,10 +40,12 @@
                     <?php } ?>
                     
                 </div>
+               <br><br><font size="6"><center> <p style="color:#ffffff"; >NOUS RÉINVENTONS L’EXPÉRIENCE TRANSPORT DES MARCHANDISES EN AFRIQUE</p></center></font>
             </div>
 			
 			<div class="container submenu">
-                <div class="slide-title"><a href="espace-transporteur.php">Espace transporteurs</a></div>
+                <div class="slide-title"><a href="espace-transporteur.php">
+                Espace transporteurs</a></div>
                 <div class="slide-title"><a href="espace-client.php">Espace Expéditeurs</a></div>
                 <div class="slide-title"><a href="contact.php">Contactez-Nous</a></div>
             </div>
@@ -43,7 +54,7 @@
         </div>
 
         <div class="item">
-            <img src="img/slider/transport4.jpg" alt="Hero Slide">
+            <img src="img/slider/Transport7.jpg" alt="Hero Slide">
             <!--Slide Image-->
 
             <div class="container hidden-xs slide-bord">
@@ -56,6 +67,7 @@
                     
                     <?php } ?>
                 </div>
+                <br><br><br><br><br><font size="6"><center> <p style="color:#FFFFFF"; >NOUS RÉINVENTONS L’EXPÉRIENCE TRANSPORT DES MARCHANDISES EN AFRIQUE</p></center></font>
             </div>
 			
 			<div class="container submenu">
@@ -66,7 +78,7 @@
         </div>
 
         <div class="item">
-            <img src="img/slider/transport3.jpg" alt="Hero Slide">
+            <img src="img/slider/Transport8.jpg" alt="Hero Slide">
             <!--Slide Image-->
 
             <div class="container hidden-xs slide-bord">
@@ -81,6 +93,7 @@
                     <?php } ?>
                     
                 </div>
+                <br><br><br><br><font size="6"><center> <p style="color:#FFFFFF"; >NOUS RÉINVENTONS L’EXPÉRIENCE TRANSPORT DES MARCHANDISES EN AFRIQUE</p></center></font>
             </div>
 			<div class="container submenu">
                 <div class="slide-title"><a href="espace-transporteur.php">Espace transporteurs</a></div>
@@ -88,7 +101,28 @@
                 <div class="slide-title"><a href="contact.php">Contactez-Nous</a></div>
             </div>
         </div>
-    </div>
+		<rs-mask-wrap class="suivieform" style="position: absolute; display: block; overflow: visible;top:17%;left: 50%;
+    transform: translate(-50%, 0); ">
+		<rs-layer id="slider-1-slide-1-layer-7" class="rs-layer-static rs-layer" data-type="text"
+		 data-rsp_ch="on" data-xy="xo:2px,1px,0,19px;yo:103px,90px,68px,86px;" 
+		 data-text="w:normal;s:20,17,12,24;l:25,21,15,26;fw:400,400,400,700;" data-dim="w:471.233px,412px,313px,448px;" data-onslides="s:1;" data-frame_0="x:0,0,0,0px;y:0,0,0,0px;" data-frame_1="x:0,0,0,0px;y:0,0,0,0px;" data-frame_999="o:0;st:w;" style="z-index: 5; font-family: Roboto; height: auto; color: rgb(255, 255, 255);
+		  text-decoration: none; white-space: normal; width: 30px; min-height: 0px; min-width: 0px; max-height: none;
+		   max-width: none; text-align: left; line-height: 20px; letter-spacing: 0px; font-weight: 700; font-size:
+		    19px; transform-origin: 50% 50%; opacity: 1; transform: translate(0px, 0px); visibility: visible;" data-startslide="1" 
+			data-endslide="5" data-idcheck="true" data-stylerecorder="true" data-initialised="true">
+			<form method="post" id="form"  data-stylerecorder="true" style="text-align: left; line-height: 20px; 
+			letter-spacing: 0px; font-weight: 700; font-size: 19px;">
+			<input type="text" class="" id="CODE_EXPEDITION" 
+			 required="" placeholder="Saisissez le N° d'expédition" style="background-color: rgb(255, 255, 255); width:100%;height:45px;color:black!important;
+			  border: 2px none rgb(234, 234, 234); border-radius: 2px; font-weight: 700; text-align: left; line-height: 20px;
+			   letter-spacing: 0px; padding-left: 16px; padding-right: 16px;" data-stylerecorder="true">
+<button style="float: right; width: 45px; height: 45px; padding: 0px; margin-right: 5px; border-radius: 100%; position:
+ absolute; right: -20px; text-align: left; line-height: 20px; letter-spacing: 0px; font-weight: 700;    background-color: #14b760; border-color: 
+ rgb(156, 191, 97); border-style: solid; border-width: 2px;" data-stylerecorder="true"><i style="font-size: 18px; height: 35px;
+  line-height: 34px; width: 35px; padding-left: 8px; position: absolute; top: 5%; left: 6%; text-align: left; letter-spacing: 0px;
+   font-weight: 400;" class="fa fa-search" data-stylerecorder="true"></i></button></form> 
+							</rs-layer></rs-mask-wrap>
+  </div>
     <!--.carousel-inner-->
 
     <!-- Controls -->
@@ -115,11 +149,11 @@
 									    <div class="css-tab-content">
 										    <div class="row padding-b">
 										    	<div class="col-md-5 content-text">
-											    	  <h3>  <p style="color:#00FF00;"> Pensez Transport, Pensez  TELEFRET! </p></h3><!--<h3 class="sections-title"></h3>-->
+											    	    <h3 class="sections-title">Pensez Transport, Pensez  TELEFRET!</h3>
                                                     <br>
-                                                    <p><a href="http://telefret.com">TELEFRET.COM </a>est un intermédiaire digital qui met en relation dans un espace commun des expéditeurs et des transporteurs afin de faciliter leur interaction.</p>
+                                                    <p style="color:black">Nous connectons tous les acteurs de la chaine logistique et d’approvisionnement notamment les transporteurs, les expéditeurs et les commissionnaires dans le but de faciliter leur interaction et accroitre leurs rendements,</p>
                                                     
-                                                    <p>C’est  une véritable  place de marché sur internet qui permet concrètement aux transporteurs abonnés d’optimiser son parc de camion en limitant le retour à vide ou les chargements incomplets.</p>
+                                                    <p style="color:black">Notre mission : planifier, contrôler et gérer  le flux de transport de vos marchandises  de bout à bout  et en temps réel.</p>
 
                                                     
 										    	</div>
@@ -136,30 +170,31 @@
 			        	</div>
 			        </section>
 
-                    <!--<section  class="">
+                  <!-- <section  class="">
                         <div>
-                            <iframe src="https://www.youtube.com/embed/fRQjDt7w8n4"frameborder="0" allowfullscreen class="video"> </iframe>
+                           <iframe width="560" height="315" src="https://www.youtube.com/embed/fRQjDt7w8n4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                    </section>-->
+                    </section> -->
 					
 
 					<section class="why-us-setion">
 			        	<div class="container">
 			              <div class="row text-center">
 			                <div class="col-xs-12">
-			                  <span class="section-sub sections-title">Principes & etapes de fonctionnalités</span>
+			                  <span class="section-sub sections-title">Comment ça marche ? Voici les étapes à suivre.</span>
                                 <br>
                                 <br>
-			                  <p>Comment ça marche ? Voici les étapes à suivre.</p>
+			                <!-- <p>Comment ça marche ? Voici les étapes à suivre .</p> -->
 			                </div>
 			              </div> <!-- /.row -->
-
-			              <div class="row ">
-			              	<div class="col-md-12">
+                          <div class="row "> <iframe width="800" height="400" src="https://www.youtube-nocookie.com/embed/Jk_6pwISIhI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div> <br> <br>
+			               <div class="row "> 
+			               
+			              	 <div class="col-md-12">
 								<div class="css-tab" role="tabpanel">
 
 								  <!-- Nav tabs -->
-								  <ul class="nav nav-tabs" role="tablist">
+								 <!-- <ul class="nav nav-tabs" role="tablist">
 								    
                                       <li role="pub-ann" class="active" ><a href="#pub-ann" aria-controls="pub-ann" role="tab" data-toggle="tab"><i class="flaticon-logistics18"></i> Publier votre annonce</a></li>
                                       
@@ -168,23 +203,23 @@
                                       <li role="services"><a href="#services" aria-controls="services" role="tab" data-toggle="tab"><i class="flaticon-logistics16"></i> Choisir l'offre</a></li>
 								    
                                       <li role="evaluez"><a href="#evaluez" aria-controls="evaluez" role="tab" data-toggle="tab"><i class="flaticon-broken43"></i> Evaluer</a></li>
-								  </ul>
+								  </ul> -->
 
 								  <!-- Tab panes -->
 								  <div class="tab-content">
 								    <div role="tabpanel" class="tab-pane active fade in" id="pub-ann">
 									    <div class="css-tab-content">
 										    <div class="row">
-										    	<div class="col-md-6">
+										    	<!-- <div class="col-md-6">
 										    		<img src="img/rest-4.png" alt="">
-										    	</div><!-- /.col-md-6 -->
+										    	</div> --><!-- /.col-md-6 -->
 
-										    	<div class="col-md-6 content-text">
+										    	<!-- <div class="col-md-6 content-text">
 											    	<h3 class="desc-title">Publier votre annonce</h3>
 
 											    	<p class="desc-cont">Vous souhaitez expédier des colis, transporter une marchandise ou effectuer un déménagement, publiez votre demande sur <a href="http://telefret.com">TELEFRET.COM </a>.</p>
                                                     <p class="desc-cont">Publier votre annonce de chez vous via n’importe quel support (Ordinateur, Tablette, téléphone...)</p> 
-										    	</div><!-- /.col-md-6 -->
+										    	</div> --> <!-- /.col-md-6 -->
 										    </div><!-- /.row -->
 									    </div><!-- /.css-tab-content -->
 								    </div>
@@ -203,7 +238,7 @@
 											    	<p class="desc-cont">Vous aurez plus de possibilité, plus de disponibilité et plus de gains (temps & argent).</p> 
 										    	</div><!-- /.col-md-6 -->
 										    </div><!-- /.row -->
-									    </div><!-- /.css-tab-content -->
+									    </div>  <!-- /.css-tab-content -->
 								    </div>
 								      
 								    <div role="tabpanel" class="tab-pane fade in" id="services">
@@ -246,7 +281,50 @@
 
 			        	</div><!-- /.container -->
 			        </section>
-                    
+			         <section class="packs-setion testimonial-section">
+                        <div class="container flxrow">
+                            <div class="row text-center">
+                            <div class="col-xs-12">
+                              <span class="section-sub sections-title">Pourquoi choisir TELEFRET ?</span>
+                                <br>
+                                <br>
+                              <p></p>
+                            </div>
+                          </div>
+                            <div class="col-xs-12"></div>
+                            <div class="pack">
+                                <form class="form">
+                                    <div class="head-pack h30">Sécurité</div>
+                                    <div class="img-pack"><img src="img/securite.png"/></div>
+                                    <div class="cont-pack">
+                                        <span class="txt-pack">Ne confiez plus vos marchandises aux inconnus. Chez TELEFRET, tous les transporteurs sont identifiés. Aussi, suivez vos expéditions en temps réel via le Tracking System.
+Vos marchandises sont assurées par nos partenaires Assureurs et vous êtes dédommagés en cas de perte ou de vol.</span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="pack">
+                                <form class="form">
+                                    <div class="head-pack h30">Optimisation</div>
+                                    <div class="img-pack"><img src="img/performance.png"/></div>
+                                    <div class="cont-pack">
+                                        <span class="txt-pack">Accédez en un clic aux plus grands réseaux des transporteurs professionnel de la zone CEMAC et Optimisez vos couts grâce à la mutualisation et à l’aspect collaboratif de la plateforme.</span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="pack">
+                                <form class="form">
+                                    <div class="head-pack h30">Dématérialisation</div>
+                                    <div class="img-pack"><img src="img/easy.png"/></div>
+                                    <div class="cont-pack">
+                                        <span class="txt-pack">Dématérialisez vos processus de transport et accédez à vos documents (Ordre de transport, Bon de livraison, Facture…) sous format électronique en temps réel. Bénéficiez d’une vision globale grâce à notre Dashboard.</span>
+                                    </div>
+                                </form>
+                            </div>
+                            
+
+                        </div>
+                    </section>
+                    <br><br>
                     
                     <section class="testimonial-section section-padding">
 			            <div class="container text-center">
@@ -271,22 +349,27 @@
 								    <div class="item active">
 								    	<div class="testimonial-content">
                                             <div class="avatar-cl"><img src="./img/client/client-1.jpg"></div>
-								    		<p>Rien à dire, je suis avec eux  depuis le début j'ai toujours reçu <br>sans problème mes effets. Il font tous pour respecter <br> les délais qu'ils annoncent. A recommander.</p>
-								    		<span class="client-title">- Mamadou Angoua -</span>
+								    		<p>Sur suggestion d’un partenaire d’affaire, j’ai contacté TELEFRET dans le cadre d’une opération de transport des conteneurs du port autonome de Douala au Cameroun, vers BANGUI en RCA.<br> Je vous recommande cette startup car leur service est accessible en un clic et leurs offres très professionnelles.
+<br>Merci encore TELEFRET pour votre disponibilité</p>
+								    		<span class="client-title"> NZANGUE Rodrigue </span>
+								    		<span class="client-title">Directeur General, BRAIN TRANSIT</span>
 								    	</div><!-- /.testimonial-content -->
 								    </div>
 								    <div class="item">
 								    	<div class="testimonial-content">
                                             <div class="avatar-cl"><img src="./img/client/client-2.jpg"></div>
-								    		<p>Voilà maintenant plusieurs années que je travaille avec la société<br> TELEFRET je n'ai jamais eu de problème de colis et même pour l'envoi de mes véhicules.<br> Très bon je vous conseille.</p>
-								    		<span class="client-title">- Diane solo -</span>
+								    		<p>La solution innovante qui permet aux sociétés industrielles  de planifier et surveiller chaque étape de leurs expéditions  de l’usine  vers les distributeurs finaux. <br>Il  constitue l’un des moyens les plus rapides et les plus efficaces d’améliorer les performances de la chaîne d’approvisionnement.</p>
+								    		<span class="client-title"> PIAM Krystel</span>
+								    		<span class="client-title">Responsable Commerciale, AGRI-INDUSTRIE</span>
 								    	</div><!-- /.testimonial-content -->
 								    </div>
 								    <div class="item">
 								    	<div class="testimonial-content">
                                             <div class="avatar-cl"><img src="./img/client/client-3.jpg"></div>
-								    		<p>Société très sérieuse dans l'ensemble rien à <br>dire mes colis sont arrivés comme prévue.<br> Merci TELEFRET</p>
-								    		<span class="client-title">- Kouamé Ngu -</span>
+								    		<p>Nous avions découvert TELEFRET comme  un espace  de confiance dédié aux professionnels du transport routiers de marchandises.<br> Car il met à la disposition des partenaires un suivi automatisé par géolocalisation et une transmission des informations en temps réel.
+<br>Nous apprécions fortement votre apport dans  la supply Chain en Afrique</p>
+								    		<span class="client-title"> YMTSOP Charly </span>
+								    		<span class="client-title">Responsable Logistique, SOCOPAT</span>
 								    	</div><!-- /.testimonial-content -->
 								    </div>
 								  </div>
@@ -330,48 +413,7 @@
 			            </div>
 			        </section>
 
-                    <section class="packs-setion testimonial-section">
-                        <div class="container flxrow">
-                            <div class="row text-center">
-                            <div class="col-xs-12">
-                              <span class="section-sub sections-title">Nos Avantages</span>
-                                <br>
-                                <br>
-                              <p>Pourquoi choisir TELEFRET ?</p>
-                            </div>
-                          </div>
-                            <div class="col-xs-12"></div>
-                            <div class="pack">
-                                <form class="form">
-                                    <div class="head-pack h30">Sécurité</div>
-                                    <div class="img-pack"><img src="img/securite.png"/></div>
-                                    <div class="cont-pack">
-                                        <span class="txt-pack">Ne confiez plus vos marchandises aux inconnus. Sur telefret.com, tous les transporteurs sont identifiés. Aussi, suivez vos expéditions en temps réel via le tracking system.</span>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="pack">
-                                <form class="form">
-                                    <div class="head-pack h30">Optimisez votre flotte</div>
-                                    <div class="img-pack"><img src="img/performance.png"/></div>
-                                    <div class="cont-pack">
-                                        <span class="txt-pack">Fini les retours à vide et les camions immobilisés. Rejoignez telefret.com et trouvez en un clic des milliers d’expéditeurs partout au Cameroun et dans le monde.</span>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="pack">
-                                <form class="form">
-                                    <div class="head-pack h30">Facile</div>
-                                    <div class="img-pack"><img src="img/easy.png"/></div>
-                                    <div class="cont-pack">
-                                        <span class="txt-pack">En déplacement? Au bureau ? Ne vous gênez pas : pilotez toutes vos opérations d’expédition depuis votre smartphone, tablette ou ordinateur.</span>
-                                    </div>
-                                </form>
-                            </div>
-                            
-
-                        </div>
-                    </section>
+                  
 					
 					<?php 
 						$selectSQL="SELECT * FROM pub";
@@ -402,5 +444,22 @@
 							</div>
 						</div>
 					<?php } ?>	
+
+					<script>
+						// We access to the inputs by their id's
+let CODE_EXPEDITION = document.getElementById("CODE_EXPEDITION");
+
+let contactForm = document.getElementById("form");
+
+// Event listener
+contactForm.addEventListener("submit", function (e) {
+ 
+  
+    e.preventDefault();
+    window.location.assign("http://suivi.telefret.com/"+CODE_EXPEDITION.value);
+  
+
+});
+					</script>
 
 <?php include"footer.php" ?>

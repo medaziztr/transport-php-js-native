@@ -37,7 +37,7 @@ styling: selectors
 
 .hippo-offcanvas-wrapper {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .hippo-offcanvas-pusher {
