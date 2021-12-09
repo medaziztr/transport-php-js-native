@@ -96,196 +96,291 @@
                             <div class="css-tab-content">
                                 <div class="tab-pane fade in active">
                                     <div class="css-tab-content formulaires">
-                                        <form name="filtre" method="POST" action="<?php echo $editFormAction; ?>">
+                                        
+                                    </div>
+									<div>
 
-                                            <div class="container">
-                                                <div class="col-md-6 formulaire">
-                                                    <h3 class="txt-bordure sections-title">Depart</h3>
 
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-sm-1 hidden-xs no-padding left-title">De
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12 no-padding">
+									
+                                    <div class="container result-rech">
 
-                                                                <!--
-                                                            <select class="form-control" id="countries" name="pays_dep" content-type="choices" trigger="true" target="department"> 
-                                                                <option selected value="off">Pays de depart</option>
-                                                                <option value="Cameroun">Cameroun</option>
-                                                                <option value="Congo">Congo</option>
-                                                                <option value="Republique Centrafricaine">Republique Centrafricaine</option>
-                                                                <option value="Tchad">Tchad</option>
+
+                                    <!-- Custom Filter -->
+
+                                    <div class="css-tab-content formulaires">
+
+                                        <div class="container" style="padding-left: unset !important;">
+                                            <div class="col-md-6 formulaire">
+                                                <h3 class="txt-bordure sections-title">Depart</h3>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+
+                                                        <div class="col-sm-4 col-xs-12 no-padding">
+                                                            <select type="text" name="pays_dep" id="pays2"
+                                                                placeholder="Pays *" required>
+                                                                <option value="Cameroun" selected
+                                                                    style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
+                                                                    Cameroun</option>
+                                                                <option value="Congo"
+                                                                    style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
+                                                                    Congo</option>
+                                                                <option value="Gabon"
+                                                                    style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
+                                                                    Gabon</option>
+                                                                <option value="Tchad"
+                                                                    style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
+                                                                    Tchad</option>
+                                                                <option value="Republique centrafricaine"
+                                                                    style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
+                                                                    Republique centrafricaine</option>
+                                                                <option value="Guinee equatoriale"
+                                                                    style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
+                                                                    Guinee equatoriale</option>
+                                                                <option value="off"> Pays départ </option>
                                                             </select>
-                                                            -->
-
-                                                                <select type="text" name="pays_dep" id="pays2"
-                                                                    placeholder="Pays *" onchange="changePays(2)"
-                                                                    required>
-                                                                    <option value="Cameroun" selected
-                                                                        style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
-                                                                        Cameroun</option>
-                                                                    <option value="Congo"
-                                                                        style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
-                                                                        Congo</option>
-                                                                    <option value="Gabon"
-                                                                        style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
-                                                                        Gabon</option>
-                                                                    <option value="Tchad"
-                                                                        style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
-                                                                        Tchad</option>
-                                                                    <option value="Republique centrafricaine"
-                                                                        style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
-                                                                        Republique centrafricaine</option>
-                                                                    <option value="Guinee equatoriale"
-                                                                        style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
-                                                                        Guinee equatoriale</option>
-                                                                    <option value="off"> Pays départ </option>
-                                                                </select>
-
-                                                            </div>
-                                                            <div class="col-sm-1 hidden-xs no-padding left-title">,
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12 no-padding">
-                                                                <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
-                                                                <input type="text" name="ville_dep"
-                                                                    id="autocomplete-ajax"
-                                                                    placeholder="Ville de Chargement">
-                                                                <input type="text" name="ville_dep"
-                                                                    id="autocomplete-ajax-x" disabled="disabled"
-                                                                    style="color: #CCC; position: absolute; background: transparent; z-index: 1;" />
-                                                            </div>
 
                                                         </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6 formulaire">
-                                                    <h3 class="txt-bordure sections-title">Arrivee</h3>
-
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-sm-1 hidden-xs no-padding left-title">à
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12 no-padding">
-
-                                                                <!--
-                                                            <select class="form-control" id="countries" name="pays_arr" content-type="choices" trigger="true" target="dep"> 
-                                                                <option selected value="off">Region d'arrivee</option>
-                                                                <option value="Cameroun">Cameroun</option>
-                                                                <option value="Congo">Congo</option>
-                                                                <option value="Republique Centrafricaine">Republique Centrafricaine</option>
-                                                                <option value="Tchad">Tchad</option>
-                                                            </select>
-                                                            -->
-
-                                                                <select type="text" name="pays_arr" id="pays3"
-                                                                    placeholder="Pays *" required
-                                                                    onchange="changePays(3)">
-                                                                    <option value="Cameroun" selected
-                                                                        style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
-                                                                        Cameroun</option>
-                                                                    <option value="Congo"
-                                                                        style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
-                                                                        Congo</option>
-                                                                    <option value="Gabon"
-                                                                        style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
-                                                                        Gabon</option>
-                                                                    <option value="Tchad"
-                                                                        style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
-                                                                        Tchad</option>
-                                                                    <option value="Republique centrafricaine"
-                                                                        style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
-                                                                        Republique centrafricaine</option>
-                                                                    <option value="Guinee equatoriale"
-                                                                        style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
-                                                                        Guinee equatoriale</option>
-                                                                    <option value="off"> Pays d'arrivé </option>
-                                                                </select>
-
-                                                            </div>
-                                                            <div class="col-sm-1 hidden-xs no-padding left-title">,
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12 no-padding">
-                                                                <!-- <input type="text" class="form-control"  id="tag3" name="ville_arr" placeholder="Ville de départ"> -->
-                                                                <input type="text" name="ville_arr"
-                                                                    id="autocomplete-custom-append"
-                                                                    style="width: 100%; border-width: 5px;"
-                                                                    placeholder="Ville de livraison" />
-                                                                <div id="suggestions-container"
-                                                                    style="position: relative;"></div>
-                                                            </div>
-                                                            <div class="btn-submit pull-right">
-                                                                <input type="submit" value="">
-                                                            </div>
+                                                        <div class="col-sm-4 col-xs-12 no-padding">
+                                                            <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
+                                                            <input type="text" name="ville_dep" id="villed"
+                                                                placeholder="Ville de Chargement">
+                                                            <input type="text" name="ville_dep" id="villed-x"
+                                                                disabled="disabled"
+                                                                style="color: #CCC; position: absolute; background: transparent; z-index: 1;height:0px;" />
                                                         </div>
+                                                        <!-- <div class="col-sm-4 col-xs-12 no-padding">
+                                                            <input type="date" name="ville_dep" id="dated"
+                                                                placeholder="dated">
+                                                        </div> -->
                                                     </div>
                                                 </div>
-
-
                                             </div>
+
+                                            <div class="col-md-6 formulaire" style="margin: left 5px;">
+                                                <h3 class="txt-bordure sections-title">Arrivee</h3>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-4 col-xs-12 no-padding">
+
+                                                            <select type="text" name="pays_arr" id="pays3"
+                                                                placeholder="Pays *" required>
+                                                                <option value="Cameroun" selected
+                                                                    style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
+                                                                    Cameroun</option>
+                                                                <option value="Congo"
+                                                                    style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
+                                                                    Congo</option>
+                                                                <option value="Gabon"
+                                                                    style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
+                                                                    Gabon</option>
+                                                                <option value="Tchad"
+                                                                    style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
+                                                                    Tchad</option>
+                                                                <option value="Republique centrafricaine"
+                                                                    style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
+                                                                    Republique centrafricaine</option>
+                                                                <option value="Guinee equatoriale"
+                                                                    style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
+                                                                    Guinee equatoriale</option>
+                                                                <option value="off"> Pays d'arrivé </option>
+                                                            </select>
+
+                                                        </div>
+                                                        <div class="col-sm-4 col-xs-12 no-padding">
+                                                            <!-- <input type="text" class="form-control"  id="tag3" name="ville_arr" placeholder="Ville de départ"> -->
+                                                            <input type="text" name="ville_arr" id="villef"
+                                                                style="width: 100%; border-width: 5px;"
+                                                                placeholder="Ville de livraison" />
+                                                            <div id="suggestions-container"
+                                                                style="position: relative;"></div>
+                                                        </div>
+                                                        <!-- <div class="col-sm-4 col-xs-12 no-padding">
+                                                            <input type="date" name="datef" id="datef"
+                                                                placeholder="datef">
+                                                        </div> -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                         </form>
                                     </div>
 
-                                    <?php
-                                        $insertSQL="SELECT * FROM disponibilite, transporteur, abonnements WHERE $filtre AND disponibilite.id_abonnement=abonnements.id_abonnement AND abonnements.telephone=transporteur.telephone";
+                                    <!-- Table -->
+                                    <table id='empTable1' class='display dataTable'>
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Type de véhicule</th>
+                                                <th>Départ</th>
+                                                <th>Arrivée</th>
+                                                <th>Poids disponible</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
 
-                                        $result = mysqli_query($db,$insertSQL);
-                                        $r=mysqli_fetch_array($result);
-                                        $s=mysqli_num_rows($result);
-                                     
-                                        if ($s!=0) {
-                                            do{
-                                                $date_ar = $r["date_arr"];
-												$date_ar_americain = str_replace('/', '-', $date_ar );
-                                                $date_arr=strtotime($date_ar_americain) ;
-												
+                                    </table>
+                                </div>
 
-                                                if ($date_arr >= $today){
-                                     ?>
+                                <!-- Script -->
+                                <script>
+                                $(document).ready(function() {
+                                    var dataTable = $('#empTable1').DataTable({
+                                        'processing': true,
+                                        'serverSide': true,
+                                        'serverMethod': 'post',
+                                        //'searching': false, // Remove default Search Control
+                                        'ajax': {
+                                            'url': 'ajaxfile4.php',
+                                            'data': function(data) {
+                                                // Read values
+                                                var gender = $('#pays2').val();
+                                                var name = $('#pays3').val();
+                                                var villed = $('#villed').val();
+                                                var villef = $('#villef').val();
+                                                // var dated = $('#dated').val();
+                                                // var datef = $('#datef').val();
 
-                                    <div class="container result-rech">
+                                                // Append to data
+                                                data.pays2 = gender;
+                                                data.pays3 = name;
+                                                data.villed = villed;
+                                                data.villef = villef;
+												data.now = "true";
 
-                                        <div class="res-flx img-avatar">
-                                            <img src="./img/uploaded/<?php echo $r['img_vehicule']; ?>">
-                                            <span class="names hidden-xs"><?php echo $r['type_vehicule']; ?></span>
-                                        </div>
-                                        <div class="res-flx hidden-md hidden-sm hidden-lg">
-                                            <?php echo $r['type_vehicule']; ?></div>
-                                        <div class="res-flx">Date de départ: <?php echo $r['date_dep']; ?></div>
-                                        <div class="res-flx">
-                                            <?php echo 'Départ : '.$r['ville_dep'].' , '.$r['pays_dep']; ?></div>
-                                        <div class="res-flx">
-                                            <?php echo 'Arrivée :'.$r['ville_arr'].' , '.$r['pays_arr']; ?></div>
-                                        <div class="res-flx petit">Poids disponible : <?php echo $r['poid_disp']; ?>
-                                            Tonnes</div>
-                                        <div class="res-flx hidden-xs petit act"><span
-                                                class="flaticon-international "></span></div>
-                                        <div class="res-flx petit hidden-xs">
-                                            <input type="submit" value="Consultez"
-                                                onclick="location.href='disponibilite.php?id_disp=<?php echo $r['id_disp']; ?>'  " <?php 
+                                                // data.dated = dated;
+                                                // data.datef = datef;
+
+
+                                            }
+                                        },
+                                        'success': function(data) {
+                                            console.log(data)
+                                        },
+                                        'error': function(data) {
+                                            console.log(data)
+                                        },
+                                        "createdRow": function(row, data, dataIndex) {
+                                            console.log(data.date_arr, new Date(data.date_arr
+                                                .split("/")[1] +
+                                                "/" + data.date_arr.split("/")[0] +
+                                                "/" + data.date_arr
+                                                .split("/")[2]))
+
+                                            if (data.date_arr && (new Date(data.date_arr.split(
+                                                        "/")[1] + "/" +
+                                                    data.date_arr.split("/")[0] + "/" + data
+                                                    .date_arr.split(
+                                                        "/")[2]) > new Date())) {
+
+                                                $(row).addClass('testclassvalid');
+
+                                            } else {
+                                                $(row).addClass('testclass');
+                                            }
+
+
+                                        },
+                                        'columns': [
+
+                                            {
+                                                "mData": "img_vehicule",
+                                                "mRender": function(data, type, row) {
+                                                    return `<div 
+
+class="res-flx-s img-avatar-sm">
+<img src="./img/uploaded/${data ? data : 'logo.png'}">
+`
+                                                },
+
+                                            },
+                                            {
+                                                data: 'type_vehicule'
+                                            },
+                                            {
+                                                "mData": "ville_dep",
+                                                "mRender": function(data, type, row) {
+                                                    // console.log(row)
+                                                    return row.ville_dep + ", " + row
+                                                        .pays_dep + ", " +
+                                                        row.date_dep;
+                                                }
+                                            }, {
+                                                "mData": "pays_dep",
+                                                "mRender": function(data, type, row) {
+                                                    // console.log(row)
+                                                    return row.ville_arr + ", " + row
+                                                        .pays_arr + ", " + row
+                                                        .date_arr;
+                                                }
+                                            },
+											{
+                                                "mData": "poid_disp",
+                                                "mRender": function(data, type, row) {
+                                                    // console.log(row)
+                                                    return row.poid_disp + "Tonnes ";
+                                                }
+                                            },
+                                            {
+                                                "mData": "telephone",
+                                                "mRender": function(data, type, row) {
+                                                    // console.log(row)
+                                                    return `
+
+<input type="submit" value="Consultez"
+                                                onclick="location.href='disponibilite.php?id_disp=${ row.id_disp}'  " 
+												<?php 
                                                     if(!isset($_SESSION['login_user'])) { 
                                                         echo "disabled" ;  
                                                     }  
-                                                   ?>>
-                                        </div>
-
-                                        <div class="res-flx hidden-lg hidden-md hidden-sm">
-                                            <input type="submit" value="Consultez"
-                                                onclick="location.href='disponibilite.php?id_disp=<?php echo $r['id_disp']; ?>'  " <?php 
-                                                    if(!isset($_SESSION['login_user'])) { 
-                                                        echo "disabled" ;  
-                                                    }  
-                                                   ?>>
-                                        </div>
-                                    </div>
-
-                                    <?php
+                                                   ?>
+												>
+`;
+                                                }
                                             }
-                                            }
-                                            while($r=mysqli_fetch_array($result));
-                                        }
-                                     ?>
+                                        ],
+                                        dom: 'Bfrtip',
+                                        buttons: [
+                                            'copyHtml5',
+                                            'excelHtml5',
+                                            'csvHtml5',
+                                            'pdfHtml5'
+                                        ]
+                                    });
+                                    dataTable.buttons().container()
+                                        .appendTo('#example_wrapper .col-sm-6:eq(0)');
 
+                                    $('#villed').change(function() {
+                                        dataTable.draw();
+                                    });
+                                    $('#villef').change(function() {
+                                        dataTable.draw();
+                                    });
+                                    $('#dated').change(function() {
+
+                                        dataTable.draw();
+                                    });
+                                    $('#datef').change(function() {
+                                        dataTable.draw();
+                                    });
+                                    $('#pays3').change(function() {
+                                        dataTable.draw();
+                                    });
+
+                                    $('#pays2').change(function() {
+                                        dataTable.draw();
+                                    });
+                                });
+                                </script>
+
+
+									</div>
+
+                                   
                                 </div>
                             </div>
                         </div>

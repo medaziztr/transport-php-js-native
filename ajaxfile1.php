@@ -16,8 +16,11 @@ $villed= $_POST['villed'];
 $villef= $_POST['villef'];
 $dated= $_POST['dated'];
 $datef= $_POST['datef'];
-$telephone= $_POST['telephone'];
-
+$telephone= "";
+if (isset($_POST['telephone'])) {
+    $val=$_POST['telephone'];
+    $telephone= "and telephone= '$val'";
+  }
 
 ## Search 
 $searchQuery = " ";
@@ -42,17 +45,17 @@ if($datef != ''){
 }
 
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement WHERE 1 and telephone='$telephone' ");
+$sel = mysqli_query($con,"select count(*) as allcount from chargement WHERE 1 ".$telephone." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement WHERE 1 and telephone='$telephone' ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from chargement WHERE 1 ".$telephone." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from chargement WHERE 1 and telephone='$telephone' ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from chargement WHERE 1 ".$telephone." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 

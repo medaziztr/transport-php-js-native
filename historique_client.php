@@ -347,111 +347,111 @@
 
 
                                         <!-- Custom Filter -->
-                                     
+
                                         <div class="css-tab-content formulaires">
 
-<div class="container" style="padding-left: unset !important;">
-    <div class="col-md-6 formulaire">
-        <h3 class="txt-bordure sections-title">Depart</h3>
+                                            <div class="container" style="padding-left: unset !important;">
+                                                <div class="col-md-6 formulaire">
+                                                    <h3 class="txt-bordure sections-title">Depart</h3>
 
-        <div class="form-group">
-            <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="row">
 
-                <div class="col-sm-4 col-xs-12 no-padding">
-                    <select type="text" name="pays_dep" id="pays2"
-                        placeholder="Pays *" required>
-                        <option value="Cameroun" selected
-                            style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
-                            Cameroun</option>
-                        <option value="Congo"
-                            style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
-                            Congo</option>
-                        <option value="Gabon"
-                            style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
-                            Gabon</option>
-                        <option value="Tchad"
-                            style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
-                            Tchad</option>
-                        <option value="Republique centrafricaine"
-                            style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
-                            Republique centrafricaine</option>
-                        <option value="Guinee equatoriale"
-                            style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
-                            Guinee equatoriale</option>
-                        <option value="off"> Pays départ </option>
-                    </select>
+                                                            <div class="col-sm-4 col-xs-12 no-padding">
+                                                                <select type="text" name="pays_dep" id="pays2"
+                                                                    placeholder="Pays *" required>
+                                                                    <option value="Cameroun" selected
+                                                                        style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
+                                                                        Cameroun</option>
+                                                                    <option value="Congo"
+                                                                        style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
+                                                                        Congo</option>
+                                                                    <option value="Gabon"
+                                                                        style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
+                                                                        Gabon</option>
+                                                                    <option value="Tchad"
+                                                                        style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
+                                                                        Tchad</option>
+                                                                    <option value="Republique centrafricaine"
+                                                                        style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
+                                                                        Republique centrafricaine</option>
+                                                                    <option value="Guinee equatoriale"
+                                                                        style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
+                                                                        Guinee equatoriale</option>
+                                                                    <option value="off"> Pays départ </option>
+                                                                </select>
 
-                </div>
-                <div class="col-sm-4 col-xs-12 no-padding">
-                    <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
-                    <input type="text" name="ville_dep" id="villed"
-                        placeholder="Ville de Chargement">
-                    <input type="text" name="ville_dep" id="villed-x"
-                        disabled="disabled"
-                        style="color: #CCC; position: absolute; background: transparent; z-index: 1;height:0px;" />
-                </div>
-                <div class="col-sm-4 col-xs-12 no-padding">
-                    <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
-                    <input type="date" name="ville_dep" id="dated"
-                        placeholder="dated">
-                </div>
-            </div>
-        </div>
-    </div>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12 no-padding">
+                                                                <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
+                                                                <input type="text" name="ville_dep" id="villed"
+                                                                    placeholder="Ville de Chargement">
+                                                                <input type="text" name="ville_dep" id="villed-x"
+                                                                    disabled="disabled"
+                                                                    style="color: #CCC; position: absolute; background: transparent; z-index: 1;height:0px;" />
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12 no-padding">
+                                                                <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
+                                                                <input type="date" name="ville_dep" id="dated"
+                                                                    placeholder="dated">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-    <div class="col-md-6 formulaire" style="margin: left 5px;">
-        <h3 class="txt-bordure sections-title">Arrivee</h3>
+                                                <div class="col-md-6 formulaire" style="margin: left 5px;">
+                                                    <h3 class="txt-bordure sections-title">Arrivee</h3>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-4 col-xs-12 no-padding">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-xs-12 no-padding">
 
-                    <select type="text" name="pays_arr" id="pays3"
-                        placeholder="Pays *" required>
-                        <option value="Cameroun" selected
-                            style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
-                            Cameroun</option>
-                        <option value="Congo"
-                            style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
-                            Congo</option>
-                        <option value="Gabon"
-                            style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
-                            Gabon</option>
-                        <option value="Tchad"
-                            style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
-                            Tchad</option>
-                        <option value="Republique centrafricaine"
-                            style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
-                            Republique centrafricaine</option>
-                        <option value="Guinee equatoriale"
-                            style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
-                            Guinee equatoriale</option>
-                        <option value="off"> Pays d'arrivé </option>
-                    </select>
+                                                                <select type="text" name="pays_arr" id="pays3"
+                                                                    placeholder="Pays *" required>
+                                                                    <option value="Cameroun" selected
+                                                                        style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
+                                                                        Cameroun</option>
+                                                                    <option value="Congo"
+                                                                        style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
+                                                                        Congo</option>
+                                                                    <option value="Gabon"
+                                                                        style="background:url('./img/flags/gabon.svg') no-repeat; width:30px; height:30px;">
+                                                                        Gabon</option>
+                                                                    <option value="Tchad"
+                                                                        style="background:url('./img/flags/chad.svg') no-repeat; width:30px; height:30px;">
+                                                                        Tchad</option>
+                                                                    <option value="Republique centrafricaine"
+                                                                        style="background:url('./img/flags/central-african-republic.svg') no-repeat; width:30px; height:30px;">
+                                                                        Republique centrafricaine</option>
+                                                                    <option value="Guinee equatoriale"
+                                                                        style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
+                                                                        Guinee equatoriale</option>
+                                                                    <option value="off"> Pays d'arrivé </option>
+                                                                </select>
 
-                </div>
-                <div class="col-sm-4 col-xs-12 no-padding">
-                    <!-- <input type="text" class="form-control"  id="tag3" name="ville_arr" placeholder="Ville de départ"> -->
-                    <input type="text" name="ville_arr" id="villef"
-                        style="width: 100%; border-width: 5px;"
-                        placeholder="Ville de livraison" />
-                    <div id="suggestions-container"
-                        style="position: relative;"></div>
-                </div>
-                <div class="col-sm-4 col-xs-12 no-padding">
-                    <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
-                    <input type="date" name="datef" id="datef"
-                        placeholder="datef">
-                </div>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12 no-padding">
+                                                                <!-- <input type="text" class="form-control"  id="tag3" name="ville_arr" placeholder="Ville de départ"> -->
+                                                                <input type="text" name="ville_arr" id="villef"
+                                                                    style="width: 100%; border-width: 5px;"
+                                                                    placeholder="Ville de livraison" />
+                                                                <div id="suggestions-container"
+                                                                    style="position: relative;"></div>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12 no-padding">
+                                                                <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
+                                                                <input type="date" name="datef" id="datef"
+                                                                    placeholder="datef">
+                                                            </div>
 
-            </div>
-        </div>
-    </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
 
-</div>
-</form>
-</div>
+                                            </div>
+                                            </form>
+                                        </div>
 
                                         <!-- Table -->
                                         <table id='empTable1' class='display dataTable'>
@@ -470,151 +470,151 @@
 
                                     <!-- Script -->
                                     <script>
-    $(document).ready(function() {
-        var dataTable = $('#empTable1').DataTable({
-            'processing': true,
-            'serverSide': true,
-            'serverMethod': 'post',
-            //'searching': false, // Remove default Search Control
-            'ajax': {
-                'url': 'ajaxfile3.php',
-                'data': function(data) {
-                    // Read values
-                    var gender = $('#pays2').val();
-                    var name = $('#pays3').val();
-                    var villed = $('#villed').val();
-                    var villef = $('#villef').val();
-                    var dated = $('#dated').val();
-                    var datef = $('#datef').val();
+                                    $(document).ready(function() {
+                                        var dataTable = $('#empTable1').DataTable({
+                                            'processing': true,
+                                            'serverSide': true,
+                                            'serverMethod': 'post',
+                                            //'searching': false, // Remove default Search Control
+                                            'ajax': {
+                                                'url': 'ajaxfile3.php',
+                                                'data': function(data) {
+                                                    // Read values
+                                                    var gender = $('#pays2').val();
+                                                    var name = $('#pays3').val();
+                                                    var villed = $('#villed').val();
+                                                    var villef = $('#villef').val();
+                                                    var dated = $('#dated').val();
+                                                    var datef = $('#datef').val();
 
-                    // Append to data
-                    data.pays2 = gender;
-                    data.pays3 = name;
-                    data.villed = villed;
-                    data.villef = villef;
-                    data.dated = dated;
-                    data.datef = datef;
-                    data.telephone = "<?php echo  $telephone; ?>";
-
-
-                }
-            },
-            'success': function(data) {
-                console.log(data)
-            },
-            'error': function(data) {
-                console.log(data)
-            },
-            "createdRow": function(row, data, dataIndex) {
-                console.log(data.date_arr, new Date(data.date_arr
-                    .split("/")[1] +
-                    "/" + data.date_arr.split("/")[0] +
-                    "/" + data.date_arr
-                    .split("/")[2]))
-
-                if (data.date_arr && (new Date(data.date_arr.split(
-                            "/")[1] + "/" +
-                        data.date_arr.split("/")[0] + "/" + data
-                        .date_arr.split(
-                            "/")[2]) > new Date())) {
-
-                    $(row).addClass('testclassvalid');
-
-                } else {
-                    $(row).addClass('testclass');
-                }
+                                                    // Append to data
+                                                    data.pays2 = gender;
+                                                    data.pays3 = name;
+                                                    data.villed = villed;
+                                                    data.villef = villef;
+                                                    data.dated = dated;
+                                                    data.datef = datef;
+                                                    data.telephone = "<?php echo  $telephone; ?>";
 
 
-            },
-            'columns': [
+                                                }
+                                            },
+                                            'success': function(data) {
+                                                console.log(data)
+                                            },
+                                            'error': function(data) {
+                                                console.log(data)
+                                            },
+                                            "createdRow": function(row, data, dataIndex) {
+                                                console.log(data.date_arr, new Date(data.date_arr
+                                                    .split("/")[1] +
+                                                    "/" + data.date_arr.split("/")[0] +
+                                                    "/" + data.date_arr
+                                                    .split("/")[2]))
 
-                {
-                    "mData": "img_vehicule",
-                    "mRender": function(data, type, row) {
-                        return `<div 
+                                                if (data.date_arr && (new Date(data.date_arr.split(
+                                                            "/")[1] + "/" +
+                                                        data.date_arr.split("/")[0] + "/" + data
+                                                        .date_arr.split(
+                                                            "/")[2]) > new Date())) {
+
+                                                    $(row).addClass('testclassvalid');
+
+                                                } else {
+                                                    $(row).addClass('testclass');
+                                                }
+
+
+                                            },
+                                            'columns': [
+
+                                                {
+                                                    "mData": "img_vehicule",
+                                                    "mRender": function(data, type, row) {
+                                                        return `<div 
 
 class="res-flx-s img-avatar-sm">
 <img src="./img/uploaded/${data ? data : 'logo.png'}">
 `
-                    },
+                                                    },
 
-                },
-                {
-                    data: 'matricule'
-                },
-                // {
-                //     data: 'poid'
-                // },
-                // {
-                //     data: 'volume'
-                // },
-                {
-                    "mData": "ville_dep",
-                    "mRender": function(data, type, row) {
-                        // console.log(row)
-                        return row.ville_dep + ", " + row
-                            .pays_dep + ", " +
-                            row.date_dep;
-                    }
-                }, {
-                    "mData": "pays_dep",
-                    "mRender": function(data, type, row) {
-                        // console.log(row)
-                        return row.ville_arr + ", " + row
-                            .pays_arr + ", " + row
-                            .date_arr;
-                    }
-                },
-                 {
-                    "mData": "telephone",
-                    "mRender": function(data, type, row) {
-                        // console.log(row)
-                        return `
+                                                },
+                                                {
+                                                    data: 'matricule'
+                                                },
+                                                // {
+                                                //     data: 'poid'
+                                                // },
+                                                // {
+                                                //     data: 'volume'
+                                                // },
+                                                {
+                                                    "mData": "ville_dep",
+                                                    "mRender": function(data, type, row) {
+                                                        // console.log(row)
+                                                        return row.ville_dep + ", " + row
+                                                            .pays_dep + ", " +
+                                                            row.date_dep;
+                                                    }
+                                                }, {
+                                                    "mData": "pays_dep",
+                                                    "mRender": function(data, type, row) {
+                                                        // console.log(row)
+                                                        return row.ville_arr + ", " + row
+                                                            .pays_arr + ", " + row
+                                                            .date_arr;
+                                                    }
+                                                },
+                                                {
+                                                    "mData": "telephone",
+                                                    "mRender": function(data, type, row) {
+                                                        // console.log(row)
+                                                        return `
 <a href="modif-disp.php?id_disp=${row.id_disp}"><img src="./img/modif.png"  style="height:20px;width:20px"></a>
 <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-disp.php?id_disp=${row.id_disp}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
 
 `;
-                    }
-                },
-                // { data: 'date_dep' },
-                // { data: 'ville_arr' },
-                // { data: 'pays_arr' },
-                // { data: 'date_arr' },
-                // { data: 'id_dep' }
-            ],
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
-        });
-        dataTable.buttons().container()
-            .appendTo('#example_wrapper .col-sm-6:eq(0)');
+                                                    }
+                                                },
+                                                // { data: 'date_dep' },
+                                                // { data: 'ville_arr' },
+                                                // { data: 'pays_arr' },
+                                                // { data: 'date_arr' },
+                                                // { data: 'id_dep' }
+                                            ],
+                                            dom: 'Bfrtip',
+                                            buttons: [
+                                                'copyHtml5',
+                                                'excelHtml5',
+                                                'csvHtml5',
+                                                'pdfHtml5'
+                                            ]
+                                        });
+                                        dataTable.buttons().container()
+                                            .appendTo('#example_wrapper .col-sm-6:eq(0)');
 
-        $('#villed').change(function() {
-            dataTable.draw();
-        });
-        $('#villef').change(function() {
-            dataTable.draw();
-        });
-        $('#dated').change(function() {
+                                        $('#villed').change(function() {
+                                            dataTable.draw();
+                                        });
+                                        $('#villef').change(function() {
+                                            dataTable.draw();
+                                        });
+                                        $('#dated').change(function() {
 
-            dataTable.draw();
-        });
-        $('#datef').change(function() {
-            dataTable.draw();
-        });
-        $('#pays3').change(function() {
-            dataTable.draw();
-        });
+                                            dataTable.draw();
+                                        });
+                                        $('#datef').change(function() {
+                                            dataTable.draw();
+                                        });
+                                        $('#pays3').change(function() {
+                                            dataTable.draw();
+                                        });
 
-        $('#pays2').change(function() {
-            dataTable.draw();
-        });
-    });
-    </script>
+                                        $('#pays2').change(function() {
+                                            dataTable.draw();
+                                        });
+                                    });
+                                    </script>
 
 
 

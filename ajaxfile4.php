@@ -14,14 +14,14 @@ $pays3 = $_POST['pays3'];
 $pays2 = $_POST['pays2'];
 $villed= $_POST['villed'];
 $villef= $_POST['villef'];
-$dated= $_POST['dated'];
-$datef= $_POST['datef'];
-$telephone= "";
-if (isset($_POST['telephone'])) {
-    $val=$_POST['telephone'];
-    $telephone= "and abonnements.telephone= '$val'";
+$dated='' ;
+// $_POST['dated'];
+$datef='' ;
+// $_POST['datef'];
+$now="";
+if (isset($_POST['now'])) {
+    $now= "and  STR_TO_DATE( date_arr, '%d/%m/%Y') >= NOW() ";
   }
-
 
 ## Search 
 $searchQuery = " ";
@@ -39,30 +39,32 @@ if($villef != ''){
 }
 
 if($dated != ''){
-    $searchQuery .= " and  STR_TO_DATE(abonnements. date_dep, '%d/%m/%Y')>='$dated' ";
+    $searchQuery .= " and  STR_TO_DATE( date_dep, '%d/%m/%Y')>='$dated' ";
 }
 if($datef != ''){
-    $searchQuery .= " and STR_TO_DATE(abonnements. date_arr, '%d/%m/%Y')<='$datef' ";
+    $searchQuery .= " and STR_TO_DATE( date_arr, '%d/%m/%Y')<='$datef' ";
 }
 
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, abonnements  WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ");
+$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, transporteur, abonnements  WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement AND abonnements.telephone=transporteur.telephone  ".$now." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, abonnements WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, transporteur, abonnements WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement AND abonnements.telephone=transporteur.telephone  ".$now." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from disponibilite, abonnements WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from disponibilite, transporteur, abonnements WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement AND abonnements.telephone=transporteur.telephone ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 
 while ($row = mysqli_fetch_assoc($empRecords)) {
     $data[] = array(
     		"img_vehicule"=>$row['img_vehicule'],
+            "poid_disp"=>$row['poid_disp'],
+    		"type_vehicule"=>$row['type_vehicule'],
     		"ville_dep"=>$row['ville_dep'],
     		"date_dep"=>$row['date_dep'],
     		"ville_arr"=>$row['ville_arr'],
@@ -71,6 +73,9 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
             "pays_arr"=>$row['pays_arr'],
     		"telephone"=>$row['telephone'],
             "matricule"=>$row['matricule'],
+            "genre"=>$row['genre'],
+            "nom"=>$row['nom'],
+
             "id_disp"=>$row['id_disp']
 
 
