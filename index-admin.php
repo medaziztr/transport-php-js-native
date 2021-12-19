@@ -123,8 +123,8 @@
                                                                 <th>Matricule</th>
                                                                 <th>Marque</th>
                                                                 <th>Type de véhicule</th>
-                                                                <th>GPS</th>
                                                                 <th>Poids maximal</th>
+                                                                <th>GPS</th>
                                                                 <th>Pack</th>
                                                                 <th>Date</th>
                                                                 <th>Action</th>

@@ -8,6 +8,7 @@ $rowperpage = $_POST['length']; // Rows display per page
 $columnIndex = $_POST['order'][0]['column']; // Column index
 $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
 $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+$searchValue = $_POST['search']['value']; // Search value
 
 ## Custom Field value
 $pays3 = $_POST['pays3'];
@@ -19,22 +20,22 @@ $datef= $_POST['datef'];
 $telephone= "";
 if (isset($_POST['telephone'])) {
     $val=$_POST['telephone'];
-    $telephone= "and telephone= '$val'";
+    $telephone= "and chargement.telephone= '$val'";
   }
 
 ## Search 
 $searchQuery = " ";
 if($pays3 != ''){
-    $searchQuery .= " and (pays_liv like '%".$pays3."%' ) ";
+    $searchQuery .= " and (chargement.pays_liv like '%".$pays3."%' ) ";
 }
 if($pays2 != ''){
-    $searchQuery .= " and (pays_charg like '%".$pays2."%') ";
+    $searchQuery .= " and (chargement.pays_charg like '%".$pays2."%') ";
 }
 if($villed != ''){
-    $searchQuery .= " and (ville_charg like '%".$villed."%') ";
+    $searchQuery .= " and (chargement.ville_charg like '%".$villed."%') ";
 }
 if($villef != ''){
-    $searchQuery .= " and (ville_liv like '%".$villef."%') ";
+    $searchQuery .= " and (chargement.ville_liv like '%".$villef."%') ";
 }
 
 if($dated != ''){
@@ -43,19 +44,34 @@ if($dated != ''){
 if($datef != ''){
     $searchQuery .= " and STR_TO_DATE(chargement. date_liv, '%d/%m/%Y')<='$datef' ";
 }
-
+if($searchValue != ''){
+	$searchQuery .= " and (
+        chargement.marchandise like '%".$searchValue."%' or 
+        chargement.img_march like '%".$searchValue."%' or 
+        chargement.poid like'%".$searchValue."%' or
+        chargement.volume like '%".$searchValue."%' or 
+        chargement.ville_charg like '%".$searchValue."%' or 
+        chargement.date_charg like'%".$searchValue."%' or
+        chargement.ville_liv like '%".$searchValue."%' or 
+        chargement.date_liv like '%".$searchValue."%' or 
+        chargement.pays_charg like'%".$searchValue."%' or
+        chargement.pays_liv like '%".$searchValue."%' or 
+        chargement.id_charg like '%".$searchValue."%' or 
+        chargement.telephone like'%".$searchValue."%' 
+        ) ";
+}
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement WHERE 1 ".$telephone." ");
+$sel = mysqli_query($con,"select count(*) as allcount from chargement  WHERE 1 ".$telephone." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement WHERE 1 ".$telephone." ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from chargement   WHERE 1 ".$telephone." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from chargement WHERE 1 ".$telephone." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from chargement    WHERE 1 ".$telephone." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 

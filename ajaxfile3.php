@@ -8,6 +8,7 @@ $rowperpage = $_POST['length']; // Rows display per page
 $columnIndex = $_POST['order'][0]['column']; // Column index
 $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
 $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+$searchValue = $_POST['search']['value']; // Search value
 
 ## Custom Field value
 $pays3 = $_POST['pays3'];
@@ -19,7 +20,7 @@ $datef= $_POST['datef'];
 $telephone= "";
 if (isset($_POST['telephone'])) {
     $val=$_POST['telephone'];
-    $telephone= "and abonnements.telephone= '$val'";
+    $telephone= "and abonnements.telephone = '$val'";
   }
 
 
@@ -44,19 +45,34 @@ if($dated != ''){
 if($datef != ''){
     $searchQuery .= " and STR_TO_DATE(abonnements. date_arr, '%d/%m/%Y')<='$datef' ";
 }
+if($searchValue != ''){
+	$searchQuery .= " and (
+        abonnements.img_vehicule like '%".$searchValue."%' or 
+        disponibilite.ville_dep like '%".$searchValue."%' or 
+        disponibilite.date_dep like'%".$searchValue."%' or
+        disponibilite.ville_arr like '%".$searchValue."%' or 
+        disponibilite.ville_charg like '%".$searchValue."%' or 
+        disponibilite.date_arr like'%".$searchValue."%' or
+        disponibilite.pays_dep like '%".$searchValue."%' or 
+        disponibilite.pays_arr like '%".$searchValue."%' or 
+        abonnements.telephone like'%".$searchValue."%' or
+        abonnements.matricule like '%".$searchValue."%' or 
+        disponibilite.id_disp like '%".$searchValue."%'
+        ) ";
+}
 
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, abonnements  WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ");
+$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, abonnements    WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, abonnements WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from disponibilite, abonnements   WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from disponibilite, abonnements WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from disponibilite, abonnements   WHERE 1 AND disponibilite.id_abonnement=abonnements.id_abonnement ".$telephone." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 

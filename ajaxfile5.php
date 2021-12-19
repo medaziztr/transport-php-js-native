@@ -8,6 +8,7 @@ $rowperpage = $_POST['length']; // Rows display per page
 $columnIndex = $_POST['order'][0]['column']; // Column index
 $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
 $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+$searchValue = $_POST['search']['value']; // Search value
 
 ## Custom Field value
 // $pays3 = $_POST['pays3'];
@@ -32,18 +33,35 @@ if($datef != ''){
     $searchQuery .= " and STR_TO_DATE( date_fin, '%d/%m/%Y')<='$datef' ";
 }
 
+
+if($searchValue != ''){
+	$searchQuery .= " and (
+        abonnements.img_vehicule like '%".$searchValue."%' or 
+        abonnements.marque like '%".$searchValue."%' or 
+        abonnements.type_vehicule like'%".$searchValue."%' or
+        abonnements.date_deb like '%".$searchValue."%' or 
+        abonnements.date_fin like '%".$searchValue."%' or 
+        abonnements.telephone like'%".$searchValue."%' or
+        abonnements.matricule like '%".$searchValue."%' or 
+        abonnements.poid_max like '%".$searchValue."%' or 
+        transporteur.nom like'%".$searchValue."%' or
+        abonnements.valide like '%".$searchValue."%' or 
+        abonnements.id_abonnement like '%".$searchValue."%' or 
+        abonnements.gps like'%".$searchValue."%' 
+        ) ";
+}
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements` WHERE abonnements.telephone=transporteur.telephone  ".$now." ");
+$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone  ".$now." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements` WHERE abonnements.telephone=transporteur.telephone  ".$now." ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone  ".$now." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from `transporteur`, `abonnements` WHERE abonnements.telephone=transporteur.telephone ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 

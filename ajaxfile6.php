@@ -8,6 +8,7 @@ $rowperpage = $_POST['length']; // Rows display per page
 $columnIndex = $_POST['order'][0]['column']; // Column index
 $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
 $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+$searchValue = $_POST['search']['value']; // Search value
 
 ## Custom Field value
 // $pays3 = $_POST['pays3'];
@@ -23,35 +24,48 @@ if (isset($_POST['now'])) {
 
   $client="";
   if (isset($_POST['client'])) {
-      $client= " or `type`='transporteur' ";
+      $client= " or transporteur.type='transporteur' ";
     }
     $transporteur="";
     if (isset($_POST['transporteur'])) {
-        $transporteur= " or `type`='client' ";
+        $transporteur= " or transporteur.type='client' ";
       }
+
 ## Search 
 $searchQuery = " ";
 
 
 if($dated != ''){
-    $searchQuery .= " and  STR_TO_DATE( adresse, '%d/%m/%Y')>='$dated' ";
+    $searchQuery .= " and  STR_TO_DATE( Date_inscri, '%d/%m/%Y')>='$dated' ";
 }
 if($datef != ''){
-    $searchQuery .= " and STR_TO_DATE( date_fin, '%d/%m/%Y')<='$datef' ";
+    $searchQuery .= " and STR_TO_DATE( Date_inscri, '%d/%m/%Y')<='$datef' ";
 }
 
+if($searchValue != ''){
+    $searchQuery .= " and (
+    transporteur.nom like '%".$searchValue."%' or 
+    transporteur.prenom like '%".$searchValue."%' or 
+    transporteur.adresse like'%".$searchValue."%' or
+    transporteur.telephone like '%".$searchValue."%' or 
+    transporteur.email like '%".$searchValue."%' or 
+    transporteur.Date_inscri like'%".$searchValue."%' or
+    transporteur.verif like '%".$searchValue."%' or 
+    transporteur.code like '%".$searchValue."%'
+    ) ";
+}
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from `transporteur` WHERE ( 0 ".$client." ".$transporteur." ) ".$now." ");
+$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`   WHERE ( 0 ".$client." ".$transporteur." ) ".$now." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from  `transporteur` WHERE ( 0 ".$client." ".$transporteur.")  ".$now." ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from  `transporteur`   WHERE ( 0 ".$client." ".$transporteur.")  ".$now." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from  `transporteur` WHERE ( 0 ".$client." ".$transporteur.") ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from  `transporteur`   WHERE ( 0 ".$client." ".$transporteur.") ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 

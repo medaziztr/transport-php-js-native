@@ -204,7 +204,7 @@
                                                 <tr>
                                                     <th>Image</th>
                                                     <th>Marchandise</th>
-                                                    <th>Poid</th>
+                                                    <th>Poids</th>
                                                     <th>Prix proposé</th>
                                                     <th>Départ</th>
                                                     <th>Arrivée</th>
