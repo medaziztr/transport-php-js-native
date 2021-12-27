@@ -113,8 +113,22 @@
             <div class="col-md-6">
                 <div class="contact-map">
                    
-                 
-                   
+                    <?php
+                        $telephone=$_SESSION['telephone'];
+                        $selectSQL1="SELECT * FROM postuler WHERE id_chargement='$id_charg' AND telephone='$telephone'";
+
+                        $resultat1 = mysqli_query($db,$selectSQL);
+                        $res1=mysqli_fetch_array($resultat1);
+                        $s1=mysqli_num_rows($resultat1);
+
+                        if($s1>0){
+                    ?>
+                     <label style="
+    color: red;">Vous avez déja soumissionner a cette offre de chargement.</label>
+                    <?php 
+                    }else{
+                                        ?>
+ 
 
   <h3 class="txt-bordure sections-title">Postuler</h3>
                     <div class="col-md-12">
@@ -138,7 +152,7 @@ $result = mysqli_query($db,$vehiculedispo);
                                     <div class="col-md-12 padding-12">
                                         <label>Sélectionner les véhicules:</label>
 
-                                        <select style="height: 50px;" type="text" id="vehicules"  name="vehicules[]" multiple placeholder="Pays *" required>
+                                        <select type="text" id="vehicules"  name="vehicules[]" multiple placeholder="Pays *" required>
                                             <option value="Select School">Selectionner les véhicules</option>
                                             <?php
     while ($row = mysqli_fetch_array($result)) {
@@ -173,7 +187,9 @@ $result = mysqli_query($db,$vehiculedispo);
                             </form>
                         </div>
                     </div>
-
+<?php 
+                    }
+                                        ?>
                 </div>
             </div>
 

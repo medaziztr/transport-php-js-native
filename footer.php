@@ -642,6 +642,12 @@ var VehiculesByPoid = {
     <script type="text/javascript" src="src/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="scripts/countries.js"></script>
     <script type="text/javascript" src="scripts/demo.js"></script>
+
+	<script>
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker();
+    })
+</script>
     <!-- liste autocomplete des villes -->
 	</body>
 </html>

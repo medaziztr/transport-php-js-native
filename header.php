@@ -18,6 +18,8 @@
 
 
 	    <title>TELEFRET</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         
@@ -193,6 +195,9 @@ table.dataTable,.dataTables_wrapper {
 															
 														
 															<li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
+
+                                                            <li><a href="notifications.php" class="hidden-xs">Mes Notifications</a></li>
+
 															
                                                     <?php
                                                         }
