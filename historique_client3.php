@@ -75,7 +75,9 @@
                                                             <div class="col-sm-4 col-xs-12 no-padding">
                                                                 <select type="text" name="pays_dep" id="pays2"
                                                                     placeholder="Pays *" required>
-                                                                    <option value="Cameroun" selected
+                                                                    <option value="" selected> Tout</option>
+
+                                                                    <option value="Cameroun" 
                                                                         style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                         Cameroun</option>
                                                                     <option value="Congo"
@@ -123,7 +125,9 @@
 
                                                                 <select type="text" name="pays_arr" id="pays3"
                                                                     placeholder="Pays *" required>
-                                                                    <option value="Cameroun" selected
+                                                                    <option value="" selected> Tout</option>
+
+                                                                    <option value="Cameroun" 
                                                                         style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                         Cameroun</option>
                                                                     <option value="Congo"
@@ -360,7 +364,9 @@
                                                             <div class="col-sm-4 col-xs-12 no-padding">
                                                                 <select type="text" name="pays_dep" id="pays2"
                                                                     placeholder="Pays *" required>
-                                                                    <option value="Cameroun" selected
+                                                                    <option value="" selected> Tout</option>
+
+                                                                    <option value="Cameroun" 
                                                                         style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                         Cameroun</option>
                                                                     <option value="Congo"
@@ -408,7 +414,9 @@
 
                                                                 <select type="text" name="pays_arr" id="pays3"
                                                                     placeholder="Pays *" required>
-                                                                    <option value="Cameroun" selected
+                                                                    <option value="" selected> Tout</option>
+
+                                                                    <option value="Cameroun" 
                                                                         style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                         Cameroun</option>
                                                                     <option value="Congo"

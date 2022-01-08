@@ -5,3 +5,11 @@
 /*.xml
 /bower_components
 /node_modules/*
+/spec/*
+/SESA/*
+/content/*
+/api_redirect/*
+/downloaded/*
+/img/*
+/maersk/*
+/select/*

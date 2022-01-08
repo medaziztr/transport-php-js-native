@@ -5,12 +5,12 @@
 if(isset($_SESSION['login_user'])) {
     
     $telephone=$_SESSION['telephone'];
-
     
     extract($_POST,EXTR_OVERWRITE);
 
     $vehicules="";
     $vehi=$_POST['vehicules'];
+    $message=$_POST['message'];
 
     foreach ($vehi as $t){
         $vehicules.=";".$t;
@@ -19,8 +19,8 @@ if(isset($_SESSION['login_user'])) {
 	$montant=$_POST['montant'];
     $id_chargement=$_POST['id_chargement'];
 
-    $insertSQL="INSERT INTO `postuler` (`vehicules`, `avance`, `telephone`, `montant`, `id_chargement`) VALUES 
-     ('$vehicules', '$avance',  '$telephone', '$montant', '$id_chargement')";
+    $insertSQL="INSERT INTO `postuler` (`vehicules`, `avance`, `telephone`, `montant`, `id_chargement`, `message` ) VALUES 
+     ('$vehicules', '$avance',  '$telephone', '$montant', '$id_chargement', '$message')";
 
     $result = mysqli_query($db,$insertSQL);
    
@@ -31,17 +31,17 @@ if(isset($_SESSION['login_user'])) {
 else
 {
     $id=mysqli_insert_id($db);
-    $insertSQL1="INSERT INTO `notifications` (`type`, `id_postuler`, `telephone`, `contenu`, `id_chargement`) VALUES 
+    $insertSQL1="INSERT INTO `notifications` (`type`, `id_postuler`, `telephone`, `contenu`, `id_chargement` ) VALUES 
      ('Soumission', '$id',  '$telephone', 'Vous avez une nouvelle proposition de transport.', '$id_chargement')";
  
     $result1 = mysqli_query($db,$insertSQL1);
     echo "Success";
-    header("location: espace-client.php?ok=Vous avez postuler a cette offre avec succès!");
+    header("location: espace-transporteur.php?ok=Vous avez postuler a cette offre avec succès!");
 
 }
     }
 else{
-    header("location: espace-client.php?msg=cnx");
+    header("location: espace-transporteur.php?msg=cnx");
 }
 
 ?>

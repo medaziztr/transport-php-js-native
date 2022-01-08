@@ -26,7 +26,7 @@ if (isset($_POST['now'])) {
 
 ## Search 
 $searchQuery = " ";
-if($pays3 != ''){
+if($pays3 != '' && $pays3 != 'all'){
     $searchQuery .= " and (disponibilite.pays_arr like '%".$pays3."%' ) ";
 }
 if($pays2 != ''){

@@ -12,6 +12,5 @@
     
 
     $result = mysqli_query($db,$insertSQL);
-   
-    else{header('location: '.$redirect);}
+   header('location: '.$redirect);
 ?>

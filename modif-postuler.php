@@ -68,7 +68,13 @@
             <div class="col-md-6">
                 <div class="contact-map">
 
+				<?php 
+	$id_postuler=$_GET["id_postuler"];
+	$selectSQL1="SELECT * FROM postuler WHERE id='$id_postuler'";
+		$resultat1 = mysqli_query($db,$selectSQL1);
+		$res1=mysqli_fetch_array($resultat1);
 
+?>
 
 
                     <h3 class="txt-bordure sections-title">Postuler</h3>
@@ -84,9 +90,11 @@
 
                             </div>
                             <div class="form-group">
-                                <form id="postuler" action="post-postuler.php" method="POST">
+                                <form id="postuler" action="update-postuler.php" method="POST">
 
                                     <div class="row">
+									<input id="id" hidden name="id"
+                                            value="<?php  echo $res1["id"]; ?>" type="number">
                                         <input id="id_chargement" hidden name="id_chargement"
                                             value="<?php echo  $id_charg; ?>" type="number">
 
@@ -101,12 +109,12 @@ $result = mysqli_query($db,$vehiculedispo);
                                         <div class="col-md-12 padding-12">
                                             <label>Sélectionner les véhicules:</label>
 
-                                            <select style="height: 50px;" type="text" id="vehicules" name="vehicules[]"
+                                            <select style="height: 100px;" type="text" id="vehicules" name="vehicules[]"
                                                 multiple placeholder="Pays *" required>
                                                 <option value="Select School">Selectionner les véhicules</option>
                                                 <?php
     while ($row = mysqli_fetch_array($result)) {
-        echo "<option value='" . $row['id_abonnement'] . "'>'" . $row['matricule'] . "'</option>";
+        echo "<option value='" . $row['id_abonnement'] . "' ".(stristr($res1["vehicules"],";".$row['id_abonnement'])?"selected":"" )."    >'" . $row['matricule'] . "'</option>";
     }
     ?>
                                             </select>
@@ -116,19 +124,27 @@ $result = mysqli_query($db,$vehiculedispo);
 
                                             <label>Montant proposer:</label>
 
-                                            <input id="montant" name="montant" type="number">
+                                            <input id="montant"
+											value="<?php  echo $res1["montant"]; ?>"
+											name="montant" type="number">
                                         </div>
                                         <div class="col-md-12 padding-12">
 
                                             <label>Voulez vous une avance?:</label>
 
-                                            <input id="avance" name="avance" type="number">
+                                            <input id="avance" 
+											value="<?php  echo $res1["avance"]; ?>"
+
+											name="avance" type="number">
                                         </div>
 
                                         <div class="col-md-12 padding-12">
-                                            <textarea name="message" class="form-control" rows="6" required=""
-                                                placeholder="Votre Message">
-                                             </textarea>
+										<label>Votre Message:</label>
+
+                                            <textarea 
+
+											name="message" class="form-control" rows="6" required=""
+                                               ><?php  echo $res1["message"]; ?></textarea>
                                          
                                         </div>
                                     </div>

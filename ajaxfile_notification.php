@@ -17,7 +17,31 @@ $villed= $_POST['villed'];
 $villef= $_POST['villef'];
 $dated= $_POST['dated'];
 $datef= $_POST['datef'];
+$type= $_POST['type'];
 
+$notification_input="";
+if (isset($_POST['notification_input'])) {
+    $notifi=$_POST['notification_input'];
+    if ($notifi=="all") {
+        # code...
+    } else {
+        $notification_input=" and notifications.type='$notifi' ";
+    }
+    
+    }
+if (isset($_POST['telephone'])) {
+$tel=$_POST['telephone'];
+}
+$select="";
+if($type=="transporteur"){
+    $select .= "and  ( chargement.telephone = transporteur.telephone or (postuler.telephone = transporteur.telephone  and  notifications.telephone='$tel') )  ".$notification_input." ";
+
+}else
+if($type=="client"){
+    $select .= "and  chargement.telephone = transporteur.telephone and notifications.type='Soumission' and transporteur.telephone='$tel' ";
+}else {
+    $select .= "and ( chargement.telephone = transporteur.telephone or postuler.telephone = transporteur.telephone) ".$notification_input." ";
+}
 
 ## Search 
 $searchQuery = " ";
@@ -56,19 +80,18 @@ if($searchValue != ''){
         chargement.telephone like'%".$searchValue."%' 
         ) ";
 }
-
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler,notifications    WHERE 1  and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW()");
+$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler,notifications    WHERE 1  and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg   ".$select."  GROUP BY notifications.id ");
 $records = mysqli_fetch_assoc($sel);
-$totalRecords = $records['allcount'];
+$totalRecords =$records!=null ?$records['allcount'] : 0; 
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler ,notifications    WHERE 1 and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler ,notifications    WHERE 1 and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg   ".$select."   ".$searchQuery." GROUP BY notifications.id");
 $records = mysqli_fetch_assoc($sel);
-$totalRecordwithFilter = $records['allcount'];
+$totalRecordwithFilter = $records!=null ?$records['allcount'] : 0; 
 
 ## Fetch records
-$empQuery = "select *,notifications.id as id_notifications from chargement, transporteur  ,postuler ,notifications   WHERE 1 and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select *,notifications.id as id_notifications ,postuler.id as id_postuler ,chargement.telephone as chargement_telephone from chargement, transporteur  ,postuler ,notifications   WHERE 1 and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg ".$select."   ".$searchQuery." GROUP BY notifications.id  order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 
@@ -84,6 +107,17 @@ foreach($tags as $key) {
      
         $result = mysqli_query($con,$vehicules);
         while ($val= mysqli_fetch_array($result)) {
+            $id_charg=$row['id_charg'];
+            $insertSQL="select * from `chargement_vehicules`  WHERE `chargement_vehicules`.`id_chargement` = '$id_charg' and (`chargement_vehicules`.`id_abonnement` = '$key' )";
+    
+        $res = mysqli_query($con,$insertSQL);
+        $s=mysqli_num_rows($res);
+        if ($s>0) {
+            $val["checked"]=true;
+        } else {
+            $val["checked"]=false;
+        }
+        
             $vehi[Count($vehi)]=$val;
         }
     }    
@@ -109,7 +143,9 @@ foreach($tags as $key) {
     		"prenom"=>$row['prenom'],
     		"r_s"=>$row['r_s'],
     		"id_notifications"=>$row['id_notifications'],
-
+    		"id_postuler"=>$row['id_postuler'],
+            "chargement_telephone"=>$row['chargement_telephone'],
+            "type"=>$row['type']
     	);
 }
 

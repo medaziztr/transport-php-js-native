@@ -110,8 +110,9 @@
 
                                                             <div class="col-sm-4 col-xs-12 no-padding">
                                                                 <select type="text" name="pays_dep" id="pays2"
-                                                                    placeholder="Pays *" required>
-                                                                    <option value="Cameroun" selected
+                                                                    placeholder="Pays *" >
+                                                                    <option value="" selected> Tout</option>
+                                                                    <option value="Cameroun" 
                                                                         style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                         Cameroun</option>
                                                                     <option value="Congo"
@@ -158,8 +159,10 @@
                                                             <div class="col-sm-4 col-xs-12 no-padding">
 
                                                                 <select type="text" name="pays_arr" id="pays3"
-                                                                    placeholder="Pays *" required>
-                                                                    <option value="Cameroun" selected
+                                                                    placeholder="Pays *" >
+                                                                    <option value="" selected> Tout</option>
+
+                                                                    <option value="Cameroun" 
                                                                         style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                         Cameroun</option>
                                                                     <option value="Congo"
@@ -423,7 +426,9 @@
                                                     <div class="col-sm-4 col-xs-12 no-padding">
                                                         <select type="text" name="pays_dep" id="pays2"
                                                             placeholder="Pays *" required>
-                                                            <option value="Cameroun" selected
+                                                            <option value="" selected> Tout</option>
+
+                                                            <option value="Cameroun" 
                                                                 style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                 Cameroun</option>
                                                             <option value="Congo"
@@ -471,7 +476,9 @@
 
                                                         <select type="text" name="pays_arr" id="pays3"
                                                             placeholder="Pays *" required>
-                                                            <option value="Cameroun" selected
+                                                            <option value="" selected> Tout</option>
+
+                                                            <option value="Cameroun" 
                                                                 style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                 Cameroun</option>
                                                             <option value="Congo"
@@ -557,6 +564,7 @@
                                             data.villef = villef;
                                             data.dated = dated;
                                             data.datef = datef;
+                                            data.telephone="<?php echo $_SESSION['telephone'] ;  ?>";
 
                                         }
                                     },
@@ -653,7 +661,7 @@ class="res-flx-s img-avatar-sm">`;
                                             "mRender": function(data, type, row) {
                                                 // console.log(row)
                                                 return `
-                                                <a href="modif-charg.php?id_charg=${row.id_charg}&amp;telephone=${row.telephone}"><img src="./img/modif.png"  style="height:20px;width:20px"></a>
+                                                <a href="modif-postuler.php?id_charg=${row.id_charg}&amp;id_postuler=${row.id_postuler}"><img src="./img/modif.png"  style="height:20px;width:20px"></a>
                                         <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-charg.php?id_charg=${row.id_charg}&amp;telephone=${row.telephone}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
                       
 

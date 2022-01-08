@@ -1,30 +1,8 @@
 <?php include"header.php" ?>
-<?php
-    $telephone=$_SESSION['telephone'];
-    $today =   strtotime(date('d-m-Y')) ;
-	
-	$sql = "SELECT * FROM `transporteur` WHERE `telephone`='$telephone'";
-	$result = mysqli_query($db,$sql);
-	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
 
-?>
 
 
-<section class="page-title-section trouvtrans">
-    <div class="container hidden-xs slide-bord">
-        <div class="demo-slides">
-            <div class="animated lightSpeedIn slide-title">Notifications de <?php echo $row['prenom'].' '.$row['nom']; ?>
-            </div>
-            <p class="lead animated lightSpeedIn">Consultez l'historique des notifications de
-                <?php echo $row['prenom'].' '.$row['nom']; ?></p>
-        </div>
-    </div>
-</section>
-
-<section class="contact-info-section">
-    <div class=" ">
-        <div class="row ">
 
 <div role="tabpanel" class="tab-pane fade in" id="soumissions">
                             <div class="css-tab-content">
@@ -48,9 +26,7 @@
                                                     <div class="col-sm-4 col-xs-12 no-padding">
                                                         <select type="text" name="pays_dep" id="pays2"
                                                             placeholder="Pays *" required>
-                                                            <option value="" selected> Tout</option>
-
-                                                            <option value="Cameroun" 
+                                                            <option value="Cameroun" selected
                                                                 style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                 Cameroun</option>
                                                             <option value="Congo"
@@ -85,28 +61,6 @@
                                                         <input type="date" name="ville_dep" id="dated"
                                                             placeholder="dated">
                                                     </div>
-                                                    <?php
-        if ($_SESSION['type']=="transporteur"){
-    ?>               <div class="col-sm-12 col-xs-12 no-padding">
-
-<select type="text" name="notification_input" id="notification_input"
-    placeholder="Pays *" required>
-    <option value="all" selected
-        style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
-        Tout</option>
-    <option value="Reception" 
-        style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
-        Notification de réception</option>
-    <option value="Soumission"
-        style="background:url('./img/flags/congo.svg') no-repeat; width:30px; height:30px;">
-        Notification de soumission</option>
-   
-</select>
-
-</div>
-<?php
-        }
-    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,9 +74,7 @@
 
                                                         <select type="text" name="pays_arr" id="pays3"
                                                             placeholder="Pays *" required>
-                                                            <option value="" selected> Tout</option>
-
-                                                            <option value="Cameroun" 
+                                                            <option value="Cameroun" selected
                                                                 style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                 Cameroun</option>
                                                             <option value="Congo"
@@ -209,18 +161,7 @@
                                             data.villef = villef;
                                             data.dated = dated;
                                             data.datef = datef;
-                                            data.type="<?php echo $row['type'] ;  ?>";
-                                            data.telephone="<?php echo $_SESSION['telephone'] ;  ?>";
-                                            <?php
-        if ($_SESSION['type']=="transporteur"){
-    ?>           
-                                                var notification_input = $('#notification_input').val();
 
-                                            data.notification_input = notification_input;
-
-<?php
-        }
-    ?>           
                                         }
                                     },
                                     'success': function(data) {
@@ -308,7 +249,7 @@ class="res-flx-s img-avatar-sm">
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<form id="postuler" action="post-valide.php" method="POST" >
+<form id="postuler" >
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -344,23 +285,8 @@ class="res-flx-s img-avatar-sm">
                                                      result+=`
                                                      <tr>
                                                      <td>
-                                                     <input type="text"name="id_postuler" hidden  value="${row.id_postuler}">
-                                                     <input type="text"name="telephone" hidden value="${row.telephone}">
-
                                                      <input type="text"name="checkId[]" hidden value="${element.id_abonnement}">
-                                                     
-                                                     <input id="id${row.id_notifications+""+index}" type="hidden" name="check[]" ${element.checked?'value="1"':'value="0"'}>
- <input onchange="$('#id${row.id_notifications+""+index}').val(this.checked?1:0)" type="checkbox" id="dummy-id" 
- name="dummy-name" ${element.checked?'checked':''} 
- <?php if ($row['type']=="transporteur") {
-            # code...
-       ?>
-       ${row.type=="Soumission" && row.chargement_telephone ==  <?php echo $_SESSION['telephone']; ?> ?'':'disabled'}
-        <?php }
-       ?>
- 
-  >
-                                                     
+                                                     <input type="hidden" value="0" name="check[]"><input type="checkbox">
                                                       </td>
                                                      <td><img src="./img/uploaded/${element.img_vehicule?element.img_vehicule : 'logo.png'}"> </td>
                                                      <td>${element.matricule} </td>
@@ -379,12 +305,7 @@ class="res-flx-s img-avatar-sm">
                                                 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <?php if ($row['type']=="transporteur") {
-            # code...
-       ?>
-       ${row.type=="Soumission" && row.chargement_telephone ==  <?php echo $_SESSION['telephone']; ?> ?'        <button type="submit"  class="btn btn-primary ">Enregistrer</button>':""}
-        <?php }
-       ?>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
       </div>
     </div>
   </div>
@@ -451,17 +372,6 @@ class="res-flx-s img-avatar-sm">
                                 $('#pays2').change(function() {
                                     dataTable2.draw();
                                 });
-
-                                <?php
-        if ($_SESSION['type']=="transporteur"){
-    ?>           
-                                           $('#notification_input').change(function() {
-                                            dataTable2.draw();
-                                                    });
-
-<?php
-        }
-    ?> 
                             });
                             </script>
 
@@ -471,9 +381,6 @@ class="res-flx-s img-avatar-sm">
                     </div>
                 </div>
 
-                </div>
-    </div>
-</section>
 
 
 
@@ -494,7 +401,16 @@ class="res-flx-s img-avatar-sm">
 
 
 
-      
+
+                <script>
+
+$(document).on("change", "input[type='checkbox']", function() {
+    console.log($('input[type="checkbox"]:checked').val("checked"))
+    $('input[type="checkbox"]:checked').prev().val(   1);
+
+});
+   
+</script>
 <?php include"footer.php" ?>
 
 
