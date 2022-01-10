@@ -177,6 +177,7 @@
                                             <th>Départ</th>
                                             <th>Arrivée</th>
                                             <th>Prestataire</th>
+                                            <th>Auteur</th>
                                             <th>Véhicules</th>
                                             <th>Proposition</th>
                                             <th>Action</th>
@@ -294,6 +295,13 @@ class="res-flx-s img-avatar-sm">
                                             }
                                         },
                                         {
+                                            "mData": "nomSender",
+                                            "mRender": function(data, type, row) {
+                                                // console.log(row)
+                                                return row.nomSender.nom + " " + row.nomSender.prenom " " + row.nomSender.email+ " " + row.nomSender.telephone ;
+                                            }
+                                        },
+                                        {
                                             "mData": "vehicules",
                                             "mRender": function(data, type, row) {
                                                 console.log("rowrowrowrowrowrowrowrowrowrowrow",data,type,row)
@@ -382,8 +390,12 @@ class="res-flx-s img-avatar-sm">
         <?php if ($row['type']=="transporteur") {
             # code...
        ?>
-       ${row.type=="Soumission" && row.chargement_telephone ==  <?php echo $_SESSION['telephone']; ?> ?'        <button type="submit"  class="btn btn-primary ">Enregistrer</button>':""}
-        <?php }
+       ${row.type=="Soumission" && row.chargement_telephone ==  <?php echo $_SESSION['telephone']; ?> ?'        <button type="submit"  class="btn btn-primary ">Valider</button>':""}
+        <?php }else if ($row['type']=="client") {
+       ?>
+            <button type="submit"  class="btn btn-primary ">Valider</button>
+
+<?php }
        ?>
       </div>
     </div>

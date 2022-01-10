@@ -759,7 +759,9 @@ dataTable5.buttons().container()
                                                                             <select type="text" name="pays_dep"
                                                                                 id="pays2" placeholder="Pays *"
                                                                                 required>
-                                                                                <option value="Cameroun" selected
+                                                                                <option value="" selected> Tout</option>
+
+                                                                                <option value="Cameroun" 
                                                                                     style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                                     Cameroun</option>
                                                                                 <option value="Congo"
@@ -811,7 +813,9 @@ dataTable5.buttons().container()
                                                                             <select type="text" name="pays_arr"
                                                                                 id="pays3" placeholder="Pays *"
                                                                                 required>
-                                                                                <option value="Cameroun" selected
+                                                                                <option value="" selected> Tout</option>
+
+                                                                                <option value="Cameroun"
                                                                                     style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                                     Cameroun</option>
                                                                                 <option value="Congo"
@@ -876,7 +880,162 @@ dataTable5.buttons().container()
                                                     </table>
                                                 </div>
 
-                                               
+                                                <script>
+                                                $(document).ready(function() {
+                                                    var dataTable = $('#empTable').DataTable({
+                                                        'processing': true,
+                                                        'serverSide': true,
+                                                        'serverMethod': 'post',
+                                                        //'searching': false, // Remove default Search Control
+                                                        'ajax': {
+                                                            'url': 'ajaxfile1.php',
+                                                            'data': function(data) {
+                                                                // Read values
+                                                                var gender = $('#pays2').val();
+                                                                var name = $('#pays3').val();
+                                                                var villed = $('#villed').val();
+                                                                var villef = $('#villef').val();
+                                                                var dated = $('#dated').val();
+                                                                var datef = $('#datef').val();
+                                                                // Append to data
+                                                                data.pays2 = gender;
+                                                                data.pays3 = name;
+                                                                data.villed = villed;
+                                                                data.villef = villef;
+                                                                data.dated = dated;
+                                                                data.datef = datef;
+
+                                                            }
+                                                        },
+                                                        'success': function(data) {
+                                                            console.log(data)
+                                                        },
+                                                        'error': function(data) {
+                                                            console.log(data)
+                                                        },
+                                                        "createdRow": function(row, data, dataIndex) {
+                                                            console.log(data.date_liv, new Date(data
+                                                                .date_liv
+                                                                .split("/")[1] +
+                                                                "/" + data.date_liv.split(
+                                                                    "/")[0] +
+                                                                "/" + data.date_liv
+                                                                .split("/")[2]))
+
+                                                            if (data.date_liv && (new Date(data
+                                                                    .date_liv.split(
+                                                                        "/")[1] + "/" +
+                                                                    data.date_liv.split("/")[
+                                                                        0] + "/" + data
+                                                                    .date_liv.split(
+                                                                        "/")[2]) > new Date())) {
+
+                                                                $(row).addClass('testclassvalid');
+
+                                                            } else {
+                                                                $(row).addClass('testclass');
+                                                            }
+
+
+                                                        },
+                                                        'columns': [
+
+                                                            {
+                                                                "mData": "img_march",
+                                                                "mRender": function(data, type,
+                                                                    row) {
+                                                                    return `<div 
+
+class="res-flx-s img-avatar-sm">
+    <img src="./img/uploaded/${data ? data : 'logo.png'}">
+`
+                                                                },
+
+                                                            },
+                                                            {
+                                                                data: 'marchandise'
+                                                            },
+                                                            {
+                                                                data: 'poid'
+                                                            },
+                                                            {
+                                                                data: 'volume'
+                                                            },
+                                                            {
+                                                                "mData": "ville_charg",
+                                                                "mRender": function(data, type,
+                                                                    row) {
+                                                                    // console.log(row)
+                                                                    return row.ville_charg +
+                                                                        ", " + row
+                                                                        .pays_charg + ", " +
+                                                                        row.date_charg;
+                                                                }
+                                                            }, {
+                                                                "mData": "pays_charg",
+                                                                "mRender": function(data, type,
+                                                                    row) {
+                                                                    // console.log(row)
+                                                                    return row.ville_liv +
+                                                                        ", " + row
+                                                                        .pays_liv + ", " + row
+                                                                        .date_liv;
+                                                                }
+                                                            }, {
+                                                                "mData": "telephone",
+                                                                "mRender": function(data, type,
+                                                                    row) {
+                                                                    // console.log(row)
+                                                                    return `
+                <input type="submit" value="Consulter"
+                                                            onclick="location.href='chargement.php?id_charg=${row.id_charg}' ">
+                                                  
+<a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-charg.php?id_charg=${row.id_charg}&amp;telephone=${row.telephone}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
+
+`;
+                                                                }
+                                                            },
+                                                            // { data: 'date_charg' },
+                                                            // { data: 'ville_liv' },
+                                                            // { data: 'pays_liv' },
+                                                            // { data: 'date_liv' },
+                                                            // { data: 'id_charg' }
+                                                        ],
+                                                        dom: 'Bfrtip',
+                                                        buttons: [
+                                                            'copyHtml5',
+                                                            'excelHtml5',
+                                                            'csvHtml5',
+                                                            'pdfHtml5'
+                                                        ]
+                                                    });
+                                                    dataTable.buttons().container()
+                                                        .appendTo('#example_wrapper .col-sm-6:eq(0)');
+
+                                                    $('#villed').change(function() {
+                                                        dataTable.draw();
+                                                    });
+                                                    $('#villef').change(function() {
+                                                        dataTable.draw();
+                                                    });
+                                                    $('#dated').change(function() {
+
+                                                        dataTable.draw();
+                                                    });
+                                                    $('#datef').change(function() {
+                                                        dataTable.draw();
+                                                    });
+                                                    $('#pays3').change(function() {
+                                                        dataTable.draw();
+                                                    });
+
+                                                    $('#pays2').change(function() {
+                                                        dataTable.draw();
+                                                    });
+                                                });
+                                                </script>
+
+
 
 
                                             </div>

@@ -59,17 +59,17 @@ if($searchValue != ''){
 }
 
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler    WHERE 1  and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW()  and transporteur.telephone='$tel' ");
+$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler    WHERE 1  and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW()  and postuler.telephone='$tel' ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler     WHERE 1  and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() and transporteur.telephone='$tel' ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur ,postuler     WHERE 1  and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() and postuler.telephone='$tel' ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from chargement, transporteur  ,postuler    WHERE 1  and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() and transporteur.telephone='$tel' ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from chargement, transporteur  ,postuler    WHERE 1  and postuler.id_chargement=chargement.id_charg and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() and postuler.telephone='$tel' ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 

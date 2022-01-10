@@ -662,7 +662,7 @@ class="res-flx-s img-avatar-sm">`;
                                                 // console.log(row)
                                                 return `
                                                 <a href="modif-postuler.php?id_charg=${row.id_charg}&amp;id_postuler=${row.id_postuler}"><img src="./img/modif.png"  style="height:20px;width:20px"></a>
-                                        <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-charg.php?id_charg=${row.id_charg}&amp;telephone=${row.telephone}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
+                                        <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-postuler.php?id_charg=${row.id_charg}&amp;telephone=${row.telephone}&amp;id_postuler=${row.id_postuler}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
                       
 
 

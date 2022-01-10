@@ -10,7 +10,7 @@
     </section>
 	
 <?php 
-	$id_disp=$_GET["id_charg"];
+	$id_disp=$_GET["id_disp"];
 	$telephone=$_SESSION['login_user'];
 	
 	if (($_SESSION['type']=="client") OR ($_SESSION['type']=="transporteur")){

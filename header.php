@@ -285,7 +285,10 @@ table.dataTable,.dataTables_wrapper {
                                         ?> 
                                                     <li><a href="index-admin.php">Espace Admin</a></li> 
 													
-													<li><a href="pubs.php">Espace Publicités</a></li>        
+													<li><a href="pubs.php">Espace Publicités</a></li> 
+                                                    
+                                                    <li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
+
                                        <?php 
                                                 }
     

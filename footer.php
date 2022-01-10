@@ -68,6 +68,8 @@
                                         
                                                     <li><a href="espace-transporteur.php">Espace Transporteurs</a></li> 
 													<li><a href="espace-client.php">Espace Expéditeurs</a></li>
+													<li><a href="notifications.php" >Mes Notifications</a></li>
+
 													
                                        <?php    
                                                 }
@@ -75,6 +77,8 @@
                                         ?>
                                         
                                                     <li><a href="espace-client.php">Espace Expéditeurs</a></li> 
+													<li><a href="notifications.php" >Mes Notifications</a></li>
+
                                         
                                        <?php        
                                                 } 
@@ -100,7 +104,7 @@
                           
                                        <li><a href="abonnement.php" >Mes Vehicules</a></li>
 										<!--<li><a href="mon-compte.php">Mon compte</a></li>-->
-										<li><a href="https://m.fleet.tn/">Tracking</a></li>
+										<!-- <li><a href="https://m.fleet.tn/">Tracking</a></li> -->
 										<?php if((isset($_SESSION['login_user'])) AND ($_SESSION['type']=="transporteur")) { ?>
                                         <!--<li><a href="packs.php">Abonnez-vous</a></li>-->
 										<?php } ?>
@@ -108,7 +112,6 @@
                                         <?php
                                              }
                                         ?>
-						c
                         <!--<li><a href="apropo.php">à Propos</a></li>-->
                         <li><a href="contact.php">Contactez-Nous</a></li>
 			            
