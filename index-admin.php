@@ -1375,7 +1375,7 @@ class="res-flx-s img-avatar-sm">
 
                                                                 <th>Marque</th>
                                                                 <th>Poids disponible</th>
-                                                                <th>Action</th>
+                                                               
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -1404,7 +1404,7 @@ class="res-flx-s img-avatar-sm">
                                                      <td>${element.matricule} </td>
                                                      <td>${element.type_vehicule} </td>
                                                      <td>${element.marque} </td>
-                                                     <td>${element.poid_max} </td>
+                                                     <td>${element.poid_max} Tonnes</td>
 
     </tr>`
                                                     console.log()
@@ -2217,17 +2217,19 @@ class="res-flx-s img-avatar-sm">
                                                                     <input type="text" id="id_gps" name="id_gps"
                                                                         value="" class="col-xs-12">
                                                                     <input type="submit" value="Ajout GPS">
-                                                                </div>
+                                                                </div></form>
 
 
                                                                 <br><br>
+                                                                  <form id="form2" runat="server" action="activ-gps.php"
+                                                                method="POST">
                                                                 <h3 class="txt-bordure sections-title">Activation Suivi
                                                                 </h3>
                                                                 <div class="row">
                                                                     <div
                                                                         class="col-sm-3 col-xs-12  no-padding left-title">
                                                                         Matricule abonnement
-                                                                        <select name="id_ab">
+                                                                        <select name="id_abonn">
                                                                             <?php 
                                         $sql = mysqli_query($db, "SELECT * FROM abonnements");
                                         while ($row = $sql->fetch_assoc()){
@@ -2245,12 +2247,20 @@ class="res-flx-s img-avatar-sm">
                                                                 <div class="col-sm-5 col-xs-12 no-padding">
                                                                     <select class="form-control" id="" name="Suivi">
 
-                                                                        <option value="1">Active</option>
-                                                                        <option value="0">Non-Active</option>
+                                                                        <option value="1">Non-Active</option>
+                                                                        <option value="0">Active</option>
 
 
 
                                                                     </select>
+                                                                    <div class="row">
+                                                                        <div
+                                                                            class="col-sm-4 col-xs-12 no-padding left-title">
+                                                                            Id Disponibilité </div>
+                                                                        <div class="col-sm-6 col-xs-12 no-padding">
+                                                                            <input required type="text" name="IdDispo">
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="row">
                                                                         <div
                                                                             class="col-sm-4 col-xs-12 no-padding left-title">
@@ -2272,7 +2282,7 @@ class="res-flx-s img-avatar-sm">
 
 
 
-
+</form>
 
 
                                                         </div>

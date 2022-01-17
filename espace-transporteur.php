@@ -214,7 +214,7 @@
                                                     <th>Image</th>
                                                     <th>Marchandise</th>
                                                     <th>Poids</th>
-                                                    <th>Nombre de véhicules</th>
+                                                    <!-- <th>Nombre de véhicules</th> -->
                                                     <th>Prix proposé</th>
                                                     <th>Départ</th>
                                                     <th>Arrivée</th>
@@ -295,11 +295,15 @@
                                                 {
                                                     data: 'poid'
                                                 },
-                                                {
-                                            data: 'nb_vehicules'
-                                        },
-                                                {
-                                                    data: 'prix_prop'
+                                        //         {
+                                        //     data: 'nb_vehicules'
+                                        // },
+                                        {
+                                                    "mData": "prix_prop",
+                                                    "mRender": function(data, type, row) {
+                                                        // console.log(row)
+                                                        return row.prix_prop==""?" À négocier":  row.prix_prop;
+                                                    }
                                                 },
                                                 {
                                                     "mData": "ville_charg",

@@ -565,13 +565,21 @@ table.dataTable,.dataTables_wrapper {
                                                         </div>
                                                         
                                                         <div class="col-md-12">
-                                                            <div class="col-md-6">
+                                                        <div class="col-md-6">
+                                                                <label>
+                                                                  <input type="radio" name="type" value="transporteur"> Transporteur
+                                                                  <span class="checkmark"></span>
+                                                                </label>
+                                                            </div> 
+                                                        
+                                                        
+                                                        <div class="col-md-6">
                                                                  <label>
                                                                   <input type="radio"  checked="checked"  name="type" value="client"> Expéditeur
                                                                   <span class="checkmark"></span>
                                                                 </label>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <!-- <div class="col-md-6">
                                                             <label>
                                                                   <input type="radio"  checked="checked"  name="genre" value="particulier" id="particulier"> Particulier
                                                                   <span class="checkmark"></span>
@@ -579,21 +587,16 @@ table.dataTable,.dataTables_wrapper {
                                                                 
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-12">
-                                                            <div class="col-md-6">
-                                                                <label>
-                                                                  <input type="radio" name="type" value="transporteur"> Transporteur
-                                                                  <span class="checkmark"></span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-md-6">
+                                                       <div class="col-md-12"> -->
+                                                          
+                                                            <!-- <div class="col-md-6">
                                                                 <label>
                                                                   <input type="radio"  name="genre" value="entreprise" id="entreprise"> Entreprise
                                                                   <span class="checkmark"></span>
                                                                 </label>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
-
+                                                        
                                                         <div class="col-sm-12">
                                                             <input type="text" name="nom" placeholder="Nom *" required>
                                                         </div>

@@ -26,7 +26,7 @@
                         <img src="./img/uploaded/<?php echo $res['img_march']; ?>">
                     </div>
                     <div class="form-group">
-                                <b>Contactez expéditeur</b>
+                                <b class="txt-bordure sections-title">Contactez expéditeur</b>
 
                                 <div class="col-md-12 "></div>
                                 <div class="col-md-12 ">E-mail : <?php echo $res['email']; ?></div>
@@ -35,19 +35,25 @@
 
                             </div>
                         <br>
+                        <br>
+                        <div class="form-group">
+                                <b class="txt-bordure sections-title">Détail de l’offre</b>
+
+                            </div>
                     <div class="col-md-12">Marchandise : <?php echo $res['marchandise']; ?></div>
                     <div class="col-md-12">Emballage : <?php echo $res['emballage']; ?></div>
                     <!-- <div class="col-md-12">Mode De Transport : <?php echo $res['mode_t']; ?></div> -->
                     <!-- <div class="col-md-12">Poids : <?php echo $res['poid'].' Tonnes'; ?></div> -->
                     <div class="col-md-12">Nombre de Colis : <?php echo $res['nb_colis']; ?></div>
                    
-                    <div class="col-md-12">Nombre de véhicules : <?php echo $res['nb_vehicules']; ?></div>
 
                    
                     <!-- <div class="col-md-12">Volume : <?php if($res['volume']==0){ echo "n'est pas indiqué"; } else{echo $res['volume'].' m3';} ?></div> -->
                     <div class="col-md-12">Détails sur la Marchandise : <?php echo $res['details_march']; ?></div>
                     <div class="col-md-12">Type de véhicule : Camion
                         <?php echo $res['type_vehicule'].'  '.$res['poid']; ?></div>
+                        <div class="col-md-12">Nombre de véhicules : <?php echo $res['nb_vehicules']; ?></div>
+
                     <div class="col-md-12">Adresse Chargement :
                         <?php echo $res['adresse_charg'].' , '.$res['ville_charg'].' , '.$res['pays_charg']; ?></div>
                     <div class="col-md-12">Date Chargement : <?php echo $res['date_charg']; ?></div>
@@ -66,6 +72,19 @@
                     <div class="col-md-12">Valeur de la
                         Marchandise:<?php if(($res['valeurm']=="") OR ($res['valeurm']==" ")){ echo " N'est pas indiqué"; } else{echo $res['valeurm'];} ?>
                     </div>
+                    <br>
+                        <br>
+                     
+                                <b style="    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 200;
+    margin-bottom: 20px;
+    color: #19b835;
+    width: 100% !important;" >Personne à contacter</b>
+ <div class="col-md-12">Nom & Prénom du contact : <?php echo $res['contact_name']; ?></div>
+                            <div class="col-md-12">Numéro de téléphone du contact :
+                            <?php echo $res['contact_phone']; ?> <a href="tel:<?php echo $res['contact_phone']; ?>"><i
+                                    class="fa fa-phone"></i></a></div>
                     <div class="col-md-12"><a href="#" onclick="PrintElem('testprint')">Imprimer Chargement</a></div>
 
                 </div>

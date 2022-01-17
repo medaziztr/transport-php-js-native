@@ -484,14 +484,7 @@ class="res-flx-s img-avatar-sm">
                                                                 <input type="number" name="nb_colis" class="col-xs-12">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12  no-padding left-title">
-                                                                Nombre de véhicules</div>
-                                                            <div class="col-sm-1 hidden-xs no-padding left-title"></div>
-                                                            <div class="col-sm-5 col-xs-12 no-padding">
-                                                                <input type="number" name="nb_vehicules" class="col-xs-12">
-                                                            </div>
-                                                        </div>
+                                                    
                                                         <div class="row">
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">Type
                                                                 de vehicule </div>
@@ -526,6 +519,14 @@ class="res-flx-s img-avatar-sm">
                                                                 <select class="form-control" name="poid" id="Poid">
                                                                     <option value="" disabled selected>Tonnage</option>
                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-3 col-xs-12  no-padding left-title">
+                                                                Nombre de véhicules</div>
+                                                            <div class="col-sm-1 hidden-xs no-padding left-title"></div>
+                                                            <div class="col-sm-5 col-xs-12 no-padding">
+                                                                <input type="number" name="nb_vehicules" class="col-xs-12" value="1">
                                                             </div>
                                                         </div>
                                                         <!-- <div class="row">
