@@ -85,6 +85,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
     		"pays_charg"=>$row['pays_charg'],
             "pays_liv"=>$row['pays_liv'],
     		"id_charg"=>$row['id_charg'],
+            "nb_vehicules"=>$row['nb_vehicules'],
     		"telephone"=>$row['telephone']
 
     	);

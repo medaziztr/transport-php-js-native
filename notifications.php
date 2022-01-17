@@ -176,7 +176,7 @@
                                             <th>Cout</th>
                                             <th>Départ</th>
                                             <th>Arrivée</th>
-                                            <th>Prestataire</th>
+                                            <th>Chargeur</th>
                                             <th>Auteur</th>
                                             <th>Véhicules</th>
                                             <th>Proposition</th>
@@ -297,10 +297,13 @@ class="res-flx-s img-avatar-sm">
                                         {
                                             "mData": "nomSender",
                                             "mRender": function(data, type, row) {
-                                                // console.log(row)
-                                                return row.nomSender.nom + " " + row.nomSender.prenom " " + row.nomSender.email+ " " + row.nomSender.telephone ;
+                                                 console.log("*****************************",row)
+                                                return row.nomSender.nom + " " + row.nomSender.prenom +" " + row.nomSender.email+ " " + row.nomSender.telephone ;
+                                            //    return row.nom + " " + row
+                                            //         .prenom ;
                                             }
                                         },
+                                        
                                         {
                                             "mData": "vehicules",
                                             "mRender": function(data, type, row) {
@@ -384,6 +387,11 @@ class="res-flx-s img-avatar-sm">
                                                 </form>
                                                 </tbody>
                                                 </table>
+                                               
+                                                ${row.type=="Soumission"?` <br>
+                                                <label><u><b>Message</b></u></table>
+                                                <br>
+                                                <label> ${row.message}</table>`:""}
                                                 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

@@ -214,6 +214,7 @@
                                                     <th>Image</th>
                                                     <th>Marchandise</th>
                                                     <th>Poids</th>
+                                                    <th>Nombre de véhicules</th>
                                                     <th>Prix proposé</th>
                                                     <th>Départ</th>
                                                     <th>Arrivée</th>
@@ -294,6 +295,9 @@
                                                 {
                                                     data: 'poid'
                                                 },
+                                                {
+                                            data: 'nb_vehicules'
+                                        },
                                                 {
                                                     data: 'prix_prop'
                                                 },

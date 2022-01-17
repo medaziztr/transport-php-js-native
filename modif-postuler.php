@@ -109,7 +109,7 @@ $result = mysqli_query($db,$vehiculedispo);
                                         <div class="col-md-12 padding-12">
                                             <label>Sélectionner les véhicules:</label>
 
-                                            <select style="height: 100px;" type="text" id="vehicules" name="vehicules[]"
+                                            <select disabled style="height: 100px;" type="text" id="vehicules" name="vehicules[]"
                                                 multiple placeholder="Pays *" required>
                                                 <option value="Select School">Selectionner les véhicules</option>
                                                 <?php
@@ -141,9 +141,7 @@ $result = mysqli_query($db,$vehiculedispo);
                                         <div class="col-md-12 padding-12">
 										<label>Votre Message:</label>
 
-                                            <textarea 
-
-											name="message" class="form-control" rows="6" required=""
+                                            <textarea name="message" class="form-control" rows="6" required=""
                                                ><?php  echo $res1["message"]; ?></textarea>
                                          
                                         </div>

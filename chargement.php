@@ -25,11 +25,25 @@
                     <div class="res-flx img_lg">
                         <img src="./img/uploaded/<?php echo $res['img_march']; ?>">
                     </div>
+                    <div class="form-group">
+                                <b>Contactez expéditeur</b>
+
+                                <div class="col-md-12 "></div>
+                                <div class="col-md-12 ">E-mail : <?php echo $res['email']; ?></div>
+                                <div class="col-md-12 ">Télephone : <?php echo $res['telephone']; ?></div>
+
+
+                            </div>
+                        <br>
                     <div class="col-md-12">Marchandise : <?php echo $res['marchandise']; ?></div>
                     <div class="col-md-12">Emballage : <?php echo $res['emballage']; ?></div>
                     <!-- <div class="col-md-12">Mode De Transport : <?php echo $res['mode_t']; ?></div> -->
                     <!-- <div class="col-md-12">Poids : <?php echo $res['poid'].' Tonnes'; ?></div> -->
                     <div class="col-md-12">Nombre de Colis : <?php echo $res['nb_colis']; ?></div>
+                   
+                    <div class="col-md-12">Nombre de véhicules : <?php echo $res['nb_vehicules']; ?></div>
+
+                   
                     <!-- <div class="col-md-12">Volume : <?php if($res['volume']==0){ echo "n'est pas indiqué"; } else{echo $res['volume'].' m3';} ?></div> -->
                     <div class="col-md-12">Détails sur la Marchandise : <?php echo $res['details_march']; ?></div>
                     <div class="col-md-12">Type de véhicule : Camion
@@ -74,7 +88,7 @@
                     <h3 class="txt-bordure sections-title">Postuler</h3>
                     <div class="col-md-12">
                         <div class="contact-map">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <b>Contactez Telefret</b>
 
                                 <div class="col-md-12 "></div>
@@ -82,7 +96,7 @@
                                 <div class="col-md-12 ">+237 655 767 535</div>
 
 
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <form id="postuler" action="post-postuler.php" method="POST">
 
@@ -106,7 +120,14 @@ $result = mysqli_query($db,$vehiculedispo);
                                                 <option value="Select School">Selectionner les véhicules</option>
                                                 <?php
     while ($row = mysqli_fetch_array($result)) {
-        echo "<option value='" . $row['id_abonnement'] . "'>'" . $row['matricule'] . "'</option>";
+        $idab=";".$row['id_abonnement'];
+
+        $vehiculedispoused="SELECT * FROM `postuler` WHERE `id_chargement`=$id_charg AND `vehicules` LIKE '%$idab%';";
+
+$resultused = mysqli_query($db,$vehiculedispoused);
+$sused=mysqli_num_rows($resultused);
+
+        echo "<option value='" . $row['id_abonnement'] . "'  ".($sused>0?"disabled":"")."  ".($sused>0?" style=\"background-color: #f39797;\"":"")."  >'" . $row['matricule'] . "'</option>";
     }
     ?>
                                             </select>
@@ -126,6 +147,8 @@ $result = mysqli_query($db,$vehiculedispo);
                                         </div>
 
                                         <div class="col-md-12 padding-12">
+                                        <label>Informations supplémentaires:</label>
+
                                             <textarea name="message" class="form-control" rows="6" required=""
                                                 placeholder="Votre Message">
                                              </textarea>

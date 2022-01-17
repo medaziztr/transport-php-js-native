@@ -91,11 +91,30 @@ $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records!=null ?$records['allcount'] : 0; 
 
 ## Fetch records
-$empQuery = "select *,notifications.id as id_notifications ,postuler.id as id_postuler ,chargement.telephone as chargement_telephone from chargement, transporteur  ,postuler ,notifications   WHERE 1 and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg ".$select."   ".$searchQuery." GROUP BY notifications.id  order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select *,notifications.telephone as telephonenotifications,notifications.id as id_notifications ,postuler.id as id_postuler ,chargement.telephone as chargement_telephone from chargement, transporteur  ,postuler ,notifications   WHERE 1 and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg ".$select."   ".$searchQuery." GROUP BY notifications.id  order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 
 while ($row = mysqli_fetch_assoc($empRecords)) {
+    $SenderInfo= array(
+        "nom"=>"",
+    		"prenom"=>"",
+            "telephone"=>"",
+            "email"=>"");
+
+        $phone=$row['telephonenotifications'];
+        $vehicules="SELECT * FROM transporteur WHERE telephone='$phone' ";
+     
+        $result = mysqli_query($con,$vehicules);
+        while ($val= mysqli_fetch_array($result)) {
+        $SenderInfo= array(
+            "nom"=>$val["nom"],
+                "prenom"=>$val["prenom"],
+                "telephone"=>$val["telephone"],
+                "email"=>$val["email"]);
+        }
+       
+   
 
     $tags = explode(';',$row['vehicules']);
     $vehi=[];
@@ -141,6 +160,9 @@ foreach($tags as $key) {
     		"montant"=>$row['montant'],
     		"nom"=>$row['nom'],
     		"prenom"=>$row['prenom'],
+            "message"=>$row['message'],
+
+            "nomSender"=> $SenderInfo,
     		"r_s"=>$row['r_s'],
     		"id_notifications"=>$row['id_notifications'],
     		"id_postuler"=>$row['id_postuler'],

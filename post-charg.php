@@ -69,7 +69,7 @@ if(isset($_SESSION['login_user'])) {
 	
 	
 
-    $insertSQL="INSERT INTO `chargement` (`marchandise`, `poid`, `nb_colis`, `volume`, `type_vehicule`, `details_march`, `emballage`, `mode_t`, `valeurm`, `img_march`, `pays_charg`, `ville_charg`, `date_charg`, `adresse_charg`, `pays_liv`, `ville_liv`, `date_liv`, `adresse_liv`, `tol_charg`, `jr_retard2`, `tol_liv`, `jr_retard`, `contact_name`, `contact_phone`, `telephone`, `prix_prop`) VALUES ('$marchandise', '$poid', '$nb_colis', '$volume', '$type_vehicule', '$details_march', '$emballage', '$mode_t', '$valeurm', '$image_name1', '$pays_charg', '$ville_charg', '$date_charg', '$adresse_charg', '$pays_liv', '$ville_liv', '$date_liv', '$adresse_liv', '$toler_charge', '$jr_retard2', '$tol_liv', '$jr_retard', '$contact_name', '$contact_phone', '$telephone', '$prix_prop')";
+    $insertSQL="INSERT INTO `chargement` (`marchandise`, `poid`, `nb_colis`, `volume`, `type_vehicule`, `details_march`, `emballage`, `mode_t`, `valeurm`, `img_march`, `pays_charg`, `ville_charg`, `date_charg`, `adresse_charg`, `pays_liv`, `ville_liv`, `date_liv`, `adresse_liv`, `tol_charg`, `jr_retard2`, `tol_liv`, `jr_retard`, `contact_name`, `contact_phone`, `telephone`, `prix_prop` , `nb_vehicules`) VALUES ('$marchandise', '$poid', '$nb_colis', '$volume', '$type_vehicule', '$details_march', '$emballage', '$mode_t', '$valeurm', '$image_name1', '$pays_charg', '$ville_charg', '$date_charg', '$adresse_charg', '$pays_liv', '$ville_liv', '$date_liv', '$adresse_liv', '$toler_charge', '$jr_retard2', '$tol_liv', '$jr_retard', '$contact_name', '$contact_phone', '$telephone', '$prix_prop', '$nb_vehicules')";
 
     $result = mysqli_query($db,$insertSQL);
     

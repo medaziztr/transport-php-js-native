@@ -142,6 +142,9 @@ s0.parentNode.insertBefore(s1,s0);
 <script async data-id="70985" src="https://cdn.widgetwhats.com/script.min.js"></script>
 
 <style>
+    .dataTables_wrapper {
+        overflow-x: auto!important;
+    }
     .testclass{
         background-color: rgba(200,16,16,0.1)!important;
     }
