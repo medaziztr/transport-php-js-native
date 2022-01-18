@@ -4,7 +4,8 @@
 
     
     $id_disp=$_GET['id_disp'];
-    
+    $telephone=$_GET['telephone'];
+
 
 
     echo $insertSQL="DELETE FROM `disponibilite` WHERE id_disp='$id_disp'";
@@ -13,6 +14,6 @@
     
     
     if($_SESSION['type']=="admin"){ header("location: index-admin.php"); }
-    else{header("location: historique.php");}
+    else{header("location:  historique_client.php?telephone='.$telephone");}
 
 ?>

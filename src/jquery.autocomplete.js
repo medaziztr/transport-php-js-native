@@ -130,6 +130,7 @@
     };
 
     function _transformResult(response) {
+        console.log("responseresponseresponseresponseresponse",response);
         return typeof response === 'string' ? $.parseJSON(response) : response;
     };
 

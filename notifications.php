@@ -188,6 +188,8 @@
 
                             <script>
                             $(document).ready(function() {
+                               
+
                                 var dataTable2 = $('#empTable2').DataTable({
                                     'processing': true,
                                     'serverSide': true,
@@ -231,22 +233,30 @@
                                         console.log(data)
                                     },
                                     "createdRow": function(row, data, dataIndex) {
-                                        console.log(data.date_liv, new Date(data.date_liv
-                                            .split("/")[1] + "/" + data.date_liv
-                                            .split("/")[0] + "/" + data.date_liv
-                                            .split("/")[2]))
+                                        // console.log(data.date_liv, new Date(data.date_liv
+                                        //     .split("/")[1] + "/" + data.date_liv
+                                        //     .split("/")[0] + "/" + data.date_liv
+                                        //     .split("/")[2]))
 
-                                        if (data.date_liv && (new Date(data.date_liv.split(
-                                                "/")[1] + "/" + data.date_liv.split(
-                                                "/")[0] + "/" + data.date_liv.split(
-                                                "/")[2]) > new Date())) {
+                                        // if (data.date_liv && (new Date(data.date_liv.split(
+                                        //         "/")[1] + "/" + data.date_liv.split(
+                                        //         "/")[0] + "/" + data.date_liv.split(
+                                        //         "/")[2]) > new Date())) {
+
+                                        //     $(row).addClass('testclassvalid');
+
+                                        // } else {
+                                        //     $(row).addClass('testclass');
+                                        // }
+                                        $(row).addClass('tableline'+data.id_notifications);
+                                        $(row).attr( 'id', 'tableline'+data.id_notifications );
+                                        if (data.statut =="1") {
 
                                             $(row).addClass('testclassvalid');
 
                                         } else {
                                             $(row).addClass('testclass');
                                         }
-
 
                                     },
                                     'columns': [
@@ -313,7 +323,9 @@ class="res-flx-s img-avatar-sm">
                                                 var result=`<div 
 
 class="res-flx-s img-avatar-sm">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.id_notifications}">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.id_notifications}"
+onclick="Changetest(`+row.id_notifications+`);"
+>
   Consulter
 </button>
 
@@ -357,6 +369,7 @@ class="res-flx-s img-avatar-sm">
                                                      <td>
                                                      <input type="text"name="id_postuler" hidden  value="${row.id_postuler}">
                                                      <input type="text"name="telephone" hidden value="${row.telephone}">
+                                                     <input type="text"name="to_telephone" hidden value="${row.telephonenotifications}">
 
                                                      <input type="text"name="checkId[]" hidden value="${element.id_abonnement}">
                                                      
@@ -377,7 +390,7 @@ class="res-flx-s img-avatar-sm">
                                                      <td>${element.matricule} </td>
                                                      <td>${element.type_vehicule} </td>
                                                      <td>${element.marque} </td>
-                                                     <td>${element.poid_max} </td>
+                                                     <td>${element.poid_max} Tonnes </td>
 
     </tr>`
                                                     console.log()

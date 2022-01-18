@@ -59,11 +59,7 @@
 
                     <div class="tab-content">
       
-                        <div role="tabpanel" class="tab-pane fade in <?php
- 
- if ($row['type']!="transporteur")
- echo 'active';
-?> " id="pub-ann">
+                        <div role="tabpanel" class="tab-pane fade in active" id="pub-ann">
                             <div class="css-tab-content">
                                 <div class="tab-pane fade in active">
 
@@ -212,11 +208,7 @@
  
  if ($row['type']=="transporteur"){
 ?>
-                        <div role="tabpanel" class="tab-pane fade in <?php
- 
- if ($row['type']=="transporteur")
- echo 'active';
-?>" id="choix">
+                        <div role="tabpanel" class="tab-pane fade in" id="choix">
                             <div class="css-tab-content">
                                 <div class="tab-pane fade in active">
 

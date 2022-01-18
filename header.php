@@ -62,8 +62,39 @@
          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	    <script src="js/vendor/modernizr-2.8.1.min.js"></script>
         
-        <script lang="javascript">
-                    
+        <script type="text/javascript">
+    function Changetest(id_notification) {
+     
+        $.ajax({
+            type: "post",
+            url: "change_notification_status.php",
+            'data':{"id_notification":id_notification},
+                                    'success': function(data) {
+
+                                        $.ajax({
+            type: "post",
+            url: "get_notification.php",
+            'data':{"id_notification":id_notification},
+                                    'success': function(data) {
+                                        console.log("==============================0000",data);
+                                        $("#nbrnotification").text(data)
+                                        $("#"+'tableline'+id_notification).removeClass("testclass");
+                                        $("#"+'tableline'+id_notification).addClass("testclassvalid");
+
+                                    },
+                                    'error': function(data) {
+                                        console.log(data)
+                                        
+                                    }
+          
+        });
+                                    },
+                                    'error': function(data) {
+                                        console.log(data)
+                                    }
+          
+        });
+    }
              function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -194,12 +225,34 @@ table.dataTable,.dataTables_wrapper {
 						  							            <li><a href="abonnement.php" class="hidden-xs">Mes véhicules</a></li>
 															<?php 
 															} 
+                                                            $type=$_SESSION['type'];
+                                                            $tel=$_SESSION['telephone'];
+                                                            $select="";
+                                                          
+
+                                                            if($type=="transporteur"){
+                                                                // $select .= "and  ( chargement.telephone = transporteur.telephone and postuler.telephone = '$tel'  and  notifications.to_telephone='$tel'  )   ";
+                                                                $select .= "  and notifications.statut=0  and  ( chargement.telephone = transporteur.telephone  and ( (notifications.telephone = '$tel' and notifications.type !='Soumission')   or notifications.to_telephone = '$tel'  ) )   ";
+
+                                                            }else
+                                                            if($type=="client"){
+                                                                $select .= "and  chargement.telephone = transporteur.telephone and notifications.type='Soumission' and transporteur.telephone='$tel' ";
+                                                            }else {
+                                                                $select .= "and ( chargement.telephone = transporteur.telephone or postuler.telephone = transporteur.telephone)  ";
+                                                            }
+
+
+
+                                                            $empQuery = "select *,notifications.telephone as telephonenotifications,notifications.id as id_notifications ,postuler.id as id_postuler ,chargement.telephone as chargement_telephone from chargement, transporteur  ,postuler ,notifications   WHERE 1 and notifications.id_postuler=postuler.id and postuler.id_chargement=chargement.id_charg and notifications.statut=0 ".$select."  GROUP BY notifications.id  ";
+                                                            $empRecords = mysqli_query($db, $empQuery);
+
+                                                            $totalRecordwithFilter = mysqli_num_rows($empRecords); 
 															?>
 															
 														
 															<li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
 
-                                                            <li><a href="notifications.php" class="hidden-xs">Mes Notifications</a></li>
+                                                            <li><a href="notifications.php" class="hidden-xs">Mes Notifications <span class="badge " style="background-color: #e71010;" id="nbrnotification"><?php echo $totalRecordwithFilter; ?></span></a></li>
 
 															
                                                     <?php
@@ -606,8 +659,8 @@ table.dataTable,.dataTables_wrapper {
                                                         </div>
                                                         
                                                         
-                                                        <div class="col-sm-12" id="position">
-                                                            
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="r_s" placeholder="Entreprise *" required>
                                                         </div>
                                                         
                                                         

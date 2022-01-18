@@ -34,14 +34,13 @@ $tel=$_POST['telephone'];
 }
 $select="";
 if($type=="transporteur"){
-     $select .= " and  ( chargement.telephone = transporteur.telephone  and  notifications.to_telephone = '$tel'  )  ".$notification_input." ";
-    //$select .= "and  ( chargement.telephone = transporteur.telephone or (postuler.telephone = transporteur.telephone  and  notifications.to_telephone='$tel') )  ".$notification_input." ";
+    $select .= "and  ( chargement.telephone = transporteur.telephone or (postuler.telephone = transporteur.telephone  and  notifications.telephone='$tel') )  ".$notification_input." ";
 
 }else
 if($type=="client"){
-    $select .= " and  chargement.telephone = transporteur.telephone and notifications.type='Soumission' and transporteur.telephone='$tel' and notifications.to_telephone = '$tel' ";
+    $select .= "and  chargement.telephone = transporteur.telephone and notifications.type='Soumission' and transporteur.telephone='$tel' ";
 }else {
-    $select .= " and ( chargement.telephone = transporteur.telephone or postuler.telephone = transporteur.telephone) ".$notification_input." ";
+    $select .= "and ( chargement.telephone = transporteur.telephone or postuler.telephone = transporteur.telephone) ".$notification_input." ";
 }
 
 ## Search 
@@ -102,15 +101,8 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
     		"prenom"=>"",
             "telephone"=>"",
             "email"=>"");
-            $phone="";
-        if ($row['type']=="Reception") {
-            $phone=$row['telephonenotifications'];    
-            }
-            else if ($row['type']=="Reception"){
-                $phone=$row['to_telephone'];    
- 
-            }
-       
+
+        $phone=$row['telephonenotifications'];
         $vehicules="SELECT * FROM transporteur WHERE telephone='$phone' ";
      
         $result = mysqli_query($con,$vehicules);
@@ -163,16 +155,12 @@ foreach($tags as $key) {
             "pays_liv"=>$row['pays_liv'],
     		"id_charg"=>$row['id_charg'],
     		"telephone"=>$row['telephone'],
-            "to_telephone"=>$row['to_telephone'],
-            "telephonenotifications"=>$row['telephonenotifications'],
-
     		"vehicules"=>$vehi,
     		"avance"=>$row['avance'],
     		"montant"=>$row['montant'],
     		"nom"=>$row['nom'],
     		"prenom"=>$row['prenom'],
             "message"=>$row['message'],
-            "statut"=>$row['statut'],
 
             "nomSender"=> $SenderInfo,
     		"r_s"=>$row['r_s'],

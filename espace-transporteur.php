@@ -301,8 +301,8 @@
                                         {
                                                     "mData": "prix_prop",
                                                     "mRender": function(data, type, row) {
-                                                        // console.log(row)
-                                                        return row.prix_prop==""?" À négocier":  row.prix_prop;
+                                                        console.log("============================",row)
+                                                        return row.prix_prop!=" "?  row.prix_prop:" À négocier";
                                                     }
                                                 },
                                                 {

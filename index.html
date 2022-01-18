@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="js/datatable/jquery-3.5.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
+
+</head>
+<body>
+  <div class="container" style="padding:10px 10px;">
+    <h1>jQuery AutoComplete Example Using Ajax</h1>
+	<div class="well">
+		<div class="row">
+		<form class="form-inline">
+			<div class="form-group col-sm-5">
+			  <label for="files">Select User</label>
+			  <input type="text" name="country" id="autocomplete"/>
+			</div>
+			<div>
+				Selected Option : <span class="label label-default" id="selected_option"></span>
+			</div>
+		</form>
+		</div>
+		
+	</div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){	
+	var arrayReturn = [];
+	$.ajax({
+		url: "http://jsonplaceholder.typicode.com/users",
+		async: true,
+		dataType: 'json',
+		success: function (data) {
+			for (var i = 0, len = data.length; i < len; i++) {
+				var id = (data[i].id).toString();
+				arrayReturn.push({'value' : data[i].name, 'data' : id});
+			}
+			var countries = [
+			   { value: 'Andorra', data: 'AD' },
+			   // ...
+			   { value: 'Zimbabwe', data: 'ZZ' }
+			];
+			//send parse data to autocomplete function
+			loadSuggestions(arrayReturn);
+			console.log(countries);
+			console.log(arrayReturn);
+		}
+	});
+	function loadSuggestions(options) {
+		$('#autocomplete').autocomplete({
+			lookup: options,
+			onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			}
+		});
+	}
+  });
+</script>

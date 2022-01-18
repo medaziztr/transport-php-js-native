@@ -21,6 +21,7 @@ if(isset($_SESSION['login_user'])) {
         $telephone=$_SESSION['telephone'];
         $id_postuler=$_POST['id_postuler'];
         $id_chargement=$_POST['id_charg'];
+        $to_telephone=$_POST['to_telephone'];
 
 
      
@@ -53,8 +54,8 @@ if(isset($_SESSION['login_user'])) {
           
 
             if ($vehicules>0) {
-                $insertSQL1="INSERT INTO `notifications` (`type`, `id_postuler`, `telephone`, `contenu`, `id_chargement`) VALUES 
-                ('Reception', '$id_postuler',  '$telephone', 'Des véhicules proposer ont été sélectionnés.', '$id_chargement')";
+                $insertSQL1="INSERT INTO `notifications` (`type`, `id_postuler`, `telephone`, `contenu`, `id_chargement`, `to_telephone`) VALUES 
+                ('Reception', '$id_postuler',  '$telephone', 'Des véhicules proposer ont été sélectionnés.', '$id_chargement', '$to_telephone')";
             
                $result1 = mysqli_query($db,$insertSQL1);
             }

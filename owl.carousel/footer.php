@@ -233,7 +233,7 @@
 				$( "input#nom" ).prop( "disabled", false );
 				$( "input#prenom" ).prop( "disabled", false );
 				$( "input#adresse" ).prop( "disabled", false );
-				$( "input#r_s2" ).prop( "disabled", false );
+				//$( "input#r_s2" ).prop( "disabled", false );
 				$( "select#pays_p" ).prop( "disabled", false );
 				$( "input#email" ).prop( "disabled", false );
 				

@@ -52,6 +52,7 @@
     $passwd = $_POST['passwd'];
     $genre = $_POST['genre'];
     $type = $_POST['type'];
+
     $teleph=$indicatif.$telephone;
     /*********************/
         $captcha;

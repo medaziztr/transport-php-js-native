@@ -9,7 +9,6 @@
 
             <div class="col-md-6">
                 <div class="contact-map" id="testprint">
-                    <h3 class="txt-bordure sections-title">Consultez le chargement choisis</h3>
                     <?php
                         $id_charg=$_GET['id_charg'];
 
@@ -22,13 +21,12 @@
                         if($s>0){
                     ?>
 
-                    <div class="res-flx img_lg">
-                        <img src="./img/uploaded/<?php echo $res['img_march']; ?>">
-                    </div>
+                 
                     <div class="form-group">
-                                <b class="txt-bordure sections-title">Contactez expéditeur</b>
+                                <b class="txt-bordure sections-title">Expéditeur</b>
 
-                                <div class="col-md-12 "></div>
+                                <div class="col-md-12 ">Entreprise : <?php echo $res['r_s']; ?></div>
+
                                 <div class="col-md-12 ">E-mail : <?php echo $res['email']; ?></div>
                                 <div class="col-md-12 ">Télephone : <?php echo $res['telephone']; ?></div>
 
@@ -37,18 +35,24 @@
                         <br>
                         <br>
                         <div class="form-group">
-                                <b class="txt-bordure sections-title">Détail de l’offre</b>
+                                <b style="    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #19b835;
+    width: 100% !important;">Détail de l’offre</b>
 
                             </div>
+
+                            <div class="res-flx img_lg">
+                        <img src="./img/uploaded/<?php echo $res['img_march']; ?>">
+                    </div>
                     <div class="col-md-12">Marchandise : <?php echo $res['marchandise']; ?></div>
                     <div class="col-md-12">Emballage : <?php echo $res['emballage']; ?></div>
-                    <!-- <div class="col-md-12">Mode De Transport : <?php echo $res['mode_t']; ?></div> -->
-                    <!-- <div class="col-md-12">Poids : <?php echo $res['poid'].' Tonnes'; ?></div> -->
+                  
                     <div class="col-md-12">Nombre de Colis : <?php echo $res['nb_colis']; ?></div>
                    
 
                    
-                    <!-- <div class="col-md-12">Volume : <?php if($res['volume']==0){ echo "n'est pas indiqué"; } else{echo $res['volume'].' m3';} ?></div> -->
                     <div class="col-md-12">Détails sur la Marchandise : <?php echo $res['details_march']; ?></div>
                     <div class="col-md-12">Type de véhicule : Camion
                         <?php echo $res['type_vehicule'].'  '.$res['poid']; ?></div>
@@ -76,14 +80,13 @@
                         <br>
                      
                                 <b style="    font-size: 15px;
-    text-transform: uppercase;
     font-weight: 200;
     margin-bottom: 20px;
     color: #19b835;
     width: 100% !important;" >Personne à contacter</b>
- <div class="col-md-12">Nom & Prénom du contact : <?php echo $res['contact_name']; ?></div>
-                            <div class="col-md-12">Numéro de téléphone du contact :
-                            <?php echo $res['contact_phone']; ?> <a href="tel:<?php echo $res['contact_phone']; ?>"><i
+ <div class="col-md-12">Nom & Prénom  : <?php echo $res['contact_name']==""? $res['r_s']:$res['contact_name']; ?></div>
+                            <div class="col-md-12">Numéro de téléphone :
+                            <?php echo $res['contact_phone']? $res['telephone']:$res['contact_phone']; ?> <a href="tel:<?php echo $res['contact_phone']; ?>"><i
                                     class="fa fa-phone"></i></a></div>
                     <div class="col-md-12"><a href="#" onclick="PrintElem('testprint')">Imprimer Chargement</a></div>
 
@@ -123,6 +126,11 @@
                                         <input id="id_chargement" hidden name="id_chargement"
                                             value="<?php echo  $id_charg; ?>" type="number">
 
+                                            <input id="to_telephone" hidden name="to_telephone"
+                                            value="<?php echo  $res['telephone']; ?>" >
+                                            <input id="mail" hidden name="mail"
+                                            value="<?php echo  $res['email']; ?>" >
+
                                         <?php
  $telephone=$_SESSION['telephone'];
             
@@ -151,7 +159,16 @@ $sused=mysqli_num_rows($resultused);
     ?>
                                             </select>
                                         </div>
+                                        <div class="col-md-12 padding-12">
 
+<label>Devise:</label>
+
+<select style="height: 50px;" type="text" id="vehicules" name="devise" required>
+                                                <option value="FCFA">FCFA</option>
+                                                <option value="EURO">EURO</option>
+
+                                                </select>
+                                            </div>
                                         <div class="col-md-12 padding-12">
 
                                             <label>Montant proposer:</label>
@@ -180,6 +197,7 @@ $sused=mysqli_num_rows($resultused);
                             <div class="form-group text-area">
 
                             </div>
+                            <!-- <div class="g-recaptcha" data-sitekey="6LfAXwoaAAAAAL4Bp-qVHLhXLzBW-uYcUykT9592" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>  -->
 
                             <button type="submit" class="btn btn-primary pull-right">Soumissionner
                             </button>

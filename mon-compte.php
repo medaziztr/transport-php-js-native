@@ -28,22 +28,7 @@ if (isset($_SESSION['login_user'])) {
 					<form id="update_information" action="update_information.php" method="POST" name="update_information">
 						<div class="form-group">
 						
-							<div class="row">
-								<div class="col-md-2 col-xs-12">Vous êtes :</div>
-								<div class="col-md-2">
-									<label>
-									  <input type="radio" <?php if($_SESSION['genre']=="particulier"){ echo "checked='checked'"; } else {echo "disabled"; }?>  name="genre2" value="particulier" id="particulier2"> Particulier
-									  <span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="col-md-2">
-									<label>
-									  <input type="radio" <?php if($_SESSION['genre']=="entreprise") {echo "checked='checked'";} else {echo "disabled";} ?> name="genre2" value="entreprise" id="entreprise2"> Entreprise
-									  <span class="checkmark"></span>
-									</label>
-								</div>
-							</div>
-							
+				
 							<div class="row">
 								<div class="col-md-2 col-xs-12"></div>
 								<div class="col-md-2">
@@ -54,7 +39,7 @@ if (isset($_SESSION['login_user'])) {
 								</div>
 								<div class="col-md-3">
 									<label>
-									  <input type="radio" <?php if($_SESSION['type']=="transporteur"){ echo "checked='checked'"; } else {echo "disabled"; }?>  name="type" id="transporteur" value="transporteur"> Transporteur & Expéditeur
+									  <input type="radio" <?php if($_SESSION['type']=="transporteur"){ echo "checked='checked'"; } else {echo "disabled"; }?>  name="type" id="transporteur" value="transporteur"> Transporteur
 									  <span class="checkmark"></span>
 									</label>
 								</div>
@@ -82,18 +67,13 @@ if (isset($_SESSION['login_user'])) {
 							
 							
 							<div class="row" id="position2">
-						<?php 
-							if($_SESSION["genre"]=="entreprise"){
-						?>
-								<div id="raison">
-									<div class="col-md-2 col-xs-12  left-title ">Raison Sociale :</div>
+						<div id="raison">
+									<div class="col-md-2 col-xs-12  left-title ">Entreprise:</div>
 									<div class="col-md-8 no-padding">
-										<input id="r_s2" name="r_s" type="text" class="form-control" required disabled value="<?php echo $_SESSION['r_s']; ?>"> 
+										<input id="r_s" name="r_s" type="text" class="form-control" required disabled value="<?php echo $_SESSION['r_s']; ?>"> 
 									</div>
 								</div>
-						<?php
-							}
-						?>
+					
 							</div>
 							
 							

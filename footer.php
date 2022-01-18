@@ -629,6 +629,8 @@ var VehiculesByPoid = {
 </script>
 <!-- Fin liste deroulante pour le camion -->
 <!-- liste autocomplete des villes -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
+
 <script type="text/javascript" src="js/datatable/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="js/datatable/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/datatable/dataTables.bootstrap.min.js"></script>
@@ -642,7 +644,6 @@ var VehiculesByPoid = {
     <script type="text/javascript" src="js/datatable/buttons.colVis.min.js"></script>
   
     <!-- <script type="text/javascript" src="scripts/jquery.mockjax.js"></script> -->
-    <script type="text/javascript" src="src/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="scripts/countries.js"></script>
     <script type="text/javascript" src="scripts/demo.js"></script>
 
