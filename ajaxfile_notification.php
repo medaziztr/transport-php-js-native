@@ -103,13 +103,15 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
             "telephone"=>"",
             "email"=>"");
             $phone="";
-        if ($row['type']=="Reception") {
-            $phone=$row['telephonenotifications'];    
-            }
-            else if ($row['type']=="Reception"){
-                $phone=$row['to_telephone'];    
+        // if ($row['type']=="Reception") {
+        //     $phone=$row['telephonenotifications'];    
+        //     }
+        //     else if ($row['type']=="Reception"){
+        //         $phone=$row['to_telephone'];    
  
-            }
+        //     }
+        $phone=$row['telephonenotifications'];    
+
        
         $vehicules="SELECT * FROM transporteur WHERE telephone='$phone' ";
      

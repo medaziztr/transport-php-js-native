@@ -627,11 +627,378 @@ var VehiculesByPoid = {
     }
 
 </script>
+<script type="text/javascript">
+  $(document).ready(function(){	
+
+	$("#pays2").on('change', function(ret) {  
+         console.log(ret.target.value)
+		 changePaysD(ret.target.value)
+    });
+	
+	$("#pays3").on('change', function(ret) {  
+         console.log(ret.target.value)
+		 changePaysA(ret.target.value)
+    });
+  });
+</script>
+
+<script>
+
+	function changePaysA(a) {
+		select = document.getElementById("pays3");
+		//tel = document.getElementById("tel");
+		select_s =select.style;
+			
+		var availableTags = [ "Douala", "Yaounde", "Garoua", "Bamenda", "Maroua", "Nkongsamba", "Bafoussam", "Ngaoundere", "Bertoua", "Loum", "Kumba", "Edea", "Kumbo", "Foumban", "Mbouda", "Dschang", "Limbe", "Ebolowa", "Kousseri", "Guider", "Meiganga", "Mbalmayo", "Bafang", "Tiko", "Bafia", "Wum", "Kribi", "Buea", "Sangmelima", "Foumbot", "Bangangte", "Batouri", "Banyo", "Nkambe", "Bali", "Mbanga", "Mokolo", "Melong", "Manjo", "Garoua-Boulaï", "Mora", "Kaele", "Tibati", "Ndop", "Akonolinga", "Eseka", "Mamfe", "Obala", "Muyuka", "Nanga-Eboko", "Abong-Mbang", "Fundong", "Nkoteng", "Fontem", "Mbandjock", "Touboro", "Ngaoundal", "Yokadouma", "Pitoa", "Tombel", "Kekem", "Magba", "Belabo", "Tonga", "Maga", "Koutaba", "Blangoua", "Guidiguis", "Bogo", "Batibo", "Yabassi", "Figuil", "Makenene", "Gazawa", "Tchollire"];                
+			
+			
+		var availableTags1 = [ "Brazzaville", "Pointe-Noire", "Dolisie", "Nkayi", "Loandjili", "Ouesso", "Madingou", "Owando", "Gamboma", "Impfondo", "Sibiti", "Mossendjo", "Ngamaba-Mfilou", "Kinkala", "Makoua"];
+			
+			
+			
+		var availableTags2 = [ "Libreville", "Port-Gentil", "Franceville", "Oyem", "Moanda", "Mouila", "Lambarene", "Tchibanga", "Koulamoutou", "Makokou", "Bitam", "Tsogni", "Gamba", "Mounana", "Ntoum", "Nkan", "Lastourville", "Okondja", "Ndende", "Booue", "Fougamou", "Ndjole", "Mbigou", "Mayumba", "Mitzic", "Mekambo", "Lekoni", "Mimongo", "Minvoul", "Medouneu", "Omboue", "Cocobeach", "Kango" ];
+			
+
+			
+		var availableTags3 = [ "N'Djamena", "Moundou", "Sarh", "Abeche", "Faya-Largeau", "Koumra", "Kelo", "Mongo", "Pala", "Am Timan", "Ati", "Bongor", "Doba", "Mao", "Oum Hadjer", "Moussoro", "Bitkine", "Biltine", "Massaguet", "Dourbali", "Laï", "Lere", "Kyabe", "Massakory", "Bokoro", "Bousso", "Benoye", "Adre", "Ngama", "Bere", "Fianga", "Bol", "Moïssala", "Guelendeng", "Goundi", "Gounou Gaya", "Baïbokoum", "Aozou", "Beinamar", "Melfi", "Beboto", "Massenya" ];
+			
+					
+			
+		var availableTags4 = [ "Bangui", "Bimbo" , "Berberati" , "Carnot" , "Bambari" , "Bouar" , "Bria" , "Bossangoa" , "Nola" , "Bangassou" , "Boda" , "Sibut" , "Kaga-Bandoro" , "Mbaiki" , "Bozoum" , "Batangafo" , "Paoua" , "Ippy" , "Bocaranga" , "Kabo" , "Alindao" , "Yaloke" , "Baoro" , "Gamboula" , "Ndele" , "Dekoa" , "Bouca" , "Grimari" , "Bossembele" , "Kembe" , "Zemio" , "Mobaye" , "Kouango" , "Baboua" , "Damara" , "Birao", "Obo" ];
+			
+			
+			
+		var availableTags5 = [ "Bata", "Malabo", "Ebebiyín", "Aconibe", "Añisoc", "Luba", "Evinayong", "Mongomo", "Mengomeyen", "Mikomeseng", "Rebola", "Bidjabidjan", "Niefang", "Cogo", "Nsok", "San Antonio de Pale", "Mbini", "Nsork", "Ayene", "Nkimi", "Machinda", "Acurenam", "Corisco", "Baney", "Bicurga", "Nsang" ];
+			
+		select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
+		
+		switch(select.selectedIndex) {
+				
+
+			case 1 :
+			select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00237";
+			//tel.pattern="00237[0-9]{9}";
+				
+			$( "#villef").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+			
+				
+			break;
+
+			case 2 :
+			select_s.backgroundImage = "url('./img/flags/congo.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00242";
+			//tel.pattern="00242[0-9]{9}";
+				
+			$( "#villef").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags1.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+				
+				
+
+			case 3 :
+			select_s.backgroundImage = "url('./img/flags/gabon.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00241";
+			//tel.pattern="00241[0-9]{8}";
+				
+			$( "#villef").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags2.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+
+			case 4 :
+			select_s.backgroundImage = "url('./img/flags/chad.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00235";
+			//tel.pattern="00235[0-9]{8}";
+		
+			$( "#villef").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags3.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+
+			case 5 :
+			select_s.backgroundImage = "url('./img/flags/central-african-republic.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00236";
+			//tel.pattern="00236[0-9]{8}";
+				
+			   $( "#villef").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags4
+			});
+
+				
+			break;
+
+			case 6 :
+			select_s.backgroundImage = "url('./img/flags/equatorial-guinea.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00240";
+			//tel.pattern="00240[0-9]{9}";
+				
+			$( "#villef").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags5.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+		
+		}
+	}                   
+</script>
+
+<script>
+
+	function changePaysD(a) {
+		select = document.getElementById("pays2");
+		//tel = document.getElementById("tel");
+		select_s =select.style;
+			
+		var availableTags = [ "Douala", "Yaounde", "Garoua", "Bamenda", "Maroua", "Nkongsamba", "Bafoussam", "Ngaoundere", "Bertoua", "Loum", "Kumba", "Edea", "Kumbo", "Foumban", "Mbouda", "Dschang", "Limbe", "Ebolowa", "Kousseri", "Guider", "Meiganga", "Mbalmayo", "Bafang", "Tiko", "Bafia", "Wum", "Kribi", "Buea", "Sangmelima", "Foumbot", "Bangangte", "Batouri", "Banyo", "Nkambe", "Bali", "Mbanga", "Mokolo", "Melong", "Manjo", "Garoua-Boulaï", "Mora", "Kaele", "Tibati", "Ndop", "Akonolinga", "Eseka", "Mamfe", "Obala", "Muyuka", "Nanga-Eboko", "Abong-Mbang", "Fundong", "Nkoteng", "Fontem", "Mbandjock", "Touboro", "Ngaoundal", "Yokadouma", "Pitoa", "Tombel", "Kekem", "Magba", "Belabo", "Tonga", "Maga", "Koutaba", "Blangoua", "Guidiguis", "Bogo", "Batibo", "Yabassi", "Figuil", "Makenene", "Gazawa", "Tchollire"];                
+			
+			
+		var availableTags1 = [ "Brazzaville", "Pointe-Noire", "Dolisie", "Nkayi", "Loandjili", "Ouesso", "Madingou", "Owando", "Gamboma", "Impfondo", "Sibiti", "Mossendjo", "Ngamaba-Mfilou", "Kinkala", "Makoua"];
+			
+			
+			
+		var availableTags2 = [ "Libreville", "Port-Gentil", "Franceville", "Oyem", "Moanda", "Mouila", "Lambarene", "Tchibanga", "Koulamoutou", "Makokou", "Bitam", "Tsogni", "Gamba", "Mounana", "Ntoum", "Nkan", "Lastourville", "Okondja", "Ndende", "Booue", "Fougamou", "Ndjole", "Mbigou", "Mayumba", "Mitzic", "Mekambo", "Lekoni", "Mimongo", "Minvoul", "Medouneu", "Omboue", "Cocobeach", "Kango" ];
+			
+
+			
+		var availableTags3 = [ "N'Djamena", "Moundou", "Sarh", "Abeche", "Faya-Largeau", "Koumra", "Kelo", "Mongo", "Pala", "Am Timan", "Ati", "Bongor", "Doba", "Mao", "Oum Hadjer", "Moussoro", "Bitkine", "Biltine", "Massaguet", "Dourbali", "Laï", "Lere", "Kyabe", "Massakory", "Bokoro", "Bousso", "Benoye", "Adre", "Ngama", "Bere", "Fianga", "Bol", "Moïssala", "Guelendeng", "Goundi", "Gounou Gaya", "Baïbokoum", "Aozou", "Beinamar", "Melfi", "Beboto", "Massenya" ];
+			
+					
+			
+		var availableTags4 = [ "Bangui", "Bimbo" , "Berberati" , "Carnot" , "Bambari" , "Bouar" , "Bria" , "Bossangoa" , "Nola" , "Bangassou" , "Boda" , "Sibut" , "Kaga-Bandoro" , "Mbaiki" , "Bozoum" , "Batangafo" , "Paoua" , "Ippy" , "Bocaranga" , "Kabo" , "Alindao" , "Yaloke" , "Baoro" , "Gamboula" , "Ndele" , "Dekoa" , "Bouca" , "Grimari" , "Bossembele" , "Kembe" , "Zemio" , "Mobaye" , "Kouango" , "Baboua" , "Damara" , "Birao", "Obo" ];
+			
+			
+			
+		var availableTags5 = [ "Bata", "Malabo", "Ebebiyín", "Aconibe", "Añisoc", "Luba", "Evinayong", "Mongomo", "Mengomeyen", "Mikomeseng", "Rebola", "Bidjabidjan", "Niefang", "Cogo", "Nsok", "San Antonio de Pale", "Mbini", "Nsork", "Ayene", "Nkimi", "Machinda", "Acurenam", "Corisco", "Baney", "Bicurga", "Nsang" ];
+			
+		select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
+		
+		switch(select.selectedIndex) {
+				
+
+			case 1 :
+			select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00237";
+			//tel.pattern="00237[0-9]{9}";
+				
+			$( "#villed").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+			
+				
+			break;
+
+			case 2 :
+			select_s.backgroundImage = "url('./img/flags/congo.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00242";
+			//tel.pattern="00242[0-9]{9}";
+				
+			$( "#villed").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags1.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+				
+				
+
+			case 3 :
+			select_s.backgroundImage = "url('./img/flags/gabon.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00241";
+			//tel.pattern="00241[0-9]{8}";
+				
+			$( "#villed").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags2.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+
+			case 4 :
+			select_s.backgroundImage = "url('./img/flags/chad.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00235";
+			//tel.pattern="00235[0-9]{8}";
+		
+			$( "#villed").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags3.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+
+			case 5 :
+			select_s.backgroundImage = "url('./img/flags/central-african-republic.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00236";
+			//tel.pattern="00236[0-9]{8}";
+				
+			   $( "#villed").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags4
+			});
+
+				
+			break;
+
+			case 6 :
+			select_s.backgroundImage = "url('./img/flags/equatorial-guinea.svg')";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "25px";
+			select_s.backgroundColor= "#eeecec";
+			select_s.backgroundPosition= "8px 7px";
+			select_s.paddingLeft= "35px";
+			//tel.value="00240";
+			//tel.pattern="00240[0-9]{9}";
+				
+			$( "#villed").autocomplete({
+				
+					onSelect: function (suggestion) {
+				$('#selected_option').html(suggestion.value);
+			},
+					lookup: availableTags5.map((x,id)=>{
+						return{'value' : x, 'data' : id};
+					})
+			});
+
+				
+			break;
+		
+		}
+	}                   
+</script>
 <!-- Fin liste deroulante pour le camion -->
 <!-- liste autocomplete des villes -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
 
 <script type="text/javascript" src="js/datatable/jquery-3.5.1.js"></script>
+<script src="js/jquery.autocomplete.min.js"></script>
+
     <script type="text/javascript" src="js/datatable/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/datatable/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="js/datatable/dataTables.buttons.min.js"></script>

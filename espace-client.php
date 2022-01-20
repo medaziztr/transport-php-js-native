@@ -112,34 +112,6 @@
                                         <div class="container" style="padding-left: unset !important;">
                                             <div class="col-md-6 formulaire">
 
-                                            <input id="my-input" />
-                                            <script>
-                                                  $(document).ready(function() {
-                                                var aCleanData = ['aaa','aab','faa','fff','ffb','fgh','mmm','maa'];
-
-$('#my-input').autocomplete({
-    source: aCleanData,
-    minLength: 2,
-    search: function(oEvent, oUi) {
-        // get current input value
-        var sValue = $(oEvent.target).val();
-        // init new search array
-        var aSearch = [];
-        // for each element in the main array ...
-        $(aCleanData).each(function(iIndex, sElement) {
-            // ... if element starts with input value
-            if (sElement.substr(0, sValue.length) == sValue) {
-                // add element
-                aSearch.push(sElement);
-            }
-        });
-        // change search array
-        $(this).autocomplete('option', 'source', aSearch);
-    }
-});
-                                                  });
-
-                                            </script>
                                                 <h3 class="txt-bordure sections-title">Depart</h3>
 
                                                 <div class="form-group">
@@ -168,7 +140,7 @@ $('#my-input').autocomplete({
                                                                 <option value="Guinee equatoriale"
                                                                     style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                                                                     Guinee equatoriale</option>
-                                                                <option value="off"> Pays départ </option>
+                                                                
                                                             </select>
 
                                                         </div>
@@ -176,10 +148,7 @@ $('#my-input').autocomplete({
                                                             <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
                                                             <input type="text" name="ville_dep" id="villed"
                                                                 placeholder="Ville de Chargement">
-                                                            <input type="text" name="ville_dep" id="villed-x"
-                                                                disabled="disabled"
-                                                                style="color: #CCC; position: absolute; background: transparent; z-index: 1;height:0px;" />
-                                                        </div>
+                                                            </div>
                                                         <!-- <div class="col-sm-4 col-xs-12 no-padding">
                                                             <input type="date" name="ville_dep" id="dated"
                                                                 placeholder="dated">
@@ -217,12 +186,11 @@ $('#my-input').autocomplete({
                                                                 <option value="Guinee equatoriale"
                                                                     style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                                                                     Guinee equatoriale</option>
-                                                                <option value="off"> Pays d'arrivé </option>
+                                                                
                                                             </select>
 
                                                         </div>
                                                         <div class="col-sm-4 col-xs-12 no-padding">
-                                                            <!-- <input type="text" class="form-control"  id="tag3" name="ville_arr" placeholder="Ville de départ"> -->
                                                             <input type="text" name="ville_arr" id="villef"
                                                                 style="width: 100%; border-width: 5px;"
                                                                 placeholder="Ville de livraison" />

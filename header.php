@@ -15,9 +15,11 @@
 
 		<meta http-equiv="Content-language" content="fr" />
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta charset="UTF-8">
 
 
 	    <title>TELEFRET</title>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
@@ -56,13 +58,99 @@
 	    <link href="css/responsive.css" rel="stylesheet">
         
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        
+  <style>
+	.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+	  .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+	  .autocomplete-selected { background: #F0F0F0; }
+	  .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+	  .autocomplete-group { padding: 2px 5px; }
+	  .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+	</style>
         
         <script src="js/jssor.slider-28.0.0.min.js" type="text/javascript"></script>
          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	    <script src="js/vendor/modernizr-2.8.1.min.js"></script>
         
         <script type="text/javascript">
+// function submitCheck(id_notification) {
+
+// var form = $('#postuler'+id_notification)[0];
+
+// // Create an FormData object 
+// var data = new FormData(form);
+
+// console.log("datadatadatadatadatadatadatadatadata",'#postuler'+id_notification,data,$('#postuler'+id_notification)[0])
+// params   = $('#postuler'+id_notification).serializeArray();
+
+// var formData = new FormData($('#postuler'+id_notification)[0]);
+// var isValid=0;
+// var ToControle=0;
+// $.each(params, function(i, val) {
+// console.log(val.name, val.value)
+// if (val.name=="check[]" && val.value=="1" ) {
+// isValid=isValid+1
+// }
+// if (val.name=="ToControle" ) {
+//     ToControle=val.value;
+// }
+
+// });
+// if (ToControle>0) {
+    
+// }
+
+// if (isValid>0) {
+// console.log("okcool")
+// $("#btnSubmit"+id_notification).prop( "disabled", false );
+// }else{
+// $("#btnSubmit"+id_notification).prop( "disabled", true );
+
+// }
+ 
+// }
+
+function submitCheck(id_notification) {
+
+    var form = $('#postuler'+id_notification)[0];
+ 
+ // Create an FormData object 
+  var data = new FormData(form);
+
+    console.log("datadatadatadatadatadatadatadatadata",'#postuler'+id_notification,data,$('#postuler'+id_notification)[0])
+    params   = $('#postuler'+id_notification).serializeArray();
+
+    var formData = new FormData($('#postuler'+id_notification)[0]);
+    var isValid=0;
+    var ToControle=0;
+$.each(params, function(i, val) {
+    console.log(val.name, val.value)
+if (val.name=="check[]" && val.value=="1" ) {
+    isValid=isValid+1
+}
+if (val.name=="ToControle") {
+    ToControle=val.value;
+}
+
+});
+        if (ToControle==0) {
+
+
+if (isValid>0) {
+    console.log("okcool")
+    $("#btnSubmit"+id_notification).prop( "disabled", false );
+}else{
+    $("#btnSubmit"+id_notification).prop( "disabled", true );
+
+}
+        }else{
+
+            console.log(ToControle)
+            $("#btnSubmit"+id_notification).prop( "disabled", false );
+
+        }
+  
+     
+ }
     function Changetest(id_notification) {
      
         $.ajax({
@@ -200,7 +288,11 @@ table.dataTable,.dataTables_wrapper {
 	</head>
 
 
-	<body id="page-top" onload="changePays(1); changePays(6); changePays(7); changePays(8); changePays(9);" onscroll="changePays(2); changePays(3); changePays(4); changePays(5);">
+	<!-- <body id="page-top"
+     onload="changePays(1); changePays(6); changePays(7); changePays(8); changePays(9);" onscroll="changePays(2); changePays(3); changePays(4); changePays(5);"
+    > -->
+    <body id="page-top"
+    >
 		<div id="st-container" class="st-container">
 		    <div class="st-pusher">
 	        	<div class="st-content">

@@ -1125,7 +1125,7 @@ class="res-flx-s img-avatar-sm">
                         <option value="Guinee equatoriale"
                             style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                             Guinee equatoriale</option>
-                        <option value="off"> Pays départ </option>
+                        
                     </select>
 
                 </div>
@@ -1175,7 +1175,7 @@ class="res-flx-s img-avatar-sm">
                         <option value="Guinee equatoriale"
                             style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                             Guinee equatoriale</option>
-                        <option value="off"> Pays d'arrivé </option>
+                        
                     </select>
 
                 </div>
@@ -1267,22 +1267,30 @@ class="res-flx-s img-avatar-sm">
                                         console.log(data)
                                     },
                                     "createdRow": function(row, data, dataIndex) {
-                                        console.log(data.date_liv, new Date(data.date_liv
-                                            .split("/")[1] + "/" + data.date_liv
-                                            .split("/")[0] + "/" + data.date_liv
-                                            .split("/")[2]))
+                                        // console.log(data.date_liv, new Date(data.date_liv
+                                        //     .split("/")[1] + "/" + data.date_liv
+                                        //     .split("/")[0] + "/" + data.date_liv
+                                        //     .split("/")[2]))
 
-                                        if (data.date_liv && (new Date(data.date_liv.split(
-                                                "/")[1] + "/" + data.date_liv.split(
-                                                "/")[0] + "/" + data.date_liv.split(
-                                                "/")[2]) > new Date())) {
+                                        // if (data.date_liv && (new Date(data.date_liv.split(
+                                        //         "/")[1] + "/" + data.date_liv.split(
+                                        //         "/")[0] + "/" + data.date_liv.split(
+                                        //         "/")[2]) > new Date())) {
+
+                                        //     $(row).addClass('testclassvalid');
+
+                                        // } else {
+                                        //     $(row).addClass('testclass');
+                                        // }
+                                        $(row).addClass('tableline'+data.id_notifications);
+                                        $(row).attr( 'id', 'tableline'+data.id_notifications );
+                                        if (data.statut =="1") {
 
                                             $(row).addClass('testclassvalid');
 
                                         } else {
                                             $(row).addClass('testclass');
                                         }
-
 
                                     },
                                     'columns': [
@@ -1348,13 +1356,17 @@ class="res-flx-s img-avatar-sm">
                                                 var result=`<div 
 
 class="res-flx-s img-avatar-sm">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.id_notifications}">
-  Consulter
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.id_notifications}"
+onclick="Changetest(`+row.id_notifications+`);"
+> Consulter
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal${row.id_notifications}" 
+onmouseover="submitCheck(`+row.id_notifications+`);"
+tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <form id="postuler" action="post-valide.php" method="POST" >
+<input type="text"name="ToControle" hidden  value="${ToControle}">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -1422,7 +1434,8 @@ class="res-flx-s img-avatar-sm">
                                                 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <button type="submit"  class="btn btn-primary <?php echo $row['type']=="transporteur"?'hidden':'' ;  ?>">Enregistrer</button>
+        <button type="submit" id="btnSubmit${row.id_notifications}"
+            disabled  class="btn btn-primary <?php echo $row['type']=="transporteur"?'hidden':'' ;  ?>">Valider</button>
       </div>
     </div>
   </div>

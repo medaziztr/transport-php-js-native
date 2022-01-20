@@ -68,7 +68,7 @@
                                                             <option value="Guinee equatoriale"
                                                                 style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                                                                 Guinee equatoriale</option>
-                                                            <option value="off"> Pays départ </option>
+                                                            
                                                         </select>
 
                                                     </div>
@@ -76,10 +76,7 @@
                                                         <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
                                                         <input type="text" name="ville_dep" id="villed"
                                                             placeholder="Ville de Chargement">
-                                                        <input type="text" name="ville_dep" id="villed-x"
-                                                            disabled="disabled"
-                                                            style="color: #CCC; position: absolute; background: transparent; z-index: 1;height:0px;" />
-                                                    </div>
+                                                  </div>
                                                     <div class="col-sm-4 col-xs-12 no-padding">
                                                         <!-- <input type="text" class="form-control"  id="tag2" name="ville_dep" placeholder="Ville de départ"> -->
                                                         <input type="date" name="ville_dep" id="dated"
@@ -140,7 +137,7 @@
                                                             <option value="Guinee equatoriale"
                                                                 style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                                                                 Guinee equatoriale</option>
-                                                            <option value="off"> Pays d'arrivé </option>
+                                                            
                                                         </select>
 
                                                     </div>
@@ -320,6 +317,16 @@ class="res-flx-s img-avatar-sm">
                                                 console.log("rowrowrowrowrowrowrowrowrowrowrow",data,type,row)
                                                 var val=[];
                                                 val=row.vehicules;
+                                                ToControle=0;
+
+                                                for (let index = 0; index < val.length; index++) {
+                                                     const element = val[index];
+                                                   if (element.checked) {
+                                                    ToControle=ToControle+1;   
+                                                   }
+                                                    console.log()
+                                                }
+                                                
                                                 var result=`<div 
 
 class="res-flx-s img-avatar-sm">
@@ -330,8 +337,10 @@ onclick="Changetest(`+row.id_notifications+`);"
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<form id="postuler" action="post-valide.php" method="POST" >
+<div class="modal fade"  onmouseover="submitCheck(`+row.id_notifications+`);"
+id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form id="postuler${row.id_notifications}" action="post-valide.php"  method="POST" >
+<input type="text"name="ToControle" hidden  value="${ToControle}">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -342,6 +351,8 @@ onclick="Changetest(`+row.id_notifications+`);"
         </button>
       </div>
       <div class="modal-body">
+
+      <label id="postulerError${row.id_notifications}" hidden style="backg"></label>
       <table id='empT' class='display dataTable'>
                                                         <thead>
                                                             <tr>
@@ -414,7 +425,9 @@ onclick="Changetest(`+row.id_notifications+`);"
        ${row.type=="Soumission" && row.chargement_telephone ==  <?php echo $_SESSION['telephone']; ?> ?'        <button type="submit"  class="btn btn-primary ">Valider</button>':""}
         <?php }else if ($row['type']=="client") {
        ?>
-            <button type="submit"  class="btn btn-primary ">Valider</button>
+            <button type="submit" id="btnSubmit${row.id_notifications}"
+            disabled
+            class="btn btn-primary ">Valider</button>
 
 <?php }
        ?>
@@ -422,7 +435,9 @@ onclick="Changetest(`+row.id_notifications+`);"
     </div>
   </div>
   </form>
-</div> </div>`;
+</div> 
+
+</div>`;
                                         }
                                     },
                                         {

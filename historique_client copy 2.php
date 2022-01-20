@@ -205,7 +205,7 @@
                                     <option value="Guinee equatoriale"
                                         style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                                         Guinee equatoriale</option>
-                                    <option value="off"> Pays départ </option>
+                                    
                                 </select>
 
                             </div>
@@ -249,7 +249,7 @@
                                     <option value="Guinee equatoriale"
                                         style="background:url('./img/flags/equatorial-guinea.svg') no-repeat; width:30px; height:30px;">
                                         Guinee equatoriale</option>
-                                    <option value="off"> Pays d'arrivé </option>
+                                    
                                 </select>
 
                             </div>
