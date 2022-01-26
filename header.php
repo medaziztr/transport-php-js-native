@@ -344,7 +344,7 @@ table.dataTable,.dataTables_wrapper {
 														
 															<li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
 
-                                                            <li><a href="notifications.php" class="hidden-xs">Mes Notifications <span class="badge " style="background-color: #e71010;" id="nbrnotification"><?php echo $totalRecordwithFilter; ?></span></a></li>
+                                                            <li><a href="notifications.php" >Mes Notifications <span class="badge " style="background-color: #e71010;" id="nbrnotification"><?php echo $totalRecordwithFilter; ?></span></a></li>
 
 															
                                                     <?php

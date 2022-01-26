@@ -4,7 +4,7 @@
 
     
     $id_disp=$_GET['id_disp'];
-    $telephone=$_GET['telephone'];
+    $telephone=$_SESSION['telephone'];
 
 
 
@@ -14,6 +14,6 @@
     
     
     if($_SESSION['type']=="admin"){ header("location: index-admin.php"); }
-    else{header("location:  historique_client.php?telephone='.$telephone");}
+    else{header("location:  historique_client.php?telephone=".$telephone);}
 
 ?>
