@@ -470,9 +470,9 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
                                     ],
                                     dom: 'Bfrtip',
                                     buttons: [
-                                        'copyHtml5',
+                                        ////'copyHtml5',
                                         'excelHtml5',
-                                        'csvHtml5',
+                                        ////'csvHtml5',
                                         'pdfHtml5'
                                     ]
                                 });

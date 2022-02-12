@@ -295,15 +295,22 @@
 			
 			function activate() {
 				  // Get the checkbox
-				var checkBox = document.getElementById("myonoffswitch88");
+					  // Get the checkbox
+					  var checkBox = document.getElementById("myonoffswitch88");
 				// Get the output text
 				var text = document.getElementById("prixprop");
+				var prixpropdetails = document.getElementById("prixpropdetails");
+				console.log("okprixpropdetailsprixpropdetailsprixpropdetails")
 
 				// If the checkbox is checked, display the output text
 				if (checkBox.checked == true){
 				text.style.display = "block";
+				prixpropdetails.style.display = "block";
+
 				} else {
 				text.style.display = "none";
+				prixpropdetails.style.display = "none";
+
 				}
             }
 			
@@ -416,7 +423,6 @@
 					
 				var availableTags5 = [ "Bata", "Malabo", "Ebebiyín", "Aconibe", "Añisoc", "Luba", "Evinayong", "Mongomo", "Mengomeyen", "Mikomeseng", "Rebola", "Bidjabidjan", "Niefang", "Cogo", "Nsok", "San Antonio de Pale", "Mbini", "Nsork", "Ayene", "Nkimi", "Machinda", "Acurenam", "Corisco", "Baney", "Bicurga", "Nsang" ];
 					
-				select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
 				
 				switch(select.selectedIndex) {
 						
@@ -670,10 +676,20 @@ var VehiculesByPoid = {
 			
 		var availableTags5 = [ "Bata", "Malabo", "Ebebiyín", "Aconibe", "Añisoc", "Luba", "Evinayong", "Mongomo", "Mengomeyen", "Mikomeseng", "Rebola", "Bidjabidjan", "Niefang", "Cogo", "Nsok", "San Antonio de Pale", "Mbini", "Nsork", "Ayene", "Nkimi", "Machinda", "Acurenam", "Corisco", "Baney", "Bicurga", "Nsang" ];
 			
-		select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
 		
 		switch(select.selectedIndex) {
-				
+
+				case 0 :
+			select_s.backgroundImage = "";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "0px";
+			// select_s.backgroundColor= "#eeecec";
+			// select_s.backgroundPosition= "8px 7px";
+			// select_s.paddingLeft= "35px";
+			//tel.value="00237";
+			//tel.pattern="00237[0-9]{9}";
+		
+			break;	
 
 			case 1 :
 			select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
@@ -846,10 +862,20 @@ var VehiculesByPoid = {
 			
 		var availableTags5 = [ "Bata", "Malabo", "Ebebiyín", "Aconibe", "Añisoc", "Luba", "Evinayong", "Mongomo", "Mengomeyen", "Mikomeseng", "Rebola", "Bidjabidjan", "Niefang", "Cogo", "Nsok", "San Antonio de Pale", "Mbini", "Nsork", "Ayene", "Nkimi", "Machinda", "Acurenam", "Corisco", "Baney", "Bicurga", "Nsang" ];
 			
-		select_s.backgroundImage = "url('./img/flags/cameroon.svg')";
+	
 		
 		switch(select.selectedIndex) {
-				
+			case 0 :
+			select_s.backgroundImage = "";
+			select_s.backgroundRepeat = "no-repeat";
+			select_s.backgroundSize = "0px";
+			// select_s.backgroundColor= "#eeecec";
+			// select_s.backgroundPosition= "8px 7px";
+			// select_s.paddingLeft= "35px";
+			//tel.value="00237";
+			//tel.pattern="00237[0-9]{9}";
+		
+			break;	
 
 			case 1 :
 			select_s.backgroundImage = "url('./img/flags/cameroon.svg')";

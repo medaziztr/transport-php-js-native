@@ -346,9 +346,9 @@ class="res-flx-s img-avatar-sm">
                                         ],
                                         dom: 'Bfrtip',
                                         buttons: [
-                                            'copyHtml5',
+                                            //'copyHtml5',
                                             'excelHtml5',
-                                            'csvHtml5',
+                                            //'csvHtml5',
                                             'pdfHtml5'
                                         ]
                                     });
@@ -826,10 +826,11 @@ class="res-flx-s img-avatar-sm">
                                                                 style="display:none">
                                                                 <div class="col-sm-4 col-xs-12 no-padding">
                                                                     <input type="number" placeholder="Prix"
+                                                                    onchange="form1.deviseval.value=form1.devise.value"
                                                                         name="prix_prop" class="col-xs-12">
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12 no-padding">
-                                                                    <select name="devise" class="form-control">
+                                                                    <select name="devise" class="form-control" onclick="form1.deviseval.value=form1.devise.value">
                                                                         <option value="FCFA">FCFA</option>
                                                                         <option value="EURO">EURO</option>
                                                                     </select>
@@ -841,7 +842,7 @@ class="res-flx-s img-avatar-sm">
 
 
 
-                                                        <div class="row margt">
+                                                        <div class="row margt" >
                                                             <div class="col-sm-2 col-xs-12 no-padding left-title">Valeur
                                                                 de la marchandise </div>
                                                             <div class="col-sm-1 col-xs-12 no-padding form">
@@ -873,8 +874,56 @@ class="res-flx-s img-avatar-sm">
                                                             </div>
                                                         </div>
 
+                                                       
+                                                        <div class="row margt" id="prixpropdetails"   style="display:none">
+                                                                <div class="col-sm-2 col-xs-12 no-padding left-title">Modalité de payement
+</div>
+                                                                <div class="col-sm-4 col-xs-12 no-padding">
+                                                                    <input type="number"
+                                                                    onchange="form1.reste.value=form1.prix_prop.value-form1.avance.value"
+                                                                    placeholder="Au chargement"
+                                                                        name="avance" class="col-xs-12">
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12 no-padding">
+                                                                    <input type="number" placeholder="A la livraison"
+                                                                    onfocus="form1.avance.value=form1.prix_prop.value-form1.reste.value"
+
+                                                                        name="reste" class="col-xs-12">
+                                                                </div>
+                                                                <div class="col-sm-1 col-xs-12 no-padding">
+                                                                <input  placeholder="devise"
+                                                                style="color: #808080;
+    background-color: #eeecec;
+    height: 38px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    width: 100%;
+    padding: 0px 10px;"
+                                                                        name="deviseval" class="col-xs-12 number" disabled>
+                                                                </div>
+                                                               
+                                                            </div>
 
 
+                                                            <div class="row margt" >
+                                                                <div class="col-sm-2 col-xs-12 no-padding left-title">Mode de payement
+</div>
+                                                             
+
+                                                         <div class="col-sm-6 col-xs-12" >
+                                                             
+                                                             <div class="col-sm-4 col-xs-12 no-padding">
+                                                                 <select name="methodepayement" class="form-control" >
+                                                                     <option value="Espèce">Espèce</option>
+                                                                     <option value="Chèque">Chèque</option>
+                                                                     <option value="Virement">Virement</option>
+                                                                 </select>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
 
                                                     </div>
                                                 </div>

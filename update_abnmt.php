@@ -4,6 +4,7 @@
 
 if(isset($_SESSION['login_user'])) {
     
+    echo json_encode($_POST) ;
     extract($_POST,EXTR_OVERWRITE);
 	
     $telephone=$_SESSION['telephone'];
@@ -42,7 +43,13 @@ if(isset($_SESSION['login_user'])) {
         $ext = substr($str,$i+1,$l);
         return $ext;
     }	
-    
+    echo $_FILES['avat']['name'];
+
+  
+    if ($_FILES['avat']['name']!="") {
+        echo "FILES['avat']['name']";
+
+
     $filename1 = stripslashes($_FILES['avat']['name']);
     
     $extension1 = getExtension($filename1);
@@ -54,10 +61,17 @@ if(isset($_SESSION['login_user'])) {
     $newname11=$image_name1;
     
     $copied = copy($_FILES['avat']['tmp_name'], $newname1);
+        $img_vehicule=$image_name1;
+    }else{
+    $img_vehicule=$old_image;
+    echo "FILES['avat']['name']111";
+
+}
+
+$pppppppppp=11111;
     
 
-    $insertSQL="INSERT INTO `abonnements` (`matricule`, `marque`, `date_deb`, `date_fin`, `gps`, `telephone`, `type_vehicule`, `poid_max`, `img_vehicule`, `valide`, `nom_chauffeur`, `telephone_chauffeur`, `autre_info`) VALUES ('$matricule', '$marque', '$today1', '$date_fin', '$gpst', '$telephone', '$type_vehicule', '$poid_max', '$image_name1', '$valide', '$nom_chauffeur', '$telephone_chauffeur', '$autre_info')";
-
+    $insertSQL= "UPDATE `abonnements` SET `matricule`='$matricule', `marque`='$marque', `date_deb`='$date_deb', `date_fin`='$date_fin', `gps`='$gps', `telephone`='$telephone', `type_vehicule`='$type_vehicule', `poid_max`='$poid_max', `img_vehicule`='$img_vehicule', `valide`='$valide', `nom_chauffeur`='$nom_chauffeur', `telephone_chauffeur`='$telephone_chauffeur' , `autre_info`='$autre_info' WHERE `id_abonnement`='$id_abonnement'";
     $result = mysqli_query($db,$insertSQL);
     
     header("location: abonnement.php");

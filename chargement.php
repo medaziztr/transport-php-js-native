@@ -224,10 +224,10 @@ $sused=mysqli_num_rows($resultused);
                     <h3 class="txt-bordure sections-title">Personne à contacter </h3>
                     <div class="container no-padding">
 
-                        <div class="col-md-12 no-padding">Nom & Prénom du contact : <?php echo $res['contact_name']; ?>
+                        <div class="col-md-12 no-padding">Nom & Prénom du contact : <?php echo ($res['contact_name']==""||$res['contact_name']==" ")?($res['prenom']." ".$res['nom']):$res['contact_name']; ?>
                         </div>
                         <div class="col-md-12 no-padding">Numéro de téléphone du contact :
-                            <?php echo $res['contact_phone']; ?> <a href="tel:<?php echo $res['contact_phone']; ?>"><i
+                            <?php echo $res['contact_phone']; ?> <a href="tel:<?php echo  ($res['contact_phone']==""||$res['contact_phone']==" ")?($res['prenom']." ".$res['nom']):$res['contact_phone'] ; ?>"><i
                                     class="fa fa-phone"></i></a></div>
                         <div class="col-md-12 no-padding">Nom du client : <?php echo $res['nom'].' '.$res['prenom'];  ?>
                         </div>

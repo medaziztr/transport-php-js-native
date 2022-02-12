@@ -259,15 +259,22 @@
 			
 			function activate() {
 				  // Get the checkbox
-				var checkBox = document.getElementById("myonoffswitch88");
+					  // Get the checkbox
+					  var checkBox = document.getElementById("myonoffswitch88");
 				// Get the output text
 				var text = document.getElementById("prixprop");
+				var prixpropdetails = document.getElementById("prixpropdetails");
+				console.log("okprixpropdetailsprixpropdetailsprixpropdetails")
 
 				// If the checkbox is checked, display the output text
 				if (checkBox.checked == true){
 				text.style.display = "block";
+				prixpropdetails.style.display = "block";
+
 				} else {
 				text.style.display = "none";
+				prixpropdetails.style.display = "none";
+
 				}
             }
 			

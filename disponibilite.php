@@ -85,12 +85,13 @@
                     </div>
                     <div class="col-md-12">
                         <div class="contact-map">
-                            <form id="mainContact" action="sendemails.php?mail=commercial@telefret.com" method="POST">
+                            <form id="mainContact" action="sendemails.php?mail=commercial@telefret.com&id_disp=<?php echo  $id_disp; ?>" method="POST">
 
                                 <div class="form-group">
+
                                     <div class="row">
                                         <div class="col-md-12 no-padding">
-                                            <input name="sujet" type="text" class="form-control" placeholder="Sujet">
+                                            <input name="sujet" type="text"  class=" form-control" placeholder="Sujet">
                                         </div>
                                         <div class="col-md-12 padding-12">
                                             <textarea name="message" class="form-control" rows="6" required="" placeholder="Votre Message"></textarea>

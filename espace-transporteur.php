@@ -360,9 +360,9 @@
                                             ],
                                             dom: 'Bfrtip',
                                             buttons: [
-                                                'copyHtml5',
+                                                //'copyHtml5',
                                                 'excelHtml5',
-                                                'csvHtml5',
+                                                //'csvHtml5',
                                                 'pdfHtml5'
                                             ]
                                         });
@@ -685,9 +685,9 @@ class="res-flx-s img-avatar-sm">`;
                                     ],
                                     dom: 'Bfrtip',
                                     buttons: [
-                                        'copyHtml5',
+                                        //'copyHtml5',
                                         'excelHtml5',
-                                        'csvHtml5',
+                                        //'csvHtml5',
                                         'pdfHtml5'
                                     ]
                                 });

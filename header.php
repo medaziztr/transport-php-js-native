@@ -151,6 +151,190 @@ if (isValid>0) {
   
      
  }
+ 
+ function functionConfirm(msg, myYes, myNo) {
+                var confirmBox = $("#confirm");
+                confirmBox.find(".message").text(msg);
+                confirmBox.find(".yes,.no").unbind().click(function() {
+                        confirmBox.hide();
+                            });
+                        confirmBox.find(".yes").click(myYes);
+                        confirmBox.find(".no").click(myNo);
+                        confirmBox.show();
+            }
+
+            function DeleteChargement(id_disp) {
+    functionConfirm("Voulez vous continuez?", function yes() {
+        $.ajax({
+         type: "post",
+         url: "supp-charg-ajax.php",
+         'data':{"id_charg":id_disp},
+                                 'success': function(data) {
+
+                                     $("#"+'tablelinechargement'+id_disp).addClass("hidden");
+
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+            },
+            function no() {
+            
+            });
+            
+               
+ }
+
+ function DeleteAbonnements(id_disp) {
+    functionConfirm("Voulez vous continuez?", function yes() {
+        $.ajax({
+         type: "post",
+         url: "supp-abmt-ajax.php",
+         'data':{"id_abn":id_disp},
+                                 'success': function(data) {
+
+                                     $("#"+'tablelineAbonnements'+id_disp).addClass("hidden");
+
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+            },
+            function no() {
+            
+            });
+            
+               
+ }
+ function DeleteCompte(id_disp) {
+    functionConfirm("Voulez vous continuez?", function yes() {
+        $.ajax({
+         type: "post",
+         url: "supp-compte-ajax.php",
+         'data':{"telephone":id_disp},
+                                 'success': function(data) {
+
+                                     $("#"+'tableline'+id_disp).addClass("hidden");
+
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+            },
+            function no() {
+            
+            });
+            
+               
+ }
+
+ function Deletebancompte(id_disp) {
+    functionConfirm("Voulez vous continuez?", function yes() {
+        $.ajax({
+         type: "post",
+         url: "ban-compte-ajax.php",
+         'data':{"telephone":id_disp},
+                                 'success': function(data) {
+
+                                     $("#"+'tableline'+id_disp).addClass("hidden");
+
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+            },
+            function no() {
+            
+            });
+            
+               
+ }
+
+ function Deleteunbancompte(id_disp) {
+    functionConfirm("Voulez vous continuez?", function yes() {
+        $.ajax({
+         type: "post",
+         url: "unban-compte-ajax.php",
+         'data':{"telephone":id_disp},
+                                 'success': function(data) {
+
+                                     $("#"+'tableline'+id_disp).addClass("hidden");
+
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+            },
+            function no() {
+            
+            });
+            
+               
+ }
+
+            function DeleteNotification(id_disp) {
+    functionConfirm("Voulez vous continuez?", function yes() {
+        $.ajax({
+         type: "post",
+         url: "supp-notification_ajax.php",
+         'data':{"id_notification":id_disp},
+                                 'success': function(data) {
+
+                                     $("#"+'tableline'+id_disp).addClass("hidden");
+
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+            },
+            function no() {
+            
+            });
+            
+               
+ }
+ function DeleteNotification(id_disp) {
+    functionConfirm("Voulez vous continuez?", function yes() {
+        $.ajax({
+         type: "post",
+         url: "supp-disp-ajax.php",
+         'data':{"id_disp":id_disp},
+                                 'success': function(data) {
+
+                                     $("#"+'tablelinedispo'+id_disp).addClass("hidden");
+
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+            },
+            function no() {
+            
+            });
+            
+               
+ }
     function Changetest(id_notification) {
      
         $.ajax({
@@ -293,6 +477,46 @@ table.dataTable,.dataTables_wrapper {
     > -->
     <body id="page-top"
     >
+    <style>
+            #confirm {
+                display: none;
+                background-color: #fff;
+                border: 2px solid #e9ecef;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;                position: fixed;
+                width: 250px;
+                height: 150px;
+                left: 50%;
+                margin-left: -100px;
+                margin-top:100px;
+                padding: 8px;
+                box-sizing: border-box;
+                text-align: center;
+                z-index: 99999;
+            }
+        #confirm button {
+            background-color: #fff;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 5px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+        #confirm .message {
+            text-align: left;
+        }
+        </style>
+
+    <div id="confirm">
+            <div class="message"></div>
+            <button class="yes" style="cusor:pointer;background-color:#f4d1d1!important ;">Yes</button>
+            <button class="no danger" style="cusor:pointer;">No</button>
+        </div>
+        
+
 		<div id="st-container" class="st-container">
 		    <div class="st-pusher">
 	        	<div class="st-content">

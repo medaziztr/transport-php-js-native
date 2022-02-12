@@ -178,7 +178,9 @@ if  (isset($_SESSION['login_user'])) {  if($_SESSION['type']=="admin"){ ?>
                                                         },
                                                         "createdRow": function(row, data, dataIndex) {
                                                             console.log("row.valide", data.valide)
-
+                                                            $(row).addClass('tablelineAbonnements'+data.id_abonnement);
+                                        $(row).attr( 'id', 'tablelineAbonnements'+data.id_abonnement );
+                                        
                                                             if (data.valide == 1) {
 
                                                                 $(row).addClass('testclassvalid');
@@ -294,11 +296,10 @@ if  (isset($_SESSION['login_user'])) {  if($_SESSION['type']=="admin"){ ?>
                                                                         //         `
                                                                     }
                                                                     return value + `
-                                                                     <a onclick="return confirm('Êtes-vous sûr de votre choix ?')"
-                                                            class="supp"
-                                                            href="supp-abmt.php?id_abn=${row.id_abonnement}"><img style="width:20px;height:20px;"
-                                                                src="./img/supp.png"></a>
-
+                                                                    <a 
+onclick="DeleteAbonnements(`+row.id_abonnement+`);"
+            style="cursor: pointer;"
+ ><img style="height:20px;width:20px" src="./img/supp.png" ></a>
                                                                
 `;
                                                                 }
@@ -307,9 +308,9 @@ if  (isset($_SESSION['login_user'])) {  if($_SESSION['type']=="admin"){ ?>
                                                         ],
                                                         dom: 'Bfrtip',
                                                         buttons: [
-                                                            'copyHtml5',
+                                                            //'copyHtml5',
                                                             'excelHtml5',
-                                                            'csvHtml5',
+                                                            //'csvHtml5',
                                                             'pdfHtml5'
                                                         ]
                                                     });
@@ -463,8 +464,9 @@ if  (isset($_SESSION['login_user'])) {  if($_SESSION['type']=="admin"){ ?>
                                                         value="${row.email}">
 
                                                     <a class="supp"
-                                                        onclick="return confirm('Êtes-vous sûr de SUPPRIMER ce compte ?')"
-                                                        href="supp-compte.php?tel=${row.telephone}"><img
+
+                                                    onclick="DeleteCompte(`+row.telephone+`);"
+            style="cursor: pointer;"><img
                                                         style="height:20px;width:20px;"
                                                             src="./img/supp.png"></a>
                                                 
@@ -473,16 +475,18 @@ if  (isset($_SESSION['login_user'])) {  if($_SESSION['type']=="admin"){ ?>
                                                                     if (row.verif == 5) {
                                                                         value = value + `
                     <a class="supp"
-                                                        onclick="return confirm('Êtes-vous sûr de DEBANNER ce compte ?')"
-                                                        href="unban-compte.php?telephone=${row.telephone}"><img
+                    onclick="Deleteunbancompte(`+row.telephone+`);"
+            style="cursor: pointer;"
+             ><img
                                                         style="height:20px;width:20px;"
                                                             src="./img/unban.png"></a>
                                                             `
                                                                     } else {
                                                                         value = value + `
                     <a class="supp"
-                                                        onclick="return confirm('Êtes-vous sûr de BANNER ce compte ?')"
-                                                        href="ban-compte.php?telephone=${row.telephone}"><img
+                    onclick="Deletebancompte(`+row.telephone+`);"
+            style="cursor: pointer;"
+                                                    ><img
                                                         style="height:20px;width:20px;"
                                                             src="./img/ban.png"></a>
                     `
@@ -503,9 +507,9 @@ if  (isset($_SESSION['login_user'])) {  if($_SESSION['type']=="admin"){ ?>
                                                         ],
                                                         dom: 'Bfrtip',
                                                         buttons: [
-                                                            'copyHtml5',
+                                                            //'copyHtml5',
                                                             'excelHtml5',
-                                                            'csvHtml5',
+                                                            //'csvHtml5',
                                                             'pdfHtml5'
                                                         ]
                                                     });
@@ -701,9 +705,9 @@ var dataTable5 = $('#empTable5').DataTable({
     ],
     dom: 'Bfrtip',
     buttons: [
-        'copyHtml5',
+        //'copyHtml5',
         'excelHtml5',
-        'csvHtml5',
+        //'csvHtml5',
         'pdfHtml5'
     ]
 });
@@ -914,6 +918,10 @@ dataTable5.buttons().container()
                                                             console.log(data)
                                                         },
                                                         "createdRow": function(row, data, dataIndex) {
+
+
+                                                            $(row).addClass('tablelinechargement'+data.id_charg);
+                                        $(row).attr( 'id', 'tablelinechargement'+data.id_charg );
                                                             console.log(data.date_liv, new Date(data
                                                                 .date_liv
                                                                 .split("/")[1] +
@@ -990,7 +998,10 @@ class="res-flx-s img-avatar-sm">
                 <input type="submit" value="Consulter"
                                                             onclick="location.href='chargement.php?id_charg=${row.id_charg}' ">
                                                   
-<a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-charg.php?id_charg=${row.id_charg}&amp;telephone=${row.telephone}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
+<a 
+onclick="DeleteChargement(`+row.id_charg+`);"
+            style="cursor: pointer;"
+ ><img style="height:20px;width:20px" src="./img/supp.png" ></a>
 
 `;
                                                                 }
@@ -1003,9 +1014,9 @@ class="res-flx-s img-avatar-sm">
                                                         ],
                                                         dom: 'Bfrtip',
                                                         buttons: [
-                                                            'copyHtml5',
+                                                            //'copyHtml5',
                                                             'excelHtml5',
-                                                            'csvHtml5',
+                                                            //'csvHtml5',
                                                             'pdfHtml5'
                                                         ]
                                                     });
@@ -1458,7 +1469,12 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
                                                 // console.log(row)
                                                 return `
                                                
-                                        <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-notification.php?id_notification=${row.id_notifications}&amp;redirect=${'notifications.php'}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
+                                        <a 
+                                        
+                                        onclick="DeleteNotification(`+row.id_notifications+`);"
+            style="cursor: pointer;"
+                                        
+                                         class="supp" ><img style="height:20px;width:20px" src="./img/supp.png" ></a>
                       
 
 
@@ -1473,9 +1489,9 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
                                     ],
                                     dom: 'Bfrtip',
                                     buttons: [
-                                        'copyHtml5',
+                                        //'copyHtml5',
                                         'excelHtml5',
-                                        'csvHtml5',
+                                        //'csvHtml5',
                                         'pdfHtml5'
                                     ]
                                 });
@@ -1734,6 +1750,8 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
                                                             console.log(data)
                                                         },
                                                         "createdRow": function(row, data, dataIndex) {
+                                                            $(row).addClass('tablelinedispo'+data.id_disp);
+                                        $(row).attr( 'id', 'tablelinedispo'+data.id_disp );
                                                             console.log(data.date_arr, new Date(data
                                                                 .date_arr
                                                                 .split("/")[1] +
@@ -1828,9 +1846,11 @@ class="res-flx-s img-avatar-sm">
                ?>
             >
 
-            <a onclick="return confirm('Êtes-vous sûr de votre choix ?')"
+            <a 
+            onclick="DeleteDispo(`+row.id_disp+`);"
+            style="cursor: pointer;"
                                                         class="supp"
-                                                        href="supp-disp.php?id_disp=${ row.id_disp}"><img
+                                                     ><img
                                                         style="height:20px;width:20px"    src="./img/supp.png"></a>
 `;
                                                                 }
@@ -1838,9 +1858,9 @@ class="res-flx-s img-avatar-sm">
                                                         ],
                                                         dom: 'Bfrtip',
                                                         buttons: [
-                                                            'copyHtml5',
+                                                            //'copyHtml5',
                                                             'excelHtml5',
-                                                            'csvHtml5',
+                                                            //'csvHtml5',
                                                             'pdfHtml5'
                                                         ]
                                                     });

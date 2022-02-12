@@ -32,7 +32,12 @@ if($dated != ''){
 if($datef != ''){
     $searchQuery .= " and STR_TO_DATE( date_fin, '%d/%m/%Y')<='$datef' ";
 }
-
+$transporteur="";
+$telephone="";
+if (isset($_POST['transporteur'])&& isset($_POST['telephone'])) {
+    $telephone=$_POST['telephone'];
+    $transporteur= " and transporteur.telephone='$telephone' ";
+  }
 
 if($searchValue != ''){
 	$searchQuery .= " and (
@@ -51,17 +56,17 @@ if($searchValue != ''){
         ) ";
 }
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone  ".$now." ");
+$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone  ".$transporteur." ".$now." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone  ".$now." ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone  ".$transporteur." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from `transporteur`, `abonnements`   WHERE abonnements.telephone=transporteur.telephone ".$transporteur." ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 
@@ -77,6 +82,9 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
             "poid_max"=>$row['poid_max'],
             "nom"=>$row['nom'],
             "valide"=>$row['valide'],
+            "telephone_chauffeur"=>$row['telephone_chauffeur'],
+            "nom_chauffeur"=>$row['nom_chauffeur'],
+
             "id_abonnement"=>$row['id_abonnement'],
             "gps"=>$row['gps']
 

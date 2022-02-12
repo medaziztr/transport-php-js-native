@@ -22,7 +22,23 @@
                 <div class="col-md-12">
                     <div class="contact-map">
                         <h3 class="txt-bordure sections-title">Vos Abonnements</h3>
-                        <?php
+                   
+
+
+
+
+<h3 class=" sections-title">Tous les Abonnements</h3>
+
+
+
+
+
+
+
+
+<div class="container result-rech">
+
+<?php
                             $telephone=$_SESSION['telephone'];
             
                             $selectSQL="SELECT * FROM abonnements WHERE telephone='$telephone'";
@@ -31,40 +47,237 @@
                             $res=mysqli_fetch_array($resultat);
                             $s=mysqli_num_rows($resultat);
                             
-                            if($s>0){
-                                do{
-                        ?>        
-                            
-                                    <div class="cadre <?php if($res['valide']==1){ echo 'valide' ;} ?>">
+                        ?>    
+    <!-- Custom Filter -->
 
-                                        <div class="res-flx-s img-avatar-sm">
-                                            <img src="./img/uploaded/<?php echo $res['img_vehicule']; ?>">
-                                        </div>
-                                        <div class="res-flx-s "><font style="text-transform: uppercase;"><?php echo $res['matricule']; ?></font></div>
-                                        <div class="res-flx-s "><?php echo $res['marque']; ?></div>
-                                        <div class="res-flx-s "><?php echo $res['type_vehicule']; ?></div>
-                                        <div class="res-flx-s "><?php echo $res['poid_max'].' Tonnes'; ?></div>
-                                        <div class="res-flx-s "><?php if ($res['gps']==1){ echo 'Avec GPS' ; } else {echo 'Sans GPS' ; } ?></div>
-                                        <?php if($res['valide']==1){ ?>
-                                            <div class="res-flx-s">Du <?php echo $res['date_deb']; ?> Au <?php echo $res['date_fin']; ?> </div>
-                                        <?php }
-                                        else { ?>
-                                            <div class="res-flx-s">Pas encore Validé</div>
-                                        <?php } ?>
-                                    </div>
-                        
-                        <?php
-                            
-                                }
-                                while($res=mysqli_fetch_array($resultat));
-                            }
-                            else{
-                                echo "<p> Vous n'avez encore aucun abonnement validé! </p>";						
-                                    if ( $_SESSION['date_limite'] > strtotime(date('d-m-Y')) ) {  
-                                        echo " <h4> <span class='vert'> Vous avez un abonnement gratuit, valider ci-dessous. </span></h4>";
-                                    } 
-                            }
-                        ?>
+    <div class="css-tab-content formulaires">
+
+        <div class="container" style="padding-left: unset !important;">
+            <div class="col-md-6 formulaire">
+                <h3 class="txt-bordure sections-title">Debut ulterieur
+                    au</h3>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-sm-4 col-xs-12 no-padding">
+                            <!-- <input type="text" class="form-control"  id="tag2" name="ville_deb" placeholder="Ville de départ"> -->
+                            <input type="date" name="ville_deb"
+                                id="dated" placeholder="dated">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 formulaire" style="margin: left 5px;">
+                <h3 class="txt-bordure sections-title">Fin anterieur au
+                </h3>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-sm-4 col-xs-12 no-padding">
+                            <!-- <input type="text" class="form-control"  id="tag2" name="ville_deb" placeholder="Ville de départ"> -->
+                            <input type="date" name="datef" id="datef"
+                                placeholder="datef">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        </form>
+    </div>
+
+    <!-- Table -->
+    <table id='empTable3' class='display dataTable'>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Matricule</th>
+                <th>Marque</th>
+                <th>Type de véhicule</th>
+                <th>Poids maximal</th>
+                <th>GPS</th>
+                <th>Date</th>
+                <th>Chauffeur</th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+
+<!-- Script -->
+<script>
+    alert("ok")
+$(document).ready(function() {
+    var dataTable3 = $('#empTable3').DataTable({
+        'processing': true,
+        'serverSide': true,
+        'serverMethod': 'post',
+        //'searching': false, // Remove default Search Control
+        'ajax': {
+            'url': 'ajaxfile5.php',
+            'data': function(data) {
+                // Read values
+
+                var dated = $('#dated').val();
+                var datef = $('#datef').val();
+
+                // Append to data
+
+                data.dated = dated;
+                data.datef = datef;
+                data.transporteur = "true";
+                data.telephone = <?php echo $_SESSION['telephone']; ?> ;
+
+
+            }
+        },
+        'success': function(data) {
+            console.log(data)
+        },
+        'error': function(data) {
+            console.log(data)
+        },
+        "createdRow": function(row, data, dataIndex) {
+            console.log("row.valide", data.valide)
+            $(row).addClass('tablelineAbonnements'+data.id_abonnement);
+$(row).attr( 'id', 'tablelineAbonnements'+data.id_abonnement );
+
+            if (data.valide == 1) {
+
+                $(row).addClass('testclassvalid');
+
+            } else {
+                $(row).addClass('testclass');
+            }
+
+
+        },
+        'columns': [
+
+            {
+                "mData": "img_vehicule",
+                "mRender": function(data, type,
+                    row) {
+                    return `
+                   
+<img src="./img/uploaded/${data ? data : 'logo.png'}">
+`
+                },
+
+            },
+            {
+                data: 'matricule'
+            },
+
+            {
+                data: 'marque'
+            },
+            {
+                data: 'type_vehicule'
+            },
+            {
+                data: 'poid_max'
+            },
+            {
+                "mData": "gps",
+                "mRender": function(data, type,
+                    row) {
+                    return row.gps == 1 ?
+                        'Avec GPS' : 'Sans GPS';
+                },
+
+            },
+
+            {
+                "mData": "date_deb",
+                "mRender": function(data, type,
+                    row) {
+                    // console.log(row)
+                    return "Du " + row
+                        .date_deb +
+                        "Au " + row
+                        .date_fin;
+                }
+            },
+            {
+                "mData": "nom_chauffeur",
+                "mRender": function(data, type,
+                    row) {
+                    // console.log(row)
+                    return  row
+                        .nom_chauffeur +
+                        " / " + row
+                        .telephone_chauffeur;
+                }
+            },
+            {
+                "mData": "telephone",
+                "mRender": function(data, type,
+                    row) {
+                    var value = ``;
+                    if (row.valide != 1) {
+                        //                     value=value+` 
+                        //                     <form method="POST" name="val"
+                        // action="valider_abn.php?id_abn=${row.id_abonnement}">
+                        //                     <input type="submit" onclick="val.submit"
+                        //         value="Clique pour valider">
+                        //         </form>
+                        //         `
+                    }
+                    return value + `
+                    <a href="modif-abonnement.php?id_abonnement=${row.id_abonnement}"><img src="./img/modif.png"  style="height:20px;width:20px"></a>
+
+                    <a 
+onclick="DeleteAbonnements(`+row.id_abonnement+`);"
+style="cursor: pointer;"
+><img style="height:20px;width:20px" src="./img/supp.png" ></a>
+               
+`;
+                }
+            }
+
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+            //'copyHtml5',
+            'excelHtml5',
+            //'csvHtml5',
+            'pdfHtml5'
+        ]
+    });
+    dataTable3.buttons().container()
+        .appendTo('#example_wrapper .col-sm-6:eq(0)');
+
+
+    $('#dated').change(function() {
+
+        dataTable3.draw();
+    });
+    $('#datef').change(function() {
+        dataTable3.draw();
+    });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
                 <div class="col-md-12 m-t-50">
@@ -119,6 +332,16 @@
                                     </div>
                                     <div class="col-md-12 no-padding">
                                         <input name="poid_max" type="number" class="form-control" placeholder="Poids Maximal en tonne" required="">
+                                    </div>
+                                 
+                                    <div class="col-md-12 no-padding">
+                                        <input name="nom_chauffeur" type="text" class="form-control" required="" placeholder="Nom et prénom du chauffeur"> 
+                                    </div>
+                                    <div class="col-md-12 no-padding">
+                                        <input name="telephone_chauffeur" type="text" class="form-control" required="" placeholder="téléphone du chauffeur">
+                                    </div>
+                                    <div class="col-md-12 no-padding">
+                                        <input name="autre_info" type="text" class="form-control" required="" placeholder="Autres informations">
                                     </div>
                                     <?php
 										if( ($s>0) OR (($s==0) AND ($_SESSION['date_limite'] < strtotime(date('d-m-Y')))) ){
