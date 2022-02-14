@@ -20,7 +20,6 @@ $datef= $_POST['datef'];
 $type= $_POST['type'];
 
 $notification_input="";
-
 if (isset($_POST['notification_input'])) {
     $notifi=$_POST['notification_input'];
     if ($notifi=="all") {
@@ -47,13 +46,6 @@ if($type=="client"){
 
 ## Search 
 $searchQuery = " ";
-
-if (isset($_POST['id_notification'])) {
-    $id_notification= $_POST['id_notification'];
-
-    $searchQuery .= " and notifications.id=".$id_notification." ";
-
-}
 if($pays3 != ''){
     $searchQuery .= " and (pays_liv like '%".$pays3."%' ) ";
 }

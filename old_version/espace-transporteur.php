@@ -846,8 +846,8 @@ class="res-flx-s img-avatar-sm">`;
                                                                         </select>
                                                                         -->
 
-                                                        <select type="text" name="pays_dep" id="pays4"
-                                                            placeholder="Pays *" required >
+                                                        <select type="text" name="pays_dep" id="pays8"
+                                                            placeholder="Pays *" required onchange="changePays(8)">
                                                             <option selected value="Cameroun"
                                                                 style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                 Cameroun</option>
@@ -878,7 +878,7 @@ class="res-flx-s img-avatar-sm">`;
                                                         <!-- style="height: 80px; width :200px;"-->
                                                         <!--<input type="text" name="ville_dep" id="autocomplete-ajax"  placeholder="Ville de départ">
             <input type="text" name="ville_dep" id="autocomplete-ajax-x" disabled="disabled" style="color: #CCC; position: absolute; background: transparent; z-index: 1;"/> -->
-                                                        <input type="text" name="ville_dep" id="ville4" />
+                                                        <input type="text" name="ville_dep" id="autocomplete" />
                                                     </div>
 
                                                     <!-- <div class="col-sm-6 col-xs-12 no-padding"> 
@@ -924,8 +924,8 @@ class="res-flx-s img-avatar-sm">`;
                                                                         </select>
                                                                         -->
 
-                                                        <select type="text" name="pays_arr" id="pays5"
-                                                            placeholder="Pays *" required >
+                                                        <select type="text" name="pays_arr" id="pays9"
+                                                            placeholder="Pays *" required onchange="changePays(9)">
                                                             <option selected value="Cameroun"
                                                                 style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
                                                                 Cameroun</option>
@@ -954,7 +954,7 @@ class="res-flx-s img-avatar-sm">`;
                                                         d'arrivée </div>
                                                     <div class="col-sm-6 col-xs-12 no-padding">
                                                         <!-- style="height: 80px; width :200px;"-->
-                                                        <input type="text" name="ville_arr" id="ville5"
+                                                        <input type="text" name="ville_arr" id="autocomplete-dynamic"
                                                             style="width: 100%; border-width: 5px;" />
                                                     </div>
 

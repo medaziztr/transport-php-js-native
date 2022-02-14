@@ -1,7 +1,5 @@
 <?php include"header.php" ?>
 <?php
-  if  (isset($_SESSION['login_user'])) {   ?>
-<?php
     $telephone=$_SESSION['telephone'];
     $today =   strtotime(date('d-m-Y')) ;
 	
@@ -205,15 +203,6 @@
                                             var dated = $('#dated').val();
                                             var datef = $('#datef').val();
                                             // Append to data
-                                            <?php
-        if (isset($_GET['id_notification'])){
-    ?>           
-                                                                                 data.id_notification = <?php echo $_GET['id_notification'] ;  ?>;
-
-
-<?php
-        }
-    ?>          
                                             data.pays2 = gender;
                                             data.pays3 = name;
                                             data.villed = villed;
@@ -232,7 +221,6 @@
 <?php
         }
     ?>           
-
                                         }
                                     },
                                     'success': function(data) {
@@ -466,17 +454,12 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
                                             "mRender": function(data, type, row) {
                                                 // console.log(row)
                                                 return `
-                                                <a class="supp" href="add-statutgps.php?id_notification=${row.id_notifications}&amp;id_postuler=${row.id_postuler}&amp;id_charg=${row.id_charg}"><img style="height:20px;width:20px;margin:5px" src="./img/check.png"></a>
-<a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-notification.php?id_notification=${row.id_notifications}&amp;redirect=${'notifications.php'}"><img style="height:20px;width:20px;margin:5px" src="./img/supp.png" ></a>
-                                
+                                               
+                                        <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-notification.php?id_notification=${row.id_notifications}&amp;redirect=${'notifications.php'}"><img style="height:20px;width:20px" src="./img/supp.png" ></a>
+                      
+
+
 `;
-// </?php  if ($row['type']=="client") {
-//        ?>
-//          <a  class="supp" href="add-statutgps.php?id_notification=${row.id_notifications}&amp;id_postuler=${row.id_postuler}&amp;id_charg=${row.id_charg}"><img style="height:20px;width:20px" src="./img/check.png" ></a>
-
-
-// </?php }
-//        ?>
                                             }
                                         },
                                         // { data: 'date_charg' },
@@ -544,12 +527,6 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
 
 
 
-<?php }else{ 
-    
-    echo "<script>location.href='index.php?msg=cnx';</script>";
-
-    
-}?>
 
 
 
@@ -560,7 +537,7 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
 
 
 
- 
+
 
 
 

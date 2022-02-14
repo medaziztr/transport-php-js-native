@@ -38,7 +38,6 @@ else
 
  
     $result1 = mysqli_query($db,$insertSQL1);
-    $id1=mysqli_insert_id($db);
 
 
 
@@ -122,15 +121,15 @@ else
                                                             <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Email du transporteur: '.$email .'.</p>
                                                             <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Téléphone du transporteur: '.$telephone .'.</p>
                                                             <h3 style="font-weight:300;font-size:22px;line-height:1.3em;color:#313745;margin:0 0 0.35em;padding:0">Message du transporteur:</h3>
-                                                            <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left"> '.$message .'.</p>
+                                                            <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Téléphone du transporteur: '.$message .'.</p>
 
 
                                                             </span>
     
-                                                        <a class="bouton" href="https://telefret.com/notifications.php?id_notification='.$id1.'"> Cliquez ici</a>
+                                                        <a class="bouton" href="https://telefret.com/notifications.php"> Cliquez ici</a>
     
                                                         <span class="text-center mt-1">ou copiez ce lien et collez le dans votre navigateur</span>
-                                                        <span class="link text-center mt-1">https://telefret.com/notifications.php?id_notification='.$id1.'</span>
+                                                        <span class="link text-center mt-1">https://telefret.com/notifications.php</span>
                                                       
                                                     </td>
                                                 </tr>

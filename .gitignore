@@ -8,7 +8,7 @@
 /spec/*
 /SESA/*
 /content/*
-/api_redirect/*
+# /api_redirect/*
 /downloaded/*
 /img/*
 /maersk/*
