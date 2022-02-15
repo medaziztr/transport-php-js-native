@@ -19,7 +19,8 @@ $telephone=$_SESSION['telephone'];
     $tel=$_SESSION['telephone'];
     $id_disp=$_GET['id_disp'];
 
-    
+    $nom=  $_SESSION['prenom']." ".$_SESSION['nom'];
+
 
     
 
@@ -94,6 +95,7 @@ $telephone=$_SESSION['telephone'];
                                                        <span class="im">
                                                            <h1 style="font-weight:300;font-size:22px;line-height:1.3em;color:#313745;margin:0 0 0.35em;padding:0">Notification</h1>
                                                            <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Un expéditeur est intéressé par une de vos disponibilité.</p>
+                                                           <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Nom de l\'expéditeur: '.$nom .'.</p>
                                                            <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Email de l\'expéditeur: '.$email .'.</p>
                                                            <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Téléphone l\' expéditeur: '.$telephone .'.</p>
                                                            <h3 style="font-weight:300;font-size:22px;line-height:1.3em;color:#313745;margin:0 0 0.35em;padding:0">Message l\' expéditeur:</h3>

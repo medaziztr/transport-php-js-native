@@ -24,11 +24,11 @@ if (isset($_POST['now'])) {
 
   $client="";
   if (isset($_POST['client'])) {
-      $client= " or transporteur.type='transporteur' ";
+      $client= "";
     }
     $transporteur="";
     if (isset($_POST['transporteur'])) {
-        $transporteur= " or transporteur.type='client' ";
+        $transporteur= " and transporteur.type='transporteur' ";
       }
 
 ## Search 
@@ -55,21 +55,32 @@ if($searchValue != ''){
     ) ";
 }
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`   WHERE ( 0 ".$client." ".$transporteur." ) ".$now." ");
+$sel = mysqli_query($con,"select count(*) as allcount from `transporteur`   WHERE ( 1 ".$client." ".$transporteur." )  ".$now." ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from  `transporteur`   WHERE ( 0 ".$client." ".$transporteur.")  ".$now." ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from  `transporteur`   WHERE ( 1 ".$client." ".$transporteur.")    ".$now." ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from  `transporteur`   WHERE ( 0 ".$client." ".$transporteur.") ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from  `transporteur`   WHERE ( 1 ".$client." ".$transporteur.")   ".$now." ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 
 while ($row = mysqli_fetch_assoc($empRecords)) {
+    $vehicule = array();
+    $tel=$row['telephone'];
+    $selectSQL="SELECT * FROM abonnements WHERE telephone='$tel'";
+
+    $resultat = mysqli_query($con,$selectSQL);
+    $i=0;
+    while ($rw = mysqli_fetch_assoc($resultat)) {
+        $vehicule[$i] = $rw;
+        $i= $i+1;
+    }
+   // echo json_encode($vehicule);
     $data[] = array(
         "r_s"=>$row['r_s'],
     		"nom"=>$row['nom'],
@@ -80,8 +91,8 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
             "email"=>$row['email'],
             "Date_inscri"=>$row['Date_inscri'],
             "verif"=>$row['verif'],
-            "code"=>$row['code']
-
+            "code"=>$row['code'],
+            "vehicules"=>$vehicule
 
 
     	);

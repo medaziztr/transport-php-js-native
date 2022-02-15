@@ -220,7 +220,8 @@ if (isValid>0) {
          'data':{"telephone":id_disp},
                                  'success': function(data) {
 
-                                     $("#"+'tableline'+id_disp).addClass("hidden");
+                                     $("#"+'tablelinecompte'+id_disp).addClass("hidden");
+                                     $("#"+'tablelinecompteA'+id_disp).addClass("hidden");
 
 
                                  },
@@ -245,7 +246,8 @@ if (isValid>0) {
          'data':{"telephone":id_disp},
                                  'success': function(data) {
 
-                                     $("#"+'tableline'+id_disp).addClass("hidden");
+                                     $("#"+'tablelinecompte'+id_disp).addClass("hidden");
+                                     $("#"+'tablelinecompteA'+id_disp).addClass("hidden");
 
 
                                  },
@@ -373,6 +375,42 @@ if (isValid>0) {
 
                     reader.onload = function (e) {
                         $('#blah')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURLC1(input) {
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah1')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURLC2(input) {
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah2')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURLC3(input) {
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah3')
                             .attr('src', e.target.result);
                     };
 

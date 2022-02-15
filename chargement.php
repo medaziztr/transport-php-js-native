@@ -79,6 +79,13 @@
                     <div class="col-md-12">Valeur de la
                         Marchandise:<?php if(($res['valeurm']=="") OR ($res['valeurm']==" ")){ echo " N'est pas indiqué"; } else{echo $res['valeurm'];} ?>
                     </div>
+                    <div class="col-md-12">Avance:<?php if(($res['avance']=="") OR ($res['avance']==" ")){ echo " N'est pas indiqué"; } else{echo $res['avance'];} ?>
+                    </div>
+                    <div class="col-md-12">Méthode de payement:<?php if(($res['methodepayement']=="") OR ($res['methodepayement']==" ")){ echo " N'est pas indiqué"; } else{echo $res['methodepayement'];} ?>
+                    </div>
+
+                    <div class="col-md-12">Autres informations:<?php if(($res['autre_info']=="") OR ($res['autre_info']==" ")){ echo ""; } else{echo $res['autre_info'];} ?>
+                    </div>
                     <br>
                         <br>
                      
@@ -87,11 +94,14 @@
     margin-bottom: 20px;
     color: #19b835;
     width: 100% !important;" >Personne à contacter</b>
- <div class="col-md-12">Nom & Prénom  : <?php echo $res['contact_name']==""? $res['r_s']:$res['contact_name']; ?></div>
-                            <div class="col-md-12">Numéro de téléphone :
-                            <?php echo $res['contact_phone']? $res['telephone']:$res['contact_phone']; ?> <a href="tel:<?php echo $res['contact_phone']; ?>"><i
-                                    class="fa fa-phone"></i></a></div>
-                    <div class="col-md-12"><a href="#" onclick="PrintElem('testprint')">Imprimer Chargement</a></div>
+ <div class="col-md-12">Nom & Prénom  :<?php echo ($res['contact_name']==""||$res['contact_name']==" ")?($res['prenom']." ".$res['nom']):$res['contact_name']; ?></div>
+                            <div class="col-md-12">Numéro de téléphone :<a href="tel:<?php echo  ($res['contact_phone']==""||$res['contact_phone']==" ")?($res['prenom']." ".$res['nom']):$res['contact_phone'] ; ?>"><i
+                                    class="fa fa-phone"></i><?php echo  ($res['contact_phone']==""||$res['contact_phone']==" ")?($res['telephone']):$res['contact_phone'] ; ?></a></div>
+                    <div class="col-md-12"><a href="invoice2.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter
+                                la fiche du Chargement</a> <br>
+                            <a href="invoice1.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter
+                                les fiches de transport</a>
+                </div>
 
                 </div>
             </div>

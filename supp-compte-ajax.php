@@ -2,7 +2,7 @@
    include("config.php");
    session_start();
 
-    $telephone=$_GET['tel'];
+    $telephone=$_POST['telephone'];
     
 	
 	$deleteSQL0="DELETE `disponibilite` FROM `disponibilite` INNER JOIN `abonnements` ON `abonnements`.id_abonnement=`disponibilite`.id_abonnement WHERE `abonnements`.telephone=$telephone";

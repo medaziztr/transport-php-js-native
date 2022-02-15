@@ -213,7 +213,7 @@
 							<div class="col-sm-6 col-xs-12 no-padding"> 
 								
 								 
-            <input type="text" name="ville_charg" id="autocomplete" placeholder="Ville Chargement" required value=<?php echo $res['ville_charg'] ?> />
+            <input type="text" name="ville_charg" id="ville4" placeholder="Ville Chargement" required value=<?php echo $res['ville_charg'] ?> />
 							</div>
 						</div>
 						<div class="row">
@@ -238,7 +238,7 @@
 						<div class="row">
 							<div class="col-sm-4 col-xs-12 no-padding left-title">Pays de Livraison </div>
 							<div class="col-sm-6 col-xs-12 no-padding">
-								<select type="text" name="pays_liv" id="pays12" placeholder="Pays *" required onchange="changePays(12)" >
+								<select type="text" name="pays_liv" id="pays5" placeholder="Pays *" required onchange="changePays(12)" >
 									<option 
 										<?php if($res['pays_liv']=='Cameroun') echo "selected" ?>
 										value="Cameroun" style="background:url('./img/flags/cameroon.svg') no-repeat; width:30px; height:30px;">
@@ -282,7 +282,7 @@
 						<div class="row">
 							<div class="col-sm-4 col-xs-12 no-padding left-title">Ville de Livraison </div>
 							<div class="col-sm-6 col-xs-12 no-padding"> 
-								 <input type="text" name="ville_liv" id="autocomplete-custom-append"  style="width: 100%; border-width: 5px;" placeholder="Ville de livraison" value="<?php echo $res['ville_liv'] ?>"/>
+								 <input type="text" name="ville_liv" id="ville5"  style="width: 100%; border-width: 5px;" placeholder="Ville de livraison" value="<?php echo $res['ville_liv'] ?>"/>
 																		<div id="suggestions-container" style="position: relative;"></div>
 							</div>
 						</div>
@@ -371,7 +371,14 @@
 							</div>	
 						</div>
 					</div>
+					<h3 class="txt-bordure sections-title">Autres informations</h3>
+
+
+<div class="col-md-12 no-padding">
+	<textarea name="autre_info"placeholder="Autres informations" value="<?php echo $res['autre_info']?>" id="" cols="30" rows="4"><?php echo $res['autre_info']?></textarea>
+</div>
 				</div>
+		
 			</div>
 				
 			<div class="col-md-8 col-xs-12 formulaire">		

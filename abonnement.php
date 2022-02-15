@@ -113,7 +113,7 @@
 
 <!-- Script -->
 <script>
-    alert("ok")
+  
 $(document).ready(function() {
     var dataTable3 = $('#empTable3').DataTable({
         'processing': true,
@@ -167,8 +167,10 @@ $(row).attr( 'id', 'tablelineAbonnements'+data.id_abonnement );
                     row) {
                     return `
                    
-<img src="./img/uploaded/${data ? data : 'logo.png'}">
-`
+                    <div 
+
+class="res-flx-s img-avatar-sm">
+<img src="./img/uploaded/${data ? data : 'logo.png'}"> </div>`
                 },
 
             },
@@ -288,8 +290,11 @@ style="cursor: pointer;"
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-12 no-padding margb">
-                                        <div class="col-sm-2 col-xs-12  left-title p-l-0 hidden-xs">Image du Véhicule</div>
+                                <div class="col-md-12  left-title p-l-0 hidden-xs">Médias</div>
+
+                                <div class="row">
+                                    <div class="col-md-3 no-padding margb">
+                                        <div class="col-md-12  left-title p-l-0 hidden-xs">Image du Véhicule</div>
                                         <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
                                             <input id="file" type="file" class="input-file" name="avat" required="" onchange="readURL(this);">
                                             <label for="file" class="label-file"><span class="plus">+</span></label>
@@ -298,6 +303,41 @@ style="cursor: pointer;"
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3 no-padding margb">
+                                        <div class="col-md-12  left-title p-l-0 hidden-xs">Carte grise</div>
+                                        <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
+                                            <input id="file1" type="file" class="input-file" name="avat1" required="" onchange="readURLC1(this);">
+                                            <label for="file1" class="label-file"><span class="plus">+</span></label>
+                                            <div class="imgs-prev">
+                                                <img  id="blah1" src="./img/contact-back.png" alt="your image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 no-padding margb">
+                                        <div class="col-md-12  left-title p-l-0 hidden-xs">Assurance valide</div>
+                                        <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
+                                            <input id="file2" type="file" class="input-file" name="avat2" required="" onchange="readURLC2(this);">
+                                            <label for="file2" class="label-file"><span class="plus">+</span></label>
+                                            <div class="imgs-prev">
+                                                <img  id="blah2" src="./img/contact-back.png" alt="your image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 no-padding margb">
+                                        <div class="col-md-12  left-title p-l-0 hidden-xs">CNI du gerant</div>
+                                        <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
+                                            <input id="file3" type="file" class="input-file" name="avat3" required="" onchange="readURLC3(this);">
+                                            <label for="file3" class="label-file"><span class="plus">+</span></label>
+                                            <div class="imgs-prev">
+                                                <img  id="blah3" src="./img/contact-back.png" alt="your image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </br>
+                                    </br>
+                                    </br>
+
                                     <div class="col-md-12 m-t-lg no-padding">
                                         <div class="cont-filtre flxstart">
                                             <span class="m-t-sm" >GPS</span>
@@ -340,9 +380,9 @@ style="cursor: pointer;"
                                     <div class="col-md-12 no-padding">
                                         <input name="telephone_chauffeur" type="text" class="form-control" required="" placeholder="téléphone du chauffeur">
                                     </div>
-                                    <div class="col-md-12 no-padding">
-                                        <input name="autre_info" type="text" class="form-control" required="" placeholder="Autres informations">
-                                    </div>
+                               
+
+
                                     <?php
 										if( ($s>0) OR (($s==0) AND ($_SESSION['date_limite'] < strtotime(date('d-m-Y')))) ){
 									?>
@@ -370,7 +410,7 @@ style="cursor: pointer;"
         </div>
         <div >
                                                                     <div > 
-                                                                    
+<!--                                                                     
   <form action="https://docs.google.com/forms/d/e/1FAIpQLSfOfX4x8wc4r0-yXU_Otoj3XUlVDXkMZdw1PEXUPlAQwqUH_Q/viewform?usp=sf_link"">
     
 
@@ -378,7 +418,7 @@ style="cursor: pointer;"
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit"  style="height:50px;width:200px" ><font size="5pt">Cliquer ici </font></button> <font color="red"  size="5pt"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et envoyez les documents ci-dessous pour completer votre abonnement </font>
    </form>  <font color="green"  size="3pt"><ul><li> &nbsp;&nbsp;&nbsp; * Copie de carte grise du vehicule </li> <li>&nbsp;&nbsp;&nbsp; * Copie de la police d'assurance en cours de validité <li><li>&nbsp;&nbsp;&nbsp;* Copie de la CNI du gerant</li><ul></font></div></div>
                           
-                           
+                            -->
   
                       
                             

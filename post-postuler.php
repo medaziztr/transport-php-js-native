@@ -19,6 +19,7 @@ if(isset($_SESSION['login_user'])) {
     $avance=$_POST['avance'];
 	$montant=$_POST['montant'];
     $id_chargement=$_POST['id_chargement'];
+    $nom=  $_SESSION['prenom']." ".$_SESSION['nom'];
 
     $insertSQL="INSERT INTO `postuler` (`vehicules`, `avance`, `telephone`, `montant`, `id_chargement`, `message`, `devise` ) VALUES 
      ('$vehicules', '$avance',  '$telephone', '$montant', '$id_chargement', '$message', '$devise')";
@@ -119,6 +120,7 @@ else
                                                         <span class="im">
                                                             <h1 style="font-weight:300;font-size:22px;line-height:1.3em;color:#313745;margin:0 0 0.35em;padding:0">Notification</h1>
                                                             <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Vous avez une nouvelle proposition de transport.</p>
+                                                            <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Nom du transporteur: '.$nom .'.</p>
                                                             <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Email du transporteur: '.$email .'.</p>
                                                             <p style="font-size:14px;line-height:1.5em;margin-bottom:1em;color:#313745;margin-top:0" align="left">Téléphone du transporteur: '.$telephone .'.</p>
                                                             <h3 style="font-weight:300;font-size:22px;line-height:1.3em;color:#313745;margin:0 0 0.35em;padding:0">Message du transporteur:</h3>

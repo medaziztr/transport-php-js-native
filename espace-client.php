@@ -837,7 +837,37 @@ class="res-flx-s img-avatar-sm">
                                                             </div>
 
                                                         </div>
+  
+                                                        <div class="row margt" id="prixpropdetails"   style="display:none">
+                                                                <div class="col-sm-2 col-xs-12 no-padding left-title">Modalité de payement
+</div>
+                                                                <div class="col-sm-4 col-xs-12 no-padding">
+                                                                    <input type="number"
+                                                                    onchange="form1.reste.value=form1.prix_prop.value-form1.avance.value"
+                                                                    placeholder="Au chargement"
+                                                                        name="avance" class="col-xs-12">
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12 no-padding">
+                                                                    <input type="number" placeholder="A la livraison"
+                                                                    onfocus="form1.avance.value=form1.prix_prop.value-form1.reste.value"
 
+                                                                        name="reste" class="col-xs-12">
+                                                                </div>
+                                                                <div class="col-sm-1 col-xs-12 no-padding">
+                                                                <input  placeholder="devise"
+                                                                style="color: #808080;
+    background-color: #eeecec;
+    height: 38px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    width: 100%;
+    padding: 0px 10px;"
+                                                                        name="deviseval" class="col-xs-12 number" disabled>
+                                                                </div>
+                                                               
+                                                            </div>
 
 
 
@@ -873,37 +903,7 @@ class="res-flx-s img-avatar-sm">
                                                             </div>
                                                         </div>
 
-                                                       
-                                                        <div class="row margt" id="prixpropdetails"   style="display:none">
-                                                                <div class="col-sm-2 col-xs-12 no-padding left-title">Modalité de payement
-</div>
-                                                                <div class="col-sm-4 col-xs-12 no-padding">
-                                                                    <input type="number"
-                                                                    onchange="form1.reste.value=form1.prix_prop.value-form1.avance.value"
-                                                                    placeholder="Au chargement"
-                                                                        name="avance" class="col-xs-12">
-                                                                </div>
-                                                                <div class="col-sm-4 col-xs-12 no-padding">
-                                                                    <input type="number" placeholder="A la livraison"
-                                                                    onfocus="form1.avance.value=form1.prix_prop.value-form1.reste.value"
-
-                                                                        name="reste" class="col-xs-12">
-                                                                </div>
-                                                                <div class="col-sm-1 col-xs-12 no-padding">
-                                                                <input  placeholder="devise"
-                                                                style="color: #808080;
-    background-color: #eeecec;
-    height: 38px;
-    margin: 5px;
-    border-radius: 5px;
-    box-shadow: none;
-    border: none;
-    width: 100%;
-    padding: 0px 10px;"
-                                                                        name="deviseval" class="col-xs-12 number" disabled>
-                                                                </div>
-                                                               
-                                                            </div>
+                                                     
 
 
                                                             <div class="row margt" >
@@ -973,6 +973,12 @@ class="res-flx-s img-avatar-sm">
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <h3 class="txt-bordure sections-title">Autres informations</h3>
+
+
+                                                        <div class="col-md-12 no-padding">
+                                                            <textarea name="autre_info"placeholder="Autres informations" id="" cols="30" rows="4"></textarea>
+                                    </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8 col-xs-12 formulaire">

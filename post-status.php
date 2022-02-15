@@ -28,8 +28,8 @@ if(isset($_SESSION['login_user'])) {
     $date_dep= date("d/m/Y", strtotime($Date_D));
     $date_arr= date("d/m/Y", strtotime($Date_F));
     
-     echo( json_encode ($selectSQLvehi));
-     echo( json_encode ($emecords+""));
+    //  echo( json_encode ($selectSQLvehi));
+    //  echo( json_encode ($emecords+""));
     $id_chargement=$row['id_charg'];
     
     while ($res = mysqli_fetch_assoc($empRecords)) {

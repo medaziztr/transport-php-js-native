@@ -23,7 +23,7 @@
 
             <div class="col-md-6">
                 <div class="contact-map">
-                    <h3 class="txt-bordure sections-title">Consultez la Disponibilité choisis</h3>
+                    <h3 class="txt-bordure sections-title">Détails de la Disponibilité </h3>
                     <div class="res-flx img_lg">
                         <img src="./img/uploaded/<?php echo $res['img_vehicule']; ?>">
                     </div>

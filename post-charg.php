@@ -39,7 +39,8 @@ if(isset($_SESSION['login_user'])) {
 	}	
 	
 	$filename1 = stripslashes($_FILES['img_march']['name']);
-	
+	$image_name1="";
+    if ($_FILES['img_march']['name']!="") {
 	$extension1 = getExtension($filename1);
 	$extension1 = strtolower($extension1);
 	
@@ -49,7 +50,7 @@ if(isset($_SESSION['login_user'])) {
 	$newname11=$image_name1;
 
 	$copied = copy($_FILES['img_march']['tmp_name'], $newname1);
-
+    }
 	
 	if(isset($prop_prix)){
         $prix_prop=$prix_prop.' '.$devise;
@@ -69,9 +70,9 @@ if(isset($_SESSION['login_user'])) {
 	
 	
 
-    $insertSQL="INSERT INTO `chargement` (`marchandise`, `poid`, `nb_colis`, `volume`, `type_vehicule`, `details_march`, `emballage`, `mode_t`, `valeurm`, `img_march`, `pays_charg`, `ville_charg`, `date_charg`, `adresse_charg`, `pays_liv`, `ville_liv`, `date_liv`, `adresse_liv`, `tol_charg`, `jr_retard2`, `tol_liv`, `jr_retard`, `contact_name`, `contact_phone`, `telephone`, `prix_prop` , `nb_vehicules`  , `avance` , `methodepayement`)
+    $insertSQL="INSERT INTO `chargement` (`marchandise`, `poid`, `nb_colis`, `volume`, `type_vehicule`, `details_march`, `emballage`, `mode_t`, `valeurm`, `img_march`, `pays_charg`, `ville_charg`, `date_charg`, `adresse_charg`, `pays_liv`, `ville_liv`, `date_liv`, `adresse_liv`, `tol_charg`, `jr_retard2`, `tol_liv`, `jr_retard`, `contact_name`, `contact_phone`, `telephone`, `prix_prop` , `nb_vehicules`  , `avance` , `methodepayement`, `autre_info`)
     
-    VALUES ('$marchandise', '$poid', '$nb_colis', '$volume', '$type_vehicule', '$details_march', '$emballage', '$mode_t', '$valeurm', '$image_name1', '$pays_charg', '$ville_charg', '$date_charg', '$adresse_charg', '$pays_liv', '$ville_liv', '$date_liv', '$adresse_liv', '$toler_charge', '$jr_retard2', '$tol_liv', '$jr_retard', '$contact_name', '$contact_phone', '$telephone', '$prix_prop', '$nb_vehicules' , '$avance', '$methodepayement' )";
+    VALUES ('$marchandise', '$poid', '$nb_colis', '$volume', '$type_vehicule', '$details_march', '$emballage', '$mode_t', '$valeurm', '$image_name1', '$pays_charg', '$ville_charg', '$date_charg', '$adresse_charg', '$pays_liv', '$ville_liv', '$date_liv', '$adresse_liv', '$toler_charge', '$jr_retard2', '$tol_liv', '$jr_retard', '$contact_name', '$contact_phone', '$telephone', '$prix_prop', '$nb_vehicules' , '$avance', '$methodepayement' , '$autre_info')";
 
     $result = mysqli_query($db,$insertSQL);
     

@@ -393,7 +393,7 @@ onclick="DeleteAbonnements(`+row.id_abonnement+`);"
 
                                                                 data.dated = dated;
                                                                 data.datef = datef;
-                                                                data.transporteur = "true";
+                                                            // data.transporteur = "true";
                                                                 data.client = "true";
 
 
@@ -407,7 +407,8 @@ onclick="DeleteAbonnements(`+row.id_abonnement+`);"
                                                         },
                                                         "createdRow": function(row, data, dataIndex) {
                                                             console.log("row.verif", data.verif)
-
+                                                            $(row).addClass('tablelinecompte'+data.telephone);
+                                                            $(row).attr( 'id', 'tablelinecompte'+data.telephone );
                                                             if (data.verif != 5) {
 
                                                                 $(row).addClass('testclassvalid');
@@ -608,7 +609,8 @@ var dataTable5 = $('#empTable5').DataTable({
     },
     "createdRow": function(row, data, dataIndex) {
         console.log("row.verif", data.verif)
-
+        $(row).addClass('tablelinecompteA'+data.telephone);
+        $(row).attr( 'id', 'tablelinecompteA'+data.telephone );
         if (data.verif != 5) {
 
             $(row).addClass('testclassvalid');
@@ -656,49 +658,118 @@ var dataTable5 = $('#empTable5').DataTable({
         {
             "mData": "code",
             "mRender": function(data, type,
-                row) {
-                console.log("row,,type",
-                    data)
-                var value = `
+                row)  {
+                    var value = ``;    
+                    value=value+`
 
-<input id="mailc${data}" type=text hidden
-    value="${row.email}">
+    <!-- Modal -->
+    <div class="modal fade"
+        id="exampleModal${row.telephone}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
 
-<a class="supp"
-    onclick="return confirm('Êtes-vous sûr de SUPPRIMER ce compte ?')"
-    href="supp-compte.php?tel=${row.telephone}"><img
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><b>Détails des véhicules proposés</b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="    overflow-x: auto;">
+
+                        <label id="postulerError${row.telephone}" hidden style="backg"></label>
+                        <table id='empT' class='display dataTable'>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Matricule</th>
+                                    <th>Genre</th>
+
+                                    <th>Marque</th>
+                                    <th>Poids disponible</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+
+                                `;
+                                for (let index = 0; index < row.vehicules.length; index++) { const element=row.vehicules[index]; 
+                                
+                                value+=`
+                                    <tr>
+                                   
+                                    <td><img
+                                            src="./img/uploaded/${element.img_vehicule?element.img_vehicule : 'logo.png'}">
+                                    </td>
+                                    <td>${element.matricule} </td>
+                                    <td>${element.type_vehicule} </td>
+                                    <td>${element.marque} </td>
+                                    <td>${element.poid_max} Tonnes </td>
+
+                                    </tr>`
+                                    console.log()
+                                    }
+value+= `
+        </tbody>
+        </table>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+     
+    </div>
+</div>
+</div>
+</form>
+</div>`                                      
+                                                                  value = value+`
+                
+                <input id="mailc${data}" type=text hidden
+                                                        value="${row.email}">
+ <a type="button"  data-toggle="modal" data-target="#exampleModal${row.telephone}"
+style="cursor: pointer;"><img
     style="height:20px;width:20px;"
-        src="./img/supp.png"></a>
+        src="./img/eye.png"></a>
+                                                    <a class="supp"
 
+                                                    onclick="DeleteCompte(`+row.telephone+`);"
+            style="cursor: pointer;"><img
+                                                        style="height:20px;width:20px;"
+                                                            src="./img/supp.png"></a>
+                                                
+                                                   
+                `;
+                                                                    if (row.verif == 5) {
+                                                                        value = value + `
+                    <a class="supp"
+                    onclick="Deleteunbancompte(`+row.telephone+`);"
+            style="cursor: pointer;"
+             ><img
+                                                        style="height:20px;width:20px;"
+                                                            src="./img/unban.png"></a>
+                                                            `
+                                                                    } else {
+                                                                        value = value + `
+                    <a class="supp"
+                    onclick="Deletebancompte(`+row.telephone+`);"
+            style="cursor: pointer;"
+                                                    ><img
+                                                        style="height:20px;width:20px;"
+                                                            src="./img/ban.png"></a>
+                    `
 
-`;
-                if (row.verif == 5) {
-                    value = value + `
-<a class="supp"
-    onclick="return confirm('Êtes-vous sûr de DEBANNER ce compte ?')"
-    href="unban-compte.php?telephone=${row.telephone}"><img
-    style="height:20px;width:20px;"
-        src="./img/unban.png"></a>
-        `
-                } else {
-                    value = value + `
-<a class="supp"
-    onclick="return confirm('Êtes-vous sûr de BANNER ce compte ?')"
-    href="ban-compte.php?telephone=${row.telephone}"><img
-    style="height:20px;width:20px;"
-        src="./img/ban.png"></a>
-`
+                                                                    }
 
-                }
+                                                                    value = value + `
+                <a class="supp" data-toggle="modal"
+                                                        onClick="messaffect('c${data}');"
+                                                        data-target="#message" href='#'><img style="height:20px;width:20px;" src="./img/mail.png"></a>
+                    `
 
-                value = value + `
-<a class="supp" data-toggle="modal"
-    onClick="messaffect('c${data}');"
-    data-target="#message" href='#'><img style="height:20px;width:20px;" src="./img/mail.png"></a>
-`
-
-                return value;
-            }
+                                                                    return value;
+                                                                }
         }
 
 
@@ -997,7 +1068,11 @@ class="res-flx-s img-avatar-sm">
                                                                     return `
                 <input type="submit" value="Consulter"
                                                             onclick="location.href='chargement.php?id_charg=${row.id_charg}' ">
-                                                  
+ 
+ <input type="submit" value="Consulter les fiches"
+                                                            onclick="location.href='invoice1.php?id_charg=`+row.id_charg+`'">
+                                                            <a class="supp" href="add-statutgps.php?id_charg=${row.id_charg}"><img style="height:20px;width:20px;margin:5px" src="./img/check.png"></a>
+                                                                                            
 <a 
 onclick="DeleteChargement(`+row.id_charg+`);"
             style="cursor: pointer;"

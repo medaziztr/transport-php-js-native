@@ -4,7 +4,7 @@
 
 if($_SESSION['type']=="admin"){
     
-    $telephone=$_GET['telephone'];
+    $telephone=$_POST['telephone'];
     
 
 
