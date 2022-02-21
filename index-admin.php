@@ -1994,7 +1994,7 @@ class="res-flx-s img-avatar-sm">
                                                         <form id="form1" runat="server" action="post-dispoadm.php"
                                                             method="POST">
                                                             <h3 class="txt-bordure sections-title">Ajouter Camion</h3>
-                                                            <div class="row">
+                                                            <div class="row form-group">
                                                                 <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                     <select name="id_ab">
                                                                         <?php 
@@ -2006,7 +2006,7 @@ class="res-flx-s img-avatar-sm">
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
+                                                            <div class="row form-group">
                                                                 <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                     Poids Disponible (T) </div>
                                                                 <div class="col-sm-1 hidden-xs no-padding left-title">

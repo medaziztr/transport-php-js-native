@@ -72,6 +72,27 @@
 	    <script src="js/vendor/modernizr-2.8.1.min.js"></script>
         
         <script type="text/javascript">
+
+
+function validsuivi(id_notification) {
+     
+     $.ajax({
+         type: "post",
+         url: "change_statusgps.php?id_charg=" <?php echo $_GET['id_charg'];?> ,
+         'data':{"id_abonnement":id_notification},
+                                 'success': function(data) {
+
+                                     $("#"+'tablelinesuivi'+id_notification).removeClass("testclassvalid");
+                                     $("#"+'tablelinesuivi'+id_notification).addClass("testclass");
+                                     $("#btssuivi"+id_notification).html(suivi?"Activer":"Désactiver");   
+
+                                 },
+                                 'error': function(data) {
+                                     console.log(data)
+                                 }
+       
+     });
+ }
 // function submitCheck(id_notification) {
 
 // var form = $('#postuler'+id_notification)[0];
@@ -109,41 +130,6 @@
  
 // }
 
-
-
-function validsuivi(id_notification) {
-     
-    var val="";
-    <?php
-    if (isset( $_GET['id_charg'])) {
-        ?>
-        val=<?php echo $_GET['id_charg'];?>;
-        <?php
-    }
-    ?>
-     $.ajax({
-         type: "post",
-         url: "change_statusgps.php?id_charg="+val ,
-         'data':{"id_abonnement":id_notification},
-                                 'success': function(data) {
-
-                                    console.log(data+""=="0")
-                                 
-
-                                    $("#"+'tablelinesuivi'+id_notification).removeClass(data+""=="1"?"testclassvalid":"testclass");
-                                        $("#"+'tablelinesuivi'+id_notification).addClass(data+""=="1"?"testclass":"testclassvalid");
-
-                                        $("#btssuivi"+id_notification).html(data+""=="0"?"Désactiver":"Activer");   
-
-                                 },
-                                 'error': function(data) {
-                                     console.log(data)
-                                 }
-       
-     });
-
-     
- }
 function submitCheck(id_notification) {
 
     var form = $('#postuler'+id_notification)[0];
@@ -372,6 +358,8 @@ if (isValid>0) {
             
                
  }
+
+
     function Changetest(id_notification) {
      
         $.ajax({

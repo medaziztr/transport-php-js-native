@@ -18,6 +18,7 @@ $now=$_POST['now'];
 $searchQuery = " ";
 
 
+
 if($searchValue != ''){
 	$searchQuery .= " and (
         ab.matricule like '%".$searchValue."%' or 
@@ -62,6 +63,13 @@ $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 //echo $empQuery;
 while ($row = mysqli_fetch_assoc($empRecords)) {
+
+    $id_abonnement= $row['id_abonnement'];
+    $selectSQL="SELECT * FROM status_gps WHERE id_chargement='$now' and Id_abonnement='$id_abonnement' and Etat=0 ";
+
+    $resultat = mysqli_query($con,$selectSQL);
+    $res=mysqli_fetch_array($resultat);
+    $s=mysqli_num_rows($resultat);
     $data[] = array(
     		"img_vehicule"=>$row['img_vehicule'],
             "id"=>$row['id'],
@@ -77,7 +85,8 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
             "prenom"=>$row['prenom'],
             "telephone"=>$row['telephone'],
             "r_s"=>$row['r_s'],
-            "email"=>$row['email']
+            "email"=>$row['email'],
+            "suivi"=> $s>0
 
 
     	);

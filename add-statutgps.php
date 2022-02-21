@@ -1,4 +1,4 @@
-<?php include"header.php" ?>
+<?php include("header.php") ?>
 
 <section class="page-title-section consultation">
 </section>
@@ -99,8 +99,9 @@
                             <?php echo $res['contact_phone']? $res['telephone']:$res['contact_phone']; ?> <a href="tel:<?php echo $res['contact_phone']; ?>"><i
                                     class="fa fa-phone"></i></a></div>
                     <div class="col-md-12">
-                        <a href="invoice2.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter  la fiche du Chargement</a> <br>
-                        <a href="invoice1.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter les fiches de transport</a>
+                        <a href="invoice2.php?id_charg=<?php echo $_GET['id_charg']; ?>">Ordre 
+de chargement</a> <br>
+                        <!-- <a href="invoice1.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter les fiches de transport</a> -->
 
                 </div>
 
@@ -110,7 +111,7 @@
             <?php 
                                             if  (isset($_SESSION['login_user'])) { 
                                                 
-                                                if ($_SESSION['type']!='admin'){
+                                                if ($_SESSION['type']=='admin'){
                                         ?>
 
 
@@ -142,7 +143,7 @@
                                                 <th>Marque</th>
                                                 <th>Type de véhicule</th>
                                                 <th>Matricule</th>
-                                                <th>Poid max</th>
+                                                <th>Poids max</th>
                                                 <th>Chauffeur</th>
                                                 <th>Propiétaire</th>
                                                 <th>Action</th>
@@ -180,17 +181,14 @@
                                             //     "/" + data.date_arr
                                             //     .split("/")[2]))
 
-                                            // if (data.date_arr && (new Date(data.date_arr.split(
-                                            //             "/")[1] + "/" +
-                                            //         data.date_arr.split("/")[0] + "/" + data
-                                            //         .date_arr.split(
-                                            //             "/")[2]) > new Date())) {
+                                             if (data.suivi ) {
 
                                                 $(row).addClass('testclassvalid');
+                                                $(row).attr( 'id', 'tablelinesuivi'+data.id_abonnement );
 
-                                            // } else {
-                                            //     $(row).addClass('testclass');
-                                            // }
+                                             } else {
+                                                 $(row).addClass('testclass');
+                                             }
 
 
                                         },
@@ -234,7 +232,7 @@ class="res-flx-s img-avatar-sm">
                                                 "mData": "nom",
                                                 "mRender": function(data, type, row) {
                                                     // console.log(row)
-                                                    return row.nom + " " + row
+                                                    return data.suivi+" / "+ row.nom + " " + row
                                                         .prenom + " / " + row
                                                         .telephone+ " / " + row
                                                         .email+ " / " + row
@@ -247,7 +245,11 @@ class="res-flx-s img-avatar-sm">
                                                     // console.log(row)
                                                     return `
                                                     <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-vehicule.php?id_abonnement=${row.id_abonnement}&amp;id_chargement=<?php echo $_GET['id_charg']; ?>"><img style="height:20px;width:20px;margin:5px" src="./img/supp.png" ></a>
-
+                                                    <button type="button" class="btn btn-primary" id="btssuivi${row.id_abonnement}"
+onclick="validsuivi(`+row.id_abonnement+`);"
+>
+ ${row.suivi?'Désactiver':'Activer'} 
+</button>
 `;
                                                 }
                                             }
@@ -301,8 +303,23 @@ class="res-flx-s img-avatar-sm">
                             </br>
 
                             </br>
+                            <?php
 
-            <h3 class="sections-title">Suivit</h3>
+                        $rrr="SELECT * FROM status_gps WHERE id_chargement='$id_charg' ";
+
+                        $r1 = mysqli_query($db,$rrr);
+                        $data=null;
+                        while ($r11 = mysqli_fetch_assoc($r1)) {
+                            $data=$r11;
+                        }
+                      //    echo  json_encode($data)  ;
+                      //    echo explode("-",  $data["Date_D"])[2]."/".explode("-",$data["Date_D"])[1]."/".explode("-",$data["Date_D"])[0]  ;
+                  // echo "                    ". $res["date_charg"];
+                   ?>
+      <?php
+                      
+                    ?>
+
 
             <div class="contact-map">
 
@@ -321,12 +338,12 @@ value="<?php echo  $res['email']; ?>" >
 <div class="col-md-12 padding-12">
 <label>Date de début du suivit:</label>
 
-<input id="Date_D" name="Date_D" type="date" value="<?php echo  date("Y-m-d", strtotime(str_replace('/', '-', $res["date_charg"] ))) ; ?>" >
+<input id="Date_D" name="Date_D" type="date" value="<?php echo  $data==null? date("Y-m-d", strtotime(str_replace('/', '-', $res["date_charg"] ))) :date("Y-m-d", strtotime(str_replace('/', '-',explode("-",  $data["Date_D"])[2]."/".explode("-",$data["Date_D"])[1]."/".explode("-",$data["Date_D"])[0] )))  ; ?>" >
 </div>
 <div class="col-md-12 padding-12">
 <label>Date de fin du suivit:</label>
 
-<input id="Date_D" name="Date_F" type="date" value="<?php echo  date("Y-m-d", strtotime(str_replace('/', '-', $res["date_liv"] ))); ?>" >
+<input id="Date_D" name="Date_F" type="date" value="<?php echo   $data==null? date("Y-m-d", strtotime(str_replace('/', '-', $res["date_charg"] ))) :date("Y-m-d", strtotime(str_replace('/', '-',explode("-",  $data["Date_F"])[2]."/".explode("-",$data["Date_F"])[1]."/".explode("-",$data["Date_F"])[0]  ))); ?>" >
 </div>
 
 </div>

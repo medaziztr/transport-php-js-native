@@ -97,10 +97,10 @@
  <div class="col-md-12">Nom & Prénom  :<?php echo ($res['contact_name']==""||$res['contact_name']==" ")?($res['prenom']." ".$res['nom']):$res['contact_name']; ?></div>
                             <div class="col-md-12">Numéro de téléphone :<a href="tel:<?php echo  ($res['contact_phone']==""||$res['contact_phone']==" ")?($res['prenom']." ".$res['nom']):$res['contact_phone'] ; ?>"><i
                                     class="fa fa-phone"></i><?php echo  ($res['contact_phone']==""||$res['contact_phone']==" ")?($res['telephone']):$res['contact_phone'] ; ?></a></div>
-                    <div class="col-md-12"><a href="invoice2.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter
-                                la fiche du Chargement</a> <br>
-                            <a href="invoice1.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter
-                                les fiches de transport</a>
+                    <div class="col-md-12"><a href="invoice2.php?id_charg=<?php echo $_GET['id_charg']; ?>">Ordre 
+de chargement</a> <br>
+                            <!-- <a href="invoice1.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter
+                                les fiches de transport</a> -->
                 </div>
 
                 </div>

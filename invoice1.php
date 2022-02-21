@@ -2,6 +2,8 @@
 <html lang="zxx">
 <?php
 include 'config.php';
+session_start();
+
 ?>
 <!-- Mirrored from storage.googleapis.com/theme-vessel-items/checking-sites/invo-html/HTML/main/invoice-7.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Feb 2022 11:45:52 GMT -->
 <head>
@@ -52,6 +54,9 @@ function functionConfirmCreate(btname, wrapper) {
 
 
     </script>
+
+<?php if(isset($_SESSION['login_user'])) { ?>
+
 <?php
                         $id_charg=$_GET['id_charg'];
 
@@ -63,6 +68,8 @@ function functionConfirmCreate(btname, wrapper) {
 						//  echo ( json_encode($res));
                         //  echo ( $selectSQL);
 
+                      
+
 						if($s>0){
 							?>
 <!-- Invoice 7 start -->
@@ -71,11 +78,13 @@ function functionConfirmCreate(btname, wrapper) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="invoice-inner">
-                <?php   							$empQuery = "SELECT * FROM status_gps st ,abonnements ab , transporteur tr , postuler ps WHERE 1 AND st.Id_abonnement= ab.id_abonnement and ab.telephone=tr.telephone and ps.telephone=tr.telephone and ps.vehicules LIKE CONCAT('%',';', ab.id_abonnement, '%') and ps.id_chargement= ".$id_charg." and st.id_chargement= ".$id_charg."  GROUP by tr.telephone";
+                <?php   							$empQuery = "SELECT * FROM status_gps st ,abonnements ab , transporteur tr , postuler ps WHERE 1 AND st.Id_abonnement= ab.id_abonnement and ab.telephone=tr.telephone and ps.telephone=tr.telephone and ps.vehicules LIKE CONCAT('%',';', ab.id_abonnement, '%') and ps.id_chargement= ".$id_charg." and st.id_chargement= ".$id_charg."  ";
 
 $empRecords = mysqli_query($db, $empQuery);
                         $s1=mysqli_num_rows($empRecords);
+
 // echo $empQuery ;
+
 $i=0;
 if ($s1==0) {
     # code...
@@ -97,6 +106,7 @@ if ($s1==0) {
 <?php  
 }else 
 while ($row = mysqli_fetch_assoc($empRecords)) {
+    if(isset($_SESSION['telephone'])&&( ($_SESSION['telephone']==$res['telephone'])||($_SESSION['telephone']==$row['telephone']) )  ) { 
 
 ?>
                     <div class="invoice-info" id="invoice_wrapper<?php echo $i;  ?>">
@@ -364,6 +374,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 
 $i=$i+1;
 }
+                        }
 	?>
                   
 
@@ -382,6 +393,9 @@ $i=$i+1;
 			echo " Il faut choisir un Chargement !";
 		}
 	?>
+                        <?php }else
+                        echo " Veillez vous connecter a la plateforme !"; ?>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jspdf.min.js"></script>
 <script src="assets/js/html2canvas.js"></script>

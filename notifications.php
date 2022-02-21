@@ -362,7 +362,7 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="overflow-x: auto;">
 
       <label id="postulerError${row.id_notifications}" hidden style="backg"></label>
       <table id='empT' class='display dataTable'>
@@ -466,7 +466,6 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
                                             "mRender": function(data, type, row) {
                                                 // console.log(row)
                                                 return `
-                                                <a class="supp" href="add-statutgps.php?id_notification=${row.id_notifications}&amp;id_postuler=${row.id_postuler}&amp;id_charg=${row.id_charg}"><img style="height:20px;width:20px;margin:5px" src="./img/check.png"></a>
 <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-notification.php?id_notification=${row.id_notifications}&amp;redirect=${'notifications.php'}"><img style="height:20px;width:20px;margin:5px" src="./img/supp.png" ></a>
                                 
 `;

@@ -287,12 +287,12 @@ function functionConfirmCreate(btname, wrapper) {
                         class="btn btn-lg btn-download">
                             <i class="fa fa-download"></i> Télécharger
                         </a>
-                        <a 
-                        href="<?php echo 'chargement.php?id_charg='.$res['id_charg'];?>"
+                        <!-- <a 
+                        href="< ?php echo 'chargement.php?id_charg='.$res['id_charg'];?>"
                         
                         class="btn btn-lg btn-primary">
                             <i class="fa fa-link"></i> Suivre l'offre
-                        </a>
+                        </a> -->
                     </div>
              
                   

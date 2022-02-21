@@ -11,6 +11,10 @@
 		$vehicules="";
 		$vehi=$_POST['vehicules'];
 		$message=$_POST['message'];
+
+		// echo json_encode($_POST['vehicules']);
+
+		// echo $ee;
 	
 		foreach ($vehi as $t){
 			$vehicules.=";".$t;

@@ -104,16 +104,28 @@
 $vehiculedispo="SELECT * FROM abonnements WHERE telephone='$telephone' ORDER BY id_abonnement DESC ";
 
 $result = mysqli_query($db,$vehiculedispo);
-
 ?>
                                         <div class="col-md-12 padding-12">
                                             <label>Sélectionner les véhicules:</label>
 
-                                            <select disabled style="height: 100px;" type="text" id="vehicules" name="vehicules[]"
+                                         
+                                            <select disabled style="height: 100px;" type="text" id="vehicules" 
                                                 multiple placeholder="Pays *" required>
                                                 <option value="Select School">Selectionner les véhicules</option>
                                                 <?php
     while ($row = mysqli_fetch_array($result)) {
+        echo "<option value='" . $row['id_abonnement'] . "' ".(stristr($res1["vehicules"],";".$row['id_abonnement'])?"selected":"" )."    >'" . $row['matricule'] . "'</option>";
+    }
+    ?>
+                                            </select>
+
+                                            <select class="hidden" style="height: 100px;" type="text"  name="vehicules[]"
+                                                multiple placeholder="Pays *" required>
+                                                <option value="Select School">Selectionner les véhicules</option>
+                                                <?php
+                                                $result1= mysqli_query($db,$vehiculedispo);
+
+    while ($row = mysqli_fetch_array($result1)) {
         echo "<option value='" . $row['id_abonnement'] . "' ".(stristr($res1["vehicules"],";".$row['id_abonnement'])?"selected":"" )."    >'" . $row['matricule'] . "'</option>";
     }
     ?>
