@@ -30,7 +30,7 @@
 ?>
 <section class="contact-info-section">
 	<div class="container ">
-		<form id="form1" action="update-charg.php?id_charg=<?php echo $id_charg ?>&amp;telephone=<?php echo $res['telephone'] ?>" method="POST">
+		<form id="form1" enctype="multipart/form-data" action="update-charg.php?id_charg=<?php echo $id_charg ?>&amp;telephone=<?php echo $res['telephone'] ?>" method="POST">
 		
                                             <div class="container">
                                                 <div class="col-md-8 col-xs-12 formulaire">

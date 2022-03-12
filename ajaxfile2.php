@@ -22,16 +22,16 @@ $datef= $_POST['datef'];
 ## Search 
 $searchQuery = " ";
 if($pays3 != ''){
-    $searchQuery .= " and (pays_liv like '%".$pays3."%' ) ";
+    $searchQuery .= " and ( CONVERT(CAST(CONVERT(pays_liv USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays3."%' ) ";
 }
 if($pays2 != ''){
-    $searchQuery .= " and (pays_charg like '%".$pays2."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(pays_charg USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays2."%') ";
 }
 if($villed != ''){
-    $searchQuery .= " and (ville_charg like '%".$villed."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(ville_charg USING LATIN1) AS BINARY) USING UTF8)  like '%".$villed."%') ";
 }
 if($villef != ''){
-    $searchQuery .= " and (ville_liv like '%".$villef."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(ville_liv USING LATIN1) AS BINARY) USING UTF8)  like '%".$villef."%') ";
 }
 
 if($dated != ''){
@@ -58,17 +58,17 @@ if($searchValue != ''){
 }
 
 ## Total number of records without filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur     WHERE 1  and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW()");
+$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur     WHERE 1  and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= DATE_ADD( NOW(), INTERVAL - 1 DAY) ");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of records with filtering
-$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur     WHERE 1  and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() ".$searchQuery);
+$sel = mysqli_query($con,"select count(*) as allcount from chargement, transporteur     WHERE 1  and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= DATE_ADD( NOW(), INTERVAL - 1 DAY) ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from chargement, transporteur     WHERE 1  and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= NOW() ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empQuery = "select * from chargement, transporteur     WHERE 1  and chargement.telephone=transporteur.telephone and  STR_TO_DATE(chargement. date_liv, '%d/%m/%Y') >= DATE_ADD( NOW(), INTERVAL - 1 DAY) ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($con, $empQuery);
 $data = array();
 

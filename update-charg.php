@@ -40,10 +40,11 @@
 		return $ext;
 	}	
 	
-	$filename1 = stripslashes($_FILES['img_march']['name']);
 	$image_name1="";
-    if ($_FILES['img_march']['name']!="") {
-	$extension1 = getExtension($filename1);
+    if (isset($_FILES['img_march']) && isset($_FILES['img_march']['name']) && $_FILES['img_march']['name']!="") {
+		$filename1 = stripslashes($_FILES['img_march']['name']);
+
+		$extension1 = getExtension($filename1);
 	$extension1 = strtolower($extension1);
 	
 	$image_name1=time().'1.'.$extension1;
@@ -54,6 +55,11 @@
 	$copied = copy($_FILES['img_march']['tmp_name'], $newname1);
     }else
     $image_name1=$old_image;
+	// echo json_encode($_FILES);
+	// echo $old_image;
+
+	// echo $image_name1;
+	// echo  $prix_propp+"";
 	
 	if(isset($prop_prix)){
         $prix_prop=$prix_prop.' '.$devise;

@@ -266,7 +266,7 @@
                                                 if (data.date_liv && (new Date(data.date_liv.split(
                                                         "/")[1] + "/" + data.date_liv.split(
                                                         "/")[0] + "/" + data.date_liv.split(
-                                                        "/")[2]) > new Date())) {
+                                                        "/")[2]) >= (new Date()).setDate((new Date()).getDate() - 1) )) {
 
                                                     $(row).addClass('testclassvalid');
 

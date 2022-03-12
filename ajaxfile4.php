@@ -27,16 +27,16 @@ if (isset($_POST['now'])) {
 ## Search 
 $searchQuery = " ";
 if($pays3 != '' && $pays3 != 'all'){
-    $searchQuery .= " and (disponibilite.pays_arr like '%".$pays3."%' ) ";
+    $searchQuery .= " and ( CONVERT(CAST(CONVERT(disponibilite.pays_arr USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays3."%' ) ";
 }
 if($pays2 != ''){
-    $searchQuery .= " and (disponibilite.pays_dep like '%".$pays2."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(disponibilite.pays_dep USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays2."%') ";
 }
 if($villed != ''){
-    $searchQuery .= " and (disponibilite.ville_dep like '%".$villed."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(disponibilite.ville_dep USING LATIN1) AS BINARY) USING UTF8)  like '%".$villed."%') ";
 }
 if($villef != ''){
-    $searchQuery .= " and (disponibilite.ville_arr like '%".$villef."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(disponibilite.ville_arr USING LATIN1) AS BINARY) USING UTF8)  like '%".$villef."%') ";
 }
 
 if($dated != ''){

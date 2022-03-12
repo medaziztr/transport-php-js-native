@@ -55,16 +55,16 @@ if (isset($_POST['id_notification'])) {
 
 }
 if($pays3 != ''){
-    $searchQuery .= " and (pays_liv like '%".$pays3."%' ) ";
+    $searchQuery .= " and ( CONVERT(CAST(CONVERT(pays_liv USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays3."%' ) ";
 }
 if($pays2 != ''){
-    $searchQuery .= " and (pays_charg like '%".$pays2."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(pays_charg USING LATIN1) AS BINARY) USING UTF8) like '%".$pays2."%') ";
 }
 if($villed != ''){
-    $searchQuery .= " and (ville_charg like '%".$villed."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(ville_charg USING LATIN1) AS BINARY) USING UTF8) like '%".$villed."%') ";
 }
 if($villef != ''){
-    $searchQuery .= " and (ville_liv like '%".$villef."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(ville_liv USING LATIN1) AS BINARY) USING UTF8) like '%".$villef."%') ";
 }
 
 if($dated != ''){

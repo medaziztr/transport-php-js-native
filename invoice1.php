@@ -106,7 +106,7 @@ if ($s1==0) {
 <?php  
 }else 
 while ($row = mysqli_fetch_assoc($empRecords)) {
-    if(isset($_SESSION['telephone'])&&( ($_SESSION['telephone']==$res['telephone'])||($_SESSION['telephone']==$row['telephone']) )  ) { 
+    if(isset($_SESSION['telephone'])&&( ($_SESSION['telephone']==$res['telephone'])||($_SESSION['telephone']==$row['telephone'])||$_SESSION['type']=='admin' )  ) { 
 
 ?>
                     <div class="invoice-info" id="invoice_wrapper<?php echo $i;  ?>">
@@ -304,6 +304,35 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 						</div>
 					</td>
 				</tr>
+                <tr  class="bg-active">
+					<td>Information sur le véhicule </td>
+
+				</tr>
+				<tr >
+					<td>
+						<div style="display: flex; flex-wrap: wrap;">
+							<div style=" width: 50%;">
+								<b>Matricule:</b>	   <?php echo $row['matricule']==""?"/":$row['matricule']; ?>
+							</div>
+							<div style=" width: 50%;">
+								<b>Marque:</b>	  <?php echo $row['marque']==""?"/":$row['marque']; ?>
+							</div>
+						</div>
+					</td>
+				</tr>
+                <tr >
+					<td>
+						<div style="display: flex; flex-wrap: wrap;">
+							<div style=" width: 50%;">
+								<b>Type vehicule:</b>	   <?php echo $row['type_vehicule']==""?"/":$row['type_vehicule']; ?>
+							</div>
+							<div style=" width: 50%;">
+								<b>Poid max:</b>	  <?php echo $row['poid_max']==""?"/":$row['poid_max']; ?>
+							</div>
+						</div>
+					</td>
+				</tr>
+            
                 <tr>
                                         <td class="text-end f-w-600"> Total: (<?php echo $row['devise']==""?"FCFA":$row['devise']; ?>) <?php echo $row['montant']; ?></td>
                                     </tr>

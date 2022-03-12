@@ -148,9 +148,14 @@ de chargement</a> <br>
  $telephone=$_SESSION['telephone'];
 
 $vehiculedispo="SELECT * FROM abonnements WHERE telephone='$telephone' and id_abonnement NOT  IN (SELECT ab.id_abonnement FROM abonnements ab, chargement ch, chargement_vehicules chv  WHERE 1 and ab.id_abonnement=chv.id_abonnement AND
-ch.id_charg=chv.id_chargement and ch.status=0 and ( ( STR_TO_DATE( '$date_charg' , '%d/%m/%Y' )>=STR_TO_DATE( ch.date_charg , '%d/%m/%Y' ) and STR_TO_DATE( ch.date_liv , '%d/%m/%Y' )>=STR_TO_DATE( '$date_charg'  , '%d/%m/%Y' ) ) or  ( STR_TO_DATE( '$date_liv' , '%d/%m/%Y' )>=STR_TO_DATE( ch.date_charg , '%d/%m/%Y' ) and STR_TO_DATE( ch.date_liv , '%d/%m/%Y' )>=STR_TO_DATE( '$date_liv'  , '%d/%m/%Y' ) )
-or  ( STR_TO_DATE( '$date_liv' , '%d/%m/%Y' )>=STR_TO_DATE( ch.date_liv , '%d/%m/%Y' ) and STR_TO_DATE( ch.date_charg , '%d/%m/%Y' )<=STR_TO_DATE( '$date_liv'  , '%d/%m/%Y' ) )
-) ) ORDER BY id_abonnement DESC;
+ch.id_charg=chv.id_chargement and ch.status=0  
+ and( 
+(STR_TO_DATE( ch.date_liv , '%d/%m/%Y' )   BETWEEN STR_TO_DATE( '$date_charg' , '%d/%m/%Y' ) AND STR_TO_DATE( '$date_liv' , '%d/%m/%Y' ) )
+    or
+   ( STR_TO_DATE( ch.date_liv , '%d/%m/%Y' )>=STR_TO_DATE( '$date_liv' , '%d/%m/%Y' ) ) )
+
+
+ ) ORDER BY id_abonnement DESC;
 ";
 
 $result = mysqli_query($db,$vehiculedispo);

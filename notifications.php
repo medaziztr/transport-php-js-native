@@ -367,7 +367,7 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
       <label id="postulerError${row.id_notifications}" hidden style="backg"></label>
       <table id='empT' class='display dataTable'>
                                                         <thead>
-                                                            <tr>
+                                                            <tr style="background-color: unset;">
                                                             <th></th>
                                                                 <th>Image</th>
                                                                 <th>Matricule</th>

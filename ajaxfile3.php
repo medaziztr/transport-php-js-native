@@ -27,16 +27,16 @@ if (isset($_POST['telephone'])) {
 ## Search 
 $searchQuery = " ";
 if($pays3 != ''){
-    $searchQuery .= " and (pays_arr like '%".$pays3."%' ) ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(pays_arr USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays3."%' ) ";
 }
 if($pays2 != ''){
-    $searchQuery .= " and (pays_dep like '%".$pays2."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(pays_dep USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays2."%') ";
 }
 if($villed != ''){
-    $searchQuery .= " and (ville_dep like '%".$villed."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(ville_dep USING LATIN1) AS BINARY) USING UTF8)  like '%".$villed."%') ";
 }
 if($villef != ''){
-    $searchQuery .= " and (ville_arr like '%".$villef."%') ";
+    $searchQuery .= " and (CONVERT(CAST(CONVERT(ville_arr USING LATIN1) AS BINARY) USING UTF8)  like '%".$villef."%') ";
 }
 
 if($dated != ''){

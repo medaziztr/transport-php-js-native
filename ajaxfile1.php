@@ -26,16 +26,16 @@ if (isset($_POST['telephone'])) {
 ## Search 
 $searchQuery = " ";
 if($pays3 != ''){
-    $searchQuery .= " and (chargement.pays_liv like '%".$pays3."%' ) ";
+    $searchQuery .= " and (  CONVERT(CAST(CONVERT(chargement.pays_liv USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays3."%' ) ";
 }
 if($pays2 != ''){
-    $searchQuery .= " and (chargement.pays_charg like '%".$pays2."%') ";
+    $searchQuery .= " and ( CONVERT(CAST(CONVERT(chargement.pays_charg USING LATIN1) AS BINARY) USING UTF8)  like '%".$pays2."%') ";
 }
 if($villed != ''){
-    $searchQuery .= " and (chargement.ville_charg like '%".$villed."%') ";
+    $searchQuery .= " and ( CONVERT(CAST(CONVERT(chargement.ville_charg USING LATIN1) AS BINARY) USING UTF8)  like '%".$villed."%') ";
 }
 if($villef != ''){
-    $searchQuery .= " and (chargement.ville_liv like '%".$villef."%') ";
+    $searchQuery .= " and ( CONVERT(CAST(CONVERT(chargement.ville_liv USING LATIN1) AS BINARY) USING UTF8)  like '%".$villef."%') ";
 }
 
 if($dated != ''){
@@ -81,7 +81,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
     		"img_march"=>$row['img_march'],
             "poid"=>$row['poid'],
     		"volume"=>$row['volume'],
-    		"ville_charg"=>$row['ville_charg'],
+    		"ville_charg"=> $row['ville_charg'],
     		"date_charg"=>$row['date_charg'],
     		"ville_liv"=>$row['ville_liv'],
     		"date_liv"=>$row['date_liv'],

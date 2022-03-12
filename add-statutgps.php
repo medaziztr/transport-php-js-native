@@ -101,7 +101,7 @@
                     <div class="col-md-12">
                         <a href="invoice2.php?id_charg=<?php echo $_GET['id_charg']; ?>">Ordre 
 de chargement</a> <br>
-                        <!-- <a href="invoice1.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter les fiches de transport</a> -->
+                        <a href="invoice1.php?id_charg=<?php echo $_GET['id_charg']; ?>">Consulter les fiches de transport</a>
 
                 </div>
 

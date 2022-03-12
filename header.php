@@ -65,6 +65,11 @@
 	  .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
 	  .autocomplete-group { padding: 2px 5px; }
 	  .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
+      thead{
+        background-color: #19b835!important;
+    color: white!important;
+      }
 	</style>
         
         <script src="js/jssor.slider-28.0.0.min.js" type="text/javascript"></script>
@@ -670,11 +675,13 @@ table.dataTable,.dataTables_wrapper {
 															?>    
 															<li class="hidden-md hidden-lg"><a href="logout.php"> 
 																<?php 
-																if(($_SESSION['genre'])=="particulier") {
-																	echo $_SESSION['nom'];  
-																} 
+																if(isset( $_SESSION['r_s']) &&  $_SESSION['r_s']!="") {
+                                                                    echo $_SESSION['r_s'] ;
+
+                                                                } 
 																else {
-																	echo $_SESSION['r_s'] ;
+                                                                    echo $_SESSION['nom'];  
+
 																} 
 																?> 
 
@@ -788,10 +795,15 @@ table.dataTable,.dataTables_wrapper {
                                         else{
                                         ?>    
                                             <li><a href="logout.php"> 
-                                                <?php if(($_SESSION['genre'])=="particulier") { 
-                                                          echo $_SESSION['nom'] ; 
-                                                      } else { 
-                                                          echo $_SESSION['nom'] ;} 
+                                                <?php 
+                                                	if(isset( $_SESSION['r_s']) &&  $_SESSION['r_s']!="") {
+                                                        echo $_SESSION['r_s'] ;
+
+                                                    } 
+                                                    else {
+                                                        echo $_SESSION['nom'];  
+
+                                                    }  
                                                 ?> 
                                                 
                                                 Deconnexion</a></li>  
