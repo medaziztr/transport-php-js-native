@@ -149,7 +149,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 								<b>Nombre de véhicules:</b>	<?php echo $res['nb_vehicules']; ?>
 							</div>
 							<div style=" width: 50%;">
-								<b>Tonnage: </b><?php echo $res['poid'] .'Tonnes'; ?>	
+								<b>Tonnage: </b><?php echo $res['poid']; ?>	
 							</div>
 						</div>
 					</td>

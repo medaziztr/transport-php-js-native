@@ -1336,158 +1336,167 @@ onclick="DeleteChargement(`+ row.id_charg + `);"
                                                     </div>
 
                                                     <table id='empTable212' class='display dataTable'>
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Image</th>
-                                                                <th>Marchandise</th>
-                                                                <th>Poids</th>
-                                                                <th>Cout</th>
-                                                                <th>Départ</th>
-                                                                <th>Arrivée</th>
-                                                                <th>Chargeur</th>
-                                                                <th>Auteur</th>
-                                                                <th>Véhicules</th>
-                                                                <th>Proposition</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                    <script>
-                                                        $(document).ready(function () {
-                                                            var dataTable212 = $('#empTable212').DataTable({
-                                                                'processing': true,
-                                                                'serverSide': true,
-                                                                'serverMethod': 'post',
-                                                                //'searching': false, // Remove default Search Control
-                                                                'ajax': {
-                                                                    'url': 'ajaxfile_notification.php',
-                                                                    'data': function (data) {
-                                                                        // Read values
-                                                                        var gender = $('#pays2').val();
-                                                                        var name = $('#pays3').val();
-                                                                        var villed = $('#villed').val();
-                                                                        var villef = $('#villef').val();
-                                                                        var dated = $('#dated').val();
-                                                                        var datef = $('#datef').val();
-                                                                        var notification_input = $('#notification_input').val();
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Marchandise</th>
+                                            <th>Poids</th>
+                                            <th>Cout</th>
+                                            <th>Départ</th>
+                                            <th>Arrivée</th>
+                                            <th>Chargeur</th>
+                                            <th>Auteur</th>
+                                            <th>Véhicules</th>
+                                            <th>Proposition</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                  <script>
+                            $(document).ready(function() {
+                                var dataTable212 = $('#empTable212').DataTable({
+                                    'processing': true,
+                                    'serverSide': true,
+                                    'serverMethod': 'post',
+                                    //'searching': false, // Remove default Search Control
+                                    'ajax': {
+                                        'url': 'ajaxfile_notification.php',
+                                        'data': function(data) {
+                                            // Read values
+                                            var gender = $('#pays2').val();
+                                            var name = $('#pays3').val();
+                                            var villed = $('#villed').val();
+                                            var villef = $('#villef').val();
+                                            var dated = $('#dated').val();
+                                            var datef = $('#datef').val();
+                                            var notification_input = $('#notification_input').val();
 
-                                                                        // Append to data
-                                                                        data.pays2 = gender;
-                                                                        data.pays3 = name;
-                                                                        data.villed = villed;
-                                                                        data.villef = villef;
-                                                                        data.dated = dated;
-                                                                        data.datef = datef;
-                                                                        data.type = "<?php echo $row['type'] ;  ?>";
-                                                                        data.notification_input = notification_input;
+                                            // Append to data
+                                            data.pays2 = gender;
+                                            data.pays3 = name;
+                                            data.villed = villed;
+                                            data.villef = villef;
+                                            data.dated = dated;
+                                            data.datef = datef;
+                                            data.type="<?php echo $row['type'] ;  ?>";
+                                            data.notification_input = notification_input;
 
 
-                                                                    }
-                                                                },
-                                                                'success': function (data) {
-                                                                    console.log(data)
-                                                                },
-                                                                'error': function (data) {
-                                                                    console.log(data)
-                                                                },
-                                                                "createdRow": function (row, data, dataIndex) {
-                                                                    // console.log(data.date_liv, new Date(data.date_liv
-                                                                    //     .split("/")[1] + "/" + data.date_liv
-                                                                    //     .split("/")[0] + "/" + data.date_liv
-                                                                    //     .split("/")[2]))
+                                        }
+                                    },
+                                    'success': function(data) {
+                                        console.log(data)
+                                    },
+                                    'error': function(data) {
+                                        console.log(data)
+                                    },
+                                    "createdRow": function(row, data, dataIndex) {
+                                        // console.log(data.date_liv, new Date(data.date_liv
+                                        //     .split("/")[1] + "/" + data.date_liv
+                                        //     .split("/")[0] + "/" + data.date_liv
+                                        //     .split("/")[2]))
 
-                                                                    // if (data.date_liv && (new Date(data.date_liv.split(
-                                                                    //         "/")[1] + "/" + data.date_liv.split(
-                                                                    //         "/")[0] + "/" + data.date_liv.split(
-                                                                    //         "/")[2]) > new Date())) {
+                                        // if (data.date_liv && (new Date(data.date_liv.split(
+                                        //         "/")[1] + "/" + data.date_liv.split(
+                                        //         "/")[0] + "/" + data.date_liv.split(
+                                        //         "/")[2]) > new Date())) {
 
-                                                                    //     $(row).addClass('testclassvalid');
+                                        //     $(row).addClass('testclassvalid');
 
-                                                                    // } else {
-                                                                    //     $(row).addClass('testclass');
-                                                                    // }
-                                                                    $(row).addClass('tableline' + data.id_notifications);
-                                                                    $(row).attr('id', 'tableline' + data.id_notifications);
-                                                                    if (data.statut == "1") {
+                                        // } else {
+                                        //     $(row).addClass('testclass');
+                                        // }
+                                        $(row).addClass('tableline'+data.id_notifications);
+                                        $(row).attr( 'id', 'tableline'+data.id_notifications );
+                                        if (data.statut =="1") {
 
-                                                                        $(row).addClass('testclassvalid');
+                                            $(row).addClass('testclassvalid');
 
-                                                                    } else {
-                                                                        $(row).addClass('testclass');
-                                                                    }
+                                        } else {
+                                            $(row).addClass('testclass');
+                                        }
 
-                                                                },
-                                                                'columns': [
+                                    },
+                                    'columns': [
 
-                                                                    {
-                                                                        "mData": "img_march",
-                                                                        "mRender": function (data, type, row) {
-                                                                            return `<div 
+                                        {
+                                            "mData": "img_march",
+                                            "mRender": function(data, type, row) {
+                                                return `<div 
 
 class="res-flx-s img-avatar-sm">
         <img src="./img/uploaded/${data ? data : 'logo.png'}">
     `
-                                                                        },
+                                            },
 
-                                                                    },
-                                                                    {
-                                                                        data: 'marchandise'
-                                                                    },
-                                                                    {
-                                                                        data: 'poid'
-                                                                    },
-                                                                    {
-                                                                        data: 'prix_prop'
-                                                                    },
-                                                                    {
-                                                                        "mData": "ville_charg",
-                                                                        "mRender": function (data, type, row) {
-                                                                            // console.log(row)
-                                                                            return row.ville_charg + ", " + row
-                                                                                .pays_charg + ", " + row.date_charg;
-                                                                        }
-                                                                    }, {
-                                                                        "mData": "pays_charg",
-                                                                        "mRender": function (data, type, row) {
-                                                                            // console.log(row)
-                                                                            return row.ville_liv + ", " + row
-                                                                                .pays_liv + ", " + row.date_liv;
-                                                                        }
-                                                                    },
-                                                                    {
-                                                                        "mData": "nom",
-                                                                        "mRender": function (data, type, row) {
-                                                                            // console.log(row)
-                                                                            return row.nom + " " + row
-                                                                                .prenom;
-                                                                        }
-                                                                    },
-                                                                    {
-                                                                        "mData": "nomSender",
-                                                                        "mRender": function (data, type, row) {
-                                                                            console.log("*****************************", row)
-                                                                            return row.nomSender.nom + " " + row.nomSender.prenom + " " + row.nomSender.email + " " + row.nomSender.telephone;
-                                                                            //    return row.nom + " " + row
-                                                                            //         .prenom ;
-                                                                        }
-                                                                    },
-                                                                    {
-                                                                        "mData": "vehicules",
-                                                                        "mRender": function (data, type, row) {
-                                                                            console.log("rowrowrowrowrowrowrowrowrowrowrow", data, type, row)
-                                                                            var val = [];
-                                                                            val = row.vehicules;
-                                                                            var result = `<div 
+                                        },
+                                        {
+                                            data: 'marchandise'
+                                        },
+                                        {
+                                            data: 'poid'
+                                        },
+                                        {
+                                            data: 'prix_prop'
+                                        },
+                                        {
+                                            "mData": "ville_charg",
+                                            "mRender": function(data, type, row) {
+                                                // console.log(row)
+                                                return row.ville_charg + ", " + row
+                                                    .pays_charg + ", " + row.date_charg;
+                                            }
+                                        }, {
+                                            "mData": "pays_charg",
+                                            "mRender": function(data, type, row) {
+                                                // console.log(row)
+                                                return row.ville_liv + ", " + row
+                                                    .pays_liv + ", " + row.date_liv;
+                                            }
+                                        },
+                                        {
+                                            "mData": "nom",
+                                            "mRender": function(data, type, row) {
+                                                // console.log(row)
+                                                return row.nom + " " + row
+                                                    .prenom ;
+                                            }
+                                        },
+                                        {
+                                            "mData": "nomSender",
+                                            "mRender": function(data, type, row) {
+                                                 console.log("*****************************",row)
+                                                return row.nomSender.nom + " " + row.nomSender.prenom +" " + row.nomSender.email+ " " + row.nomSender.telephone ;
+                                            //    return row.nom + " " + row
+                                            //         .prenom ;
+                                            }
+                                        },
+                                        {
+                                            "mData": "vehicules",
+                                            "mRender": function(data, type, row) {
+                                                console.log("rowrowrowrowrowrowrowrowrowrowrow",data,type,row)
+                                                var val=[];
+                                                val=row.vehicules;
+                                                ToControle=0;
+
+for (let index = 0; index < val.length; index++) {
+     const element = val[index];
+   if (element.checked) {
+    ToControle=ToControle+1;   
+   }
+    console.log()
+}
+                                                var result=`<div 
 
 class="res-flx-s img-avatar-sm">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.id_notifications}"
-onclick="Changetest(`+ row.id_notifications + `);"
+onclick="Changetest(`+row.id_notifications+`);"
 > Consulter
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal${row.id_notifications}" 
-onmouseover="submitCheck(`+ row.id_notifications + `);"
+onmouseover="submitCheck(`+row.id_notifications+`);"
 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <form id="postuler" action="post-valide.php" method="POST" >
 <input type="text"name="ToControle" hidden  value="${ToControle}">
@@ -1521,9 +1530,9 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
 
 
 `;
-                                                                            for (let index = 0; index < val.length; index++) {
-                                                                                const element = val[index];
-                                                                                result += `
+                                                for (let index = 0; index < val.length; index++) {
+                                                     const element = val[index];
+                                                     result+=`
                                                      <tr>
                                                      <td>
                                                      <input type="text"name="id_postuler" hidden  value="${row.id_postuler}">
@@ -1531,45 +1540,40 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
 
                                                      <input type="text"name="checkId[]" hidden value="${element.id_abonnement}">
                                                      
-                                                     <input id="id${row.id_notifications + "" + index}" type="hidden" name="check[]" ${element.checked ? 'value = '1'': 'value = '0''
-                                                                            }>
- <input onchange="$('#id$ {
-                    row.id_notifications+''+index}
-                    ').val(this.checked?1:0)" type="checkbox" id="dummy-id" 
- name="dummy-name" ${element.checked?'checked':''} <?php echo $row['type'] == "transporteur" ? 'disabled' : '';  ?> >
+                                                     <input id="id${row.id_notifications+""+index}" type="hidden" name="check[]" ${element.checked?'value="1"':'value="0"'}>
+ <input onchange="$('#id${row.id_notifications+""+index}').val(this.checked?1:0)" type="checkbox" id="dummy-id" 
+ name="dummy-name" ${element.checked?'checked':''} <?php echo $row['type']=="transporteur"?'disabled':'' ;  ?> >
                                                      
-                                                      </td >
+                                                      </td>
                                                      <td><img src="./img/uploaded/${element.img_vehicule?element.img_vehicule : 'logo.png'}"> </td>
                                                      <td>${element.matricule} </td>
                                                      <td>${element.type_vehicule} </td>
                                                      <td>${element.marque} </td>
                                                      <td>${element.poid_max} Tonnes</td>
 
-    </tr > `
+    </tr>`
                                                     console.log()
                                                 }
 
                                                 return result+= `
-                                                </form >
-                                                </tbody >
-                                                </table >
+                                                </form>
+                                                </tbody>
+                                                </table>
 
-                                                                ${
-                                                                    row.type == "Soumission" ? ` <br>
+                                                ${row.type=="Soumission"?` <br>
                                                 <label><u><b>Message</b></u></table>
                                                 <br>
-                                                <label> ${row.message}</table>` : ""
-                                                            }
-                                                </div >
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                                    <button type="submit" id="btnSubmit${row.id_notifications}"
-                                                                        disabled class="btn btn-primary <?php echo $row['type']==" transporteur"?'hidden':'' ;  ?>">Valider</button>
-      </div >
-    </div >
-  </div >
-  </form >
-</div > </div > `;
+                                                <label> ${row.message}</table>`:""}
+                                                </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" id="btnSubmit${row.id_notifications}"
+            disabled  class="btn btn-primary <?php echo $row['type']=="transporteur"?'hidden':'' ;  ?>">Valider</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div> </div>`;
                                         }
                                     },
                                         {
@@ -1586,13 +1590,13 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
                                             "mRender": function(data, type, row) {
                                                 // console.log(row)
                                                 return `
-
-                                                                < a
-
-                                                            onclick = "DeleteNotification(`+row.id_notifications+`);"
-                                                            style = "cursor: pointer;"
-
-                                                            class="supp" > <img style="height:20px;width:20px" src="./img/supp.png" ></a>
+                                               
+                                        <a 
+                                        
+                                        onclick="DeleteNotification(`+row.id_notifications+`);"
+            style="cursor: pointer;"
+                                        
+                                         class="supp" ><img style="height:20px;width:20px" src="./img/supp.png" ></a>
                       
 
 
@@ -1614,7 +1618,7 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
                                     ]
                                 });
                                 dataTable212.buttons().container()
-                                    .appendTo('#example_wrapper .col-sm-6:eq( 0 )');
+                                    .appendTo('#example_wrapper .col-sm-6:eq(0)');
 
                                 $('#villed').change(function() {
                                     dataTable212.draw();
@@ -1640,7 +1644,7 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="tru
                                     dataTable212.draw();
                                                     });
                             });
-                                                    </script>
+                            </script>
                                                 </div>
 
 

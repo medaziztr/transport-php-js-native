@@ -30,7 +30,7 @@ function get_single_reverse_info($lon,$lat)
 function get_single_status_gps_info($id,$token)
 {
     $pdo = Database::connect();
-    $sql = "SELECT * FROM status_gps where id_dispo = {$id} and Etat=0  and Cast( Date_F as date )>=now()";
+    $sql = "SELECT * FROM status_gps where id_dispo = {$id} and Etat=0  and  Cast( Date_F as date ) >= DATE_ADD( NOW(), INTERVAL - 1 DAY)";
      
     //    try {
 
