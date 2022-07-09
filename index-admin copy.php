@@ -20,7 +20,11 @@ if ( isset( $_SESSION[ 'login_user' ] ) ) {
                 <div class='css-tab' role='tabpanel'>
 
                     <ul class='nav nav-tabs' role='tablist'>
-                      <li role='transporteurs' class='active'>
+
+                    <li role='abonnement' class='active'>
+                            <a href='#abonnement' aria-controls='abonnement' role='tab' data-toggle='tab'> Abonnements
+                            </a>
+                        </li>                        <li role='transporteurs' class=''>
                             <a href='#chargements' aria-controls='chargements' role='tab' data-toggle='tab'>Historique voyages
                             </a>
                         </li>
@@ -28,11 +32,13 @@ if ( isset( $_SESSION[ 'login_user' ] ) ) {
                         <li role='transporteurs' class=''>
                             <a href='#ajout_gps' aria-controls='ajout_gps' role='tab' data-toggle='tab'>Ajout Gps </a>
                         </li>
-                        
+                        <li role='transporteurs' class=''>
+                            <a href='#statusgps' aria-controls='statusgps' role='tab' data-toggle='tab'>Status GPS </a>
+                        </li>
                     </ul>
 
                     <div class='tab-content'>
-                        <div role='tabpanel' class='tab-pane fade in' id='abonnement'>
+                        <div role='tabpanel' class='tab-pane fade in active' id='abonnement'>
                             <div class='css-tab-content'>
                                 <div class='tab-pane fade in active'>
                                     <div class='css-tab-content formulaires'>
@@ -745,7 +751,7 @@ if ( isset( $_SESSION[ 'login_user' ] ) ) {
                             </div>
                         </div>
 
-                        <div role='tabpanel' class='tab-pane fade in active' id='chargements'>
+                        <div role='tabpanel' class='tab-pane fade in' id='chargements'>
                             <div class='css-tab-content'>
                                 <div class='tab-pane fade in active'>
                                     <div class='css-tab-content formulaires'>
@@ -754,7 +760,7 @@ if ( isset( $_SESSION[ 'login_user' ] ) ) {
                                     <div class='container'>
                                         <div class='col-md-12'>
                                             <div class='contact-map'>
-                                                <h3 class=' sections-title'>Voyages</h3>
+                                                <h3 class=' sections-title'>Chargements</h3>
 
                                                 <div class='container result-rech'>
 
@@ -882,8 +888,8 @@ if ( isset( $_SESSION[ 'login_user' ] ) ) {
                                                             <tr>
                                                                 <th>Image</th>
                                                                 <th>Marchandise</th>
-                                                                <th>Nom du client</th>
-                                                                <th>Téléphone du client</th>
+                                                                <th>Poid</th>
+                                                                <th>Volume</th>
                                                                 <th>Départ</th>
                                                                 <th>Arrivée</th>
                                                                 <th>Action</th>
@@ -973,10 +979,10 @@ class="res-flx-s img-avatar-sm">
                                                                     data: 'marchandise'
                                                                 },
                                                                 {
-                                                                    data: 'client'
+                                                                    data: 'poid'
                                                                 },
                                                                 {
-                                                                    data: 'telephoneclient'
+                                                                    data: 'volume'
                                                                 },
                                                                 {
                                                                     "mData": "ville_charg",
@@ -1004,8 +1010,7 @@ class="res-flx-s img-avatar-sm">
                                                                         row) {
                                                                         // console.log(row)
                                                                         return `
-                                                                        <a href="modif-charg.php?id_charg=${row.id_charg}&amp;telephone=${row.telephone}"><img src="./img/modif.png"  style="height:20px;width:20px"></a>
-
+            
                                                             <a class="supp" href="add-statutgps.php?id_charg=${row.id_charg}"><img style="height:20px;width:20px;margin:5px" src="./img/check.png"></a>
                                                                                             
 <a 
@@ -2030,8 +2035,6 @@ onclick="DeleteChargement(`+ row.id_charg + `);"
                                                 <th>Matricule</th>
                                                 <th>Code suivi</th>
                                                 <th>Activer/désactiver suivi</th>
-                                                <th>Prolonger</th>
-
                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -2134,104 +2137,13 @@ onclick="DeleteChargement(`+ row.id_charg + `);"
                                                 "mRender": function(data, type, row) {
                                                     return `
                                                  <button type="button" class="btn btn-primary" id="btssuivi${row.id_abonnement}"
-onclick="validsuivistatus(`+row.id_abonnement+`,`+row.id_chargement+`);"
+onclick="validsuivi(`+row.id_abonnement+`);"
 >
- ${row.suivi=="0"?'Désactiver':'Activer'}
+ ${row.suivi?'Désactiver':'Activer'} 
 </button>
 `;
                                                 }
                                             },
-                                            {
-                                            "mData": "suivi",
-                                            "mRender": function(data, type, row) {
-                                                console.log("exampleModalLabelexampleModalLabelexampleModalLabelexampleModalLabel",row.id_chargement)
-                                               
-                                                var result=`<div 
-
-class="res-flx-s img-avatar-sm">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.Id_status}"
-onclick="Changetest(`+row.Id_status+`);"
->
-  Consulter
-</button>
-
-<div class="modal fade"  style="z-index: 99999;"
-id="exampleModal${row.Id_status}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-<form id="postulerstatus${row.Id_status} action="post-status1.php" method="POST">
-
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><b>Détails des véhicules proposés</b></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="overflow-x: auto;">
-
-      <label id="postulerError${row.Id_status}" hidden style="backg"></label>
-   
-   
-  
-
-
-`;
-                                            
-
-                                                return result+= `
-                                              
-                                      
-<div class="form-group" style="
-    width: 100%!important;>                
-
-<div class="form-group" style="
-    width: 100%!important;">
-    <div id="error${row.Id_status}">
-    <input
-value="${row.id_chargement}" id="${'id_chargement' +row.Id_status}" type="number">
-
-</div>
-
-<input id="Id_status${row.Id_status}" hidden name="Id_status"
-value="${row.Id_status}" type="number">
-
-<div class="col-md-12 padding-12">
-<label>Date de début du suivit:</label>
-
-<input id="Date_D${row.Id_status}" name="Date_D" type="date" value="${row.Date_D}" >
-</div>
-<div class="col-md-12 padding-12">
-<label>Date de fin du suivit:</label>
-
-<input id="Date_F${row.Id_status}" name="Date_F" type="date" value="${row.Date_F}" >
-</div>
-
-</div>
-</div>
-<div class="modal-footer">
-        <button  type="button" class="btn btn-secondary" data-dismiss="modal" >Fermer</button>
-        <button onclick="submitCheckstatus(`+row.Id_status+`);"  type="button" class="btn btn-secondary"  >Enregistrer</button>
-
-
-        </form>
-
-   
-
-      </div>
-
-</div>
-
-                                                </div>
-    
-    </div>
-  </div>
-
-</div> 
-
-</div>`;
-                                        }
-                                    },
  {
                                                     'mData': 'telephone',
                                                     'mRender': function( data, type,
@@ -2287,6 +2199,230 @@ value="${row.Id_status}" type="number">
                                                 </script>
 
        <!-- Table -->
+       <table id='empTable314' class='display dataTable'>
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Matricule</th>
+                                                <th>Code suivi</th>
+                                                <th>Activer/désactiver suivi</th>
+                                                <th>Prolonger</th>
+                                                <th>Action</th>
+                                                                                                <th>Action</th>
+
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+
+                                    <script>
+
+                                        console.log("okokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokokok")
+                                $(document).ready(function() {
+                                    var dataTable = $('#empTable314').DataTable({
+                                        'processing': true,
+                                        'serverSide': true,
+                                        'serverMethod': 'post',
+                                        //'searching': false, // Remove default Search Control
+                                        'ajax': {
+                                            'url': 'ajaxfilechv1.php',
+                                            'data': function(data) {
+                                              
+
+                                            }
+                                        },
+                                        'success': function(data) {
+                                            console.log(data)
+                                        },
+                                        'error': function(data) {
+                                            console.log(data)
+                                        },
+                                        "createdRow": function(row, data, dataIndex) {
+                                            // console.log(data.date_arr, new Date(data.date_arr
+                                            //     .split("/")[1] +
+                                            //     "/" + data.date_arr.split("/")[0] +
+                                            //     "/" + data.date_arr
+                                            //     .split("/")[2]))
+
+                                             if (data.suivi ) {
+
+                                                $(row).addClass('testclassvalid');
+                                                $(row).attr( 'id', 'tablelinesuivi'+data.id_abonnement );
+
+                                             } else {
+                                                 $(row).addClass('testclass');
+                                             }
+
+
+                                        },
+                                        'columns': [
+
+                                            {
+                                                "mData": "img_vehicule",
+                                                "mRender": function(data, type, row) {
+                                                    return `<div 
+
+class="res-flx-s img-avatar-sm">
+<img src="./img/uploaded/${data ? data : 'logo.png'}">
+`
+                                                },
+
+                                            },
+                                            {
+                                                data: 'matricule'
+                                            },
+                                             {
+                                                "mData": "nom",
+                                                "mRender": function(data, type, row) {
+                                                    return `
+                                                 <button type="button" class="btn btn-primary" id="btssuivi${row.id_abonnement}"
+onclick="validsuivi(`+row.id_abonnement+`);"
+>
+ ${row.suivi?'Désactiver':'Activer'} 
+</button>
+`;
+                                                }
+                                            },
+                                            {
+                                            "mData": "nom_chauffeur",
+                                            "mRender": function(data, type, row) {
+                                                console.log("rowrowrowrowrowrowrowrowrowrowrow",data,type,row)
+                                                var val=[];
+                                                val=row.vehicules;
+                                                ToControle=0;
+
+                                                
+                                                var result=`<div 
+
+class="res-flx-s img-avatar-sm">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.Id_status}"
+onclick="Changetest(`+row.Id_status+`);"
+>
+  Consulter
+</button>
+
+<div class="modal fade"  onmouseover="submitCheck(`+row.Id_status+`);"
+id="exampleModal${row.Id_status}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form id="postuler${row.Id_status}" action="post-valide.php"  method="POST" >
+<form id="postuler" action="post-status.php" method="POST">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Détails des véhicules proposés</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-x: auto;">
+
+      <label id="postulerError${row.Id_status}" hidden style="backg"></label>
+   
+   
+  
+                                                        <input type="text"name="id_charg" hidden value="${row.id_charg}">
+
+
+`;
+                                            
+
+                                                return result+= `
+                                              
+                                      
+<div class="form-group">                
+
+<div class="row">
+<input id="id_chargement" hidden name="id_chargement"
+value="" type="number">
+
+<input id="to_telephone" hidden name="to_telephone"
+value="" >
+<input id="mail" hidden name="mail"
+value="" >
+
+<div class="col-md-12 padding-12">
+<label>Date de début du suivit:</label>
+
+<input id="Date_D" name="Date_D" type="date" value="<?php echo  $data==null? date("Y-m-d", strtotime(str_replace('/', '-', $res["date_charg"] ))) :date("Y-m-d", strtotime(str_replace('/', '-',explode("-",  $data["Date_D"])[2]."/".explode("-",$data["Date_D"])[1]."/".explode("-",$data["Date_D"])[0] )))  ; ?>" >
+</div>
+<div class="col-md-12 padding-12">
+<label>Date de fin du suivit:</label>
+
+<input id="Date_D" name="Date_F" type="date" value="<?php echo   $data==null? date("Y-m-d", strtotime(str_replace('/', '-', $res["date_charg"] ))) :date("Y-m-d", strtotime(str_replace('/', '-',explode("-",  $data["Date_F"])[2]."/".explode("-",$data["Date_F"])[1]."/".explode("-",$data["Date_F"])[0]  ))); ?>" >
+</div>
+
+</div>
+</div>
+
+
+</div>
+                                                </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+    
+   
+            <button type="submit" id="btnSubmit${row.Id_status}"
+            
+            class="btn btn-primary ">Valider</button>
+
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary pull-right">Enregistrer
+</button>
+</form>
+  </form>
+</div> 
+
+</div>`;
+                                        }
+                                    },
+                                            {
+                                                "mData": "telephone",
+                                                "mRender": function(data, type, row) {
+                                                    // console.log(row)
+                                                    return `
+                                                    <a onclick="return confirm('Êtes-vous sûr de votre choix ?')" class="supp" href="supp-vehicule.php?id_abonnement=${row.id_abonnement}&amp;id_chargement=<?php echo $_GET['id_charg']; ?>"><img style="height:20px;width:20px;margin:5px" src="./img/supp.png" ></a>
+                                                    <button type="button" class="btn btn-primary" id="btssuiviprolonger${row.id_abonnement}"
+onclick="validsuiviprolonger(`+row.id_abonnement+`);"
+>Prolonger</button>
+`;
+                                                }
+                                            }
+                                        ],
+                                        dom: 'Bfrtip',
+                                        buttons: [
+                                            //'copyHtml5',
+                                            'excelHtml5',
+                                            //'csvHtml5',
+                                            'pdfHtml5'
+                                        ]
+                                    });
+                                    dataTable.buttons().container()
+                                        .appendTo('#example_wrapper .col-sm-6:eq(0)');
+
+                                    $('#villed').change(function() {
+                                        dataTable.draw();
+                                    });
+                                    $('#villef').change(function() {
+                                        dataTable.draw();
+                                    });
+                                    $('#dated').change(function() {
+
+                                        dataTable.draw();
+                                    });
+                                    $('#datef').change(function() {
+                                        dataTable.draw();
+                                    });
+                                    $('#pays3').change(function() {
+                                        dataTable.draw();
+                                    });
+
+                                    $('#pays2').change(function() {
+                                        dataTable.draw();
+                                    });
+                                });
+                                </script>
 
                                                             <br><br>
                                                         </div>

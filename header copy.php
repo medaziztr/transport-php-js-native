@@ -627,7 +627,7 @@ table.dataTable,.dataTables_wrapper {
 															?>
 															
 														
-															<li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
+															<li><a href="https://gestionsuivi.telefret.com" target="_blank">Suivi</a></li>
 
                                                             <li><a href="notifications.php" >Mes Notifications <span class="badge " style="background-color: #e71010;" id="nbrnotification"><?php echo $totalRecordwithFilter; ?></span></a></li>
 
@@ -720,7 +720,7 @@ table.dataTable,.dataTables_wrapper {
 													
 													<li><a href="pubs.php">Espace Publicités</a></li> 
                                                     
-                                                    <li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
+                                                    <li><a href="https://gestionsuivi.telefret.com" target="_blank">Suivi</a></li>
 
                                        <?php 
                                                 }

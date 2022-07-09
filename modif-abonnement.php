@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 no-padding margb">
-                                        <div class="col-md-12  left-title p-l-0 hidden-xs">CNI du gerant</div>
+                                        <div class="col-md-12  left-title p-l-0 hidden-xs">Permis chauffeur</div>
                                         <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
                                             <input id="file3" type="file" class="input-file" name="avat3"  onchange="readURLC3(this);">
                                             <label for="file3" class="label-file"><span class="plus">+</span></label>
@@ -92,7 +92,7 @@
                                     </br>
 
 
-                                    <div class="col-md-12 m-t-lg no-padding">
+                                    <div class="col-md-12 m-t-lg no-padding" hidden>
                                         <div class="cont-filtre flxstart">
                                             <span class="m-t-sm" >GPS</span>
                                             <div class="onoffswitch ">
@@ -135,20 +135,7 @@
                                     <div class="col-md-12 no-padding">
                                         <input name="telephone_chauffeur"  value="<?php echo $res['telephone_chauffeur']; ?>" type="text" class="form-control" required="" placeholder="téléphone du chauffeur">
                                     </div>
-                                    
-                                    <?php
-										if( ($s>0) OR (($s==0) AND ($_SESSION['date_limite'] < strtotime(date('d-m-Y')))) ){
-									?>
-										<div class="col-md-12 no-padding">
-											<select class="form-control" id="pack"  name="pack"> 
-												<option value="1 year">Pack 1 Ans</option>
-												<option value="6 months">Pack 6 Mois</option>
-												<option value="3 months">Pack 3 Mois</option>
-											</select>
-										</div>
-									<?php
-										}
-									?>
+ 
                                 </div>
                             </div>
                          

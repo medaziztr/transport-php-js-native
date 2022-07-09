@@ -7,8 +7,8 @@
     <section class="page-title-section trouvtrans">
         <div class="container hidden-xs slide-bord">
             <div class="demo-slides">
-                <div class="animated lightSpeedIn slide-title">Vos Abonnements</div>
-                <p class="lead animated lightSpeedIn">Consultez ou abonnez-vous</p>
+                <div class="animated lightSpeedIn slide-title">Vos véhicules</div>
+                <p class="lead animated lightSpeedIn">Consultez vos véhicules</p>
             </div>
         </div>
     </section>
@@ -20,22 +20,7 @@
             <div class="row content-row">
                 
                 <div class="col-md-12">
-                    <div class="contact-map">
-                        <h3 class="txt-bordure sections-title">Vos Abonnements</h3>
-                   
-
-
-
-
-<h3 class=" sections-title">Tous les Abonnements</h3>
-
-
-
-
-
-
-
-
+                    <div class="contact-map"> 
 <div class="container result-rech">
 
 <?php
@@ -100,7 +85,6 @@
                 <th>Marque</th>
                 <th>Type de véhicule</th>
                 <th>Poids maximal</th>
-                <th>GPS</th>
                 <th>Date</th>
                 <th>Chauffeur</th>
 
@@ -187,16 +171,6 @@ class="res-flx-s img-avatar-sm">
             {
                 data: 'poid_max'
             },
-            {
-                "mData": "gps",
-                "mRender": function(data, type,
-                    row) {
-                    return row.gps == 1 ?
-                        'Avec GPS' : 'Sans GPS';
-                },
-
-            },
-
             {
                 "mData": "date_deb",
                 "mRender": function(data, type,
@@ -306,7 +280,7 @@ style="cursor: pointer;"
                                     <div class="col-md-3 no-padding margb">
                                         <div class="col-md-12  left-title p-l-0 hidden-xs">Carte grise</div>
                                         <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
-                                            <input id="file1" type="file" class="input-file" name="avat1" required="" onchange="readURLC1(this);">
+                                            <input id="file1" type="file" class="input-file" name="avat1"  onchange="readURLC1(this);">
                                             <label for="file1" class="label-file"><span class="plus">+</span></label>
                                             <div class="imgs-prev">
                                                 <img  id="blah1" src="./img/contact-back.png" alt="your image" />
@@ -316,17 +290,17 @@ style="cursor: pointer;"
                                     <div class="col-md-3 no-padding margb">
                                         <div class="col-md-12  left-title p-l-0 hidden-xs">Assurance valide</div>
                                         <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
-                                            <input id="file2" type="file" class="input-file" name="avat2" required="" onchange="readURLC2(this);">
+                                            <input id="file2" type="file" class="input-file" name="avat2"  onchange="readURLC2(this);">
                                             <label for="file2" class="label-file"><span class="plus">+</span></label>
                                             <div class="imgs-prev">
                                                 <img  id="blah2" src="./img/contact-back.png" alt="your image" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 no-padding margb">
-                                        <div class="col-md-12  left-title p-l-0 hidden-xs">CNI du gerant</div>
+                                    <div class="col-md-3 no-padding margb" >
+                                        <div class="col-md-12  left-title p-l-0 hidden-xs">Permis chauffeur</div>
                                         <div class="add-img col-sm-10 col-xs-12 no-padding previmg">
-                                            <input id="file3" type="file" class="input-file" name="avat3" required="" onchange="readURLC3(this);">
+                                            <input id="file3" type="file" class="input-file" name="avat3"  onchange="readURLC3(this);">
                                             <label for="file3" class="label-file"><span class="plus">+</span></label>
                                             <div class="imgs-prev">
                                                 <img  id="blah3" src="./img/contact-back.png" alt="your image" />
@@ -338,8 +312,8 @@ style="cursor: pointer;"
                                     </br>
                                     </br>
 
-                                    <div class="col-md-12 m-t-lg no-padding">
-                                        <div class="cont-filtre flxstart">
+                                    <div class="col-md-12 m-t-lg no-padding " hidden>
+                                        <div class="cont-filtre flxstart" >
                                             <span class="m-t-sm" >GPS</span>
                                             <div class="onoffswitch ">
                                                 <input type="checkbox" name="gps" class="onoffswitch-checkbox" id="myonoffswitch3">
@@ -383,19 +357,6 @@ style="cursor: pointer;"
                                
 
 
-                                    <?php
-										if( ($s>0) OR (($s==0) AND ($_SESSION['date_limite'] < strtotime(date('d-m-Y')))) ){
-									?>
-										<div class="col-md-12 no-padding">
-											<select class="form-control" id="" name="pack"> 
-												<option value="1 year">Pack 1 Ans</option>
-												<option value="6 months">Pack 6 Mois</option>
-												<option value="3 months">Pack 3 Mois</option>
-											</select>
-										</div>
-									<?php
-										}
-									?>
                                 </div>
                             </div>
                          

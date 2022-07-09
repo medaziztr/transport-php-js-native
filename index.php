@@ -456,7 +456,7 @@ contactForm.addEventListener("submit", function (e) {
  
   
     e.preventDefault();
-    window.location.assign("http://suivi.telefret.com/"+CODE_EXPEDITION.value);
+    window.location.assign("https://gestionsuivi.telefret.com/"+CODE_EXPEDITION.value);
   
 
 });

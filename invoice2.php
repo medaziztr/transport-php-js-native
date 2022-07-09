@@ -100,10 +100,8 @@ function functionConfirmCreate(btname, wrapper) {
                                     <div class="invoice-number">
                                         <h4 class="inv-title-1">Expéditeur/Sender</h4>
                                         <p class="invo-addr-1">
-                                        <?php echo $res['nom'].' '.$res['prenom'];  ?><br />
-									<?php  echo $res['r_s']; ?><br />
-									<?php  echo $res['telephone']; ?><br />
-									<?php echo $res['email']; ?>
+                                        <?php echo $res['client']; ?><br />
+									<?php  echo $res['telephoneclient']; ?><br />
                                         </p>
                                     </div>
                                 </div>
@@ -141,27 +139,37 @@ function functionConfirmCreate(btname, wrapper) {
 						</div>
 					</td>
                                     </tr>
-                                    <tr >
-					<td>
-						<div style="display: flex; flex-wrap: wrap;">
-							<div style=" width: 50%;">
-								<b>Nombre de Colis :</b><?php echo $res['nb_colis']; ?>	
-							</div>
-							<div style=" width: 50%;">
-								<b>Type de véhicule :</b>	 <?php echo $res['type_vehicule'].'  '.$res['poid']; ?>
-							</div>
-						</div>
-					</td>
-				</tr>
+       
 				<tr >
 					<td>
+                    <?php $empQuery = "SELECT chv.id, ab.id_abonnement,ab.matricule,ab.img_vehicule,ab.type_vehicule,ab.marque,
+ab.poid_max,ab.nom_chauffeur,ab.telephone_chauffeur
+,tr.nom,tr.prenom,tr.telephone,tr.email,tr.r_s FROM abonnements as ab, chargement ch, chargement_vehicules chv, transporteur tr  
+WHERE 1 and ab.id_abonnement=chv.id_abonnement AND
+ch.id_charg=chv.id_chargement and 
+tr.telephone=ab.telephone AND ch.id_charg=".$id_charg."";
+$empRecords = mysqli_query($db, $empQuery);
+$data = array();
+$num=mysqli_num_rows($empRecords);
+?>
 						<div style="display: flex; flex-wrap: wrap;">
-							<div style=" width: 50%;">
-								<b>Nombre de véhicules:</b>	<?php echo $res['nb_vehicules']; ?>
+							<div style=" width: 100%;">
+								<b>Nombre de véhicules:</b>	<?php echo $num; ?><br />
+                                <b>Liste des véhicules:</b><br />
+                                <?php
+//echo $empQuery;
+while ($row = mysqli_fetch_assoc($empRecords)) {
+
+    $id_abonnement= $row['id_abonnement'];
+    $selectSQL="SELECT * FROM status_gps WHERE id_chargement='$id_charg' and Id_abonnement='$id_abonnement' and Etat=0 ";
+
+    $resultat = mysqli_query($db,$selectSQL);
+    $s=mysqli_num_rows($resultat);
+    echo "<label >" . $row['matricule'] .",". $row['marque'].",". $row['type_vehicule']. "'</label><br>";
+
+}11 ?>
 							</div>
-							<div style=" width: 50%;">
-								<b>Tonnage: </b><?php echo $res['poid'] ; ?>	
-							</div>
+						
 						</div>
 					</td>
 				</tr>
@@ -172,23 +180,12 @@ function functionConfirmCreate(btname, wrapper) {
 								<b>Date de chargement/loading date:</b>	<?php echo $res['date_charg']; ?>
 							</div>
 							<div style=" width: 50%;">
-								<b>Date de livraison/unloading date :</b>	<?php echo $res['date_liv']; ?>
+								<b>Date de livraison estimée/unloading estimated date :</b>	<?php echo $res['date_liv']; ?>
 							</div>
 						</div>
 					</td>
 				</tr>
-				<tr >
-					<td>
-						<div style="display: flex; flex-wrap: wrap;">
-							<div style=" width: 50%;">
-								<b>Tolérance de chargement/ loading tolerance :</b>	 <?php if($res['tol_charg']==1){ echo $res['jr_retard2']." jour(s)"; } else{echo "Non";} ?>
-							</div>
-							<div style=" width: 50%;">
-								<b>Tolérance de livraison/unloading tolerance :</b>	 <?php if($res['tol_liv']==1){ echo  $res['jr_retard']." jour(s)"; } else{echo "Non";} ?>
-							</div>
-						</div>
-					</td>
-				</tr>
+			
 				<tr >
 					<td>
 						<div style="display: flex; flex-wrap: wrap;">
@@ -213,19 +210,7 @@ function functionConfirmCreate(btname, wrapper) {
 
 				
 				</tr>
-				<tr >
-					<td>
-						<div style="display: flex; flex-wrap: wrap;">
-							<div style=" width: 50%;">
-								<b>Montant convenu/ Agreed amount:</b> <?php if(($res['prix_prop']=="") OR ($res['prix_prop']==" ")){ echo " N'est pas indiqué"; } else{echo $res['prix_prop'];} ?>	
-							</div>
-							<div style=" width: 50%;">
-								<b>Valeur de la marchandise/Goods value:</b> <?php if(($res['valeurm']=="") OR ($res['valeurm']==" ")){ echo " N'est pas indiqué"; } else{echo $res['valeurm'];} ?>	
-							</div>
-						</div>
-					</td>
-				</tr>
-				
+			
 				
 			
                 <tr>

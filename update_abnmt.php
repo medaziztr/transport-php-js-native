@@ -24,10 +24,9 @@ if(isset($_SESSION['login_user'])) {
 		
 		/*$_SESSION['date_limite1'];*/
     }
-    else{
+   
         $valide=0;
-        $date_fin= date('d/m/Y', strtotime($pack));
-    }
+      
      
 	if (empty($_POST['gps'])){
             $gpst="0";

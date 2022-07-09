@@ -159,19 +159,13 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 						<table>
 							<tr>
 								<td>
-									<b>Expéditeur/Sender</b><br />
-									<?php echo $res['nom'].' '.$res['prenom'];  ?><br />
-									<?php  echo $res['r_s']; ?><br />
-									<?php  echo $res['telephone']; ?><br />
-									<?php echo $res['email']; ?>
+									<b>Client</b><br />
+									
+									<?php echo $res['client']; ?>
 								</td>
 
 								<td>
-								<b>Transporteur/Carrier</b><br />
-								<?php echo $row['nom'].' '.$row['prenom'];  ?><br />
-									<?php  echo $row['r_s']; ?><br />
-									<?php  echo $row['telephone']; ?><br />
-									<?php echo $row['email']; ?>
+								
 								</td>
 							</tr>
 						</table>
@@ -194,18 +188,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 						</div>
 					</td>
 				</tr>
-				<tr class="details row">
-					<td>
-						<div style="display: flex; flex-wrap: wrap;">
-							<div style=" width: 50%;">
-								<b>Nombre de Colis :</b><?php echo $res['nb_colis']; ?>	
-							</div>
-							<div style=" width: 50%;">
-								<b>Type de véhicule :</b>	 <?php echo $res['type_vehicule'].'  '.$res['poid']; ?>
-							</div>
-						</div>
-					</td>
-				</tr>
+				
 				<tr class="details row">
 					<td>
 						<div style="display: flex; flex-wrap: wrap;">
@@ -213,7 +196,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 								<b>Nombre de véhicules:</b>	<?php echo $res['nb_vehicules']; ?>
 							</div>
 							<div style=" width: 50%;">
-								<b>Tonnage: </b><?php echo $res['poid']; ?>	
+								<b>Liste des matricules : </b><?php echo $res['poid']; ?>	
 							</div>
 						</div>
 					</td>
@@ -225,7 +208,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 								<b>Date de chargement/loading date:</b>	<?php echo $res['date_charg']; ?>
 							</div>
 							<div style=" width: 50%;">
-								<b>Date de livraison/unloading date :</b>	<?php echo $res['date_liv']; ?>
+								<b>Date de livraison estimée/unloading estimated date :</b>	<?php echo $res['date_liv']; ?>
 							</div>
 						</div>
 					</td>

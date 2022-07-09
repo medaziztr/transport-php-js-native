@@ -62,7 +62,7 @@
 <section class="page-title-section trouvtrans">
     <div class="container hidden-xs slide-bord">
         <div class="demo-slides">
-            <div class="animated lightSpeedIn slide-title">Trouver un transporteur</div>
+            <div class="animated lightSpeedIn slide-title">Programmer un voyage</div>
             <p class="lead animated lightSpeedIn">Veuillez remplir les criteres suivants</p>
         </div>
     </div>
@@ -77,14 +77,9 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
 
-                        <li role="pub-ann" class="active">
-                            <a href="#pub-ann" aria-controls="pub-ann" role="tab" data-toggle="tab"> Cherchez Un
-                                Transporteur</a>
-                        </li>
-
-                        <li role="choix" class="">
-                            <a href="#choix" aria-controls="choix" role="tab" data-toggle="tab">Annoncer votre
-                                chargement</a>
+                    
+                        <li role="choix"  class="active">
+                            <a href="#choix" aria-controls="choix" role="tab" data-toggle="tab">Enregistrer un Voyage</a>
                         </li>
                     </ul>
 
@@ -92,7 +87,7 @@
                     <div class="tab-content">
 
 
-                        <div role="tabpanel" class="tab-pane fade in active" id="pub-ann">
+                        <div role="tabpanel" class="tab-pane fade" id="pub-ann">
                             <div class="css-tab-content">
                                 <div class="tab-pane fade in active">
                                     <div class="css-tab-content formulaires">
@@ -388,25 +383,45 @@ class="res-flx-s img-avatar-sm">
 
 
 
-                        <div role="tabpanel" class="tab-pane fade in" id="choix">
+                        <div role="tabpanel" class="tab-pane fade  in active" id="choix">
                             <div class="css-tab-content">
                                 <div class="tab-pane fade in active">
                                     <div class="css-tab-content formulaires">
                                         <form id="form1" action="post-charg.php" method="POST"
                                             enctype="multipart/form-data">
                                             <div class="container">
+                                           
                                                 <div class="col-md-8 col-xs-12 formulaire">
-                                                    <h3 class="txt-bordure sections-title">Caracteristiques</h3>
+                                                    <h3 class="txt-bordure sections-title">Informations générales</h3>
+
+                                      
 
                                                     <div class="form-group">
+                                                    <div class="row">
+                                                            <div class="col-sm-3 col-xs-12 no-padding left-title">Nom du client </div>
+                                                            
+                                                            <div class="col-sm-5 col-xs-12 no-padding">
+                                                                <input type="text" name="client" class="col-xs-12" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-3 col-xs-12 no-padding left-title">Téléphone client </div>
+                                                            
+                                                            <div class="col-sm-5 col-xs-12 no-padding">
+                                                                <input type="number" name="telephoneclient" class="col-xs-12" >
+                                                            </div>
+                                                        </div>
                                                         <div class="row">
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">Type
                                                                 de Marchandise </div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
                                                                 <font color="red">*</font>
                                                             </div>
+                                                        
+                                                            
+                                                 
                                                             <div class="col-sm-5 col-xs-12 no-padding">
-                                                                <select class="form-control" id="" name="marchandise"
+                                                            <select class="form-control" id="marchandise" name="marchandise"
                                                                     required>
                                                                     <optgroup label="Selectionnez type marchandise">
                                                                         <option value="Demenagement">Demenagement
@@ -437,43 +452,13 @@ class="res-flx-s img-avatar-sm">
                                                                             marchandises</option>
                                                                         <option value="Autres">Autres</option>
                                                                     </optgroup>
-
-
-                                                                </select>
-                                                            </div>
+                                                                </select>                                                            </div>
                                                         </div>
-
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12 no-padding left-title">Type
-                                                                d'emballage </div>
-                                                            <div class="col-sm-1 hidden-xs no-padding left-title">
-                                                                <font color="red">*</font>
+                                                        <div class="col-sm-5 col-xs-12 no-padding" id="othervalue" style='display: none'>
+                                                                <input type="text" name="marchandise1" class="col-xs-12">
                                                             </div>
-                                                            <div class="col-sm-5 col-xs-12 no-padding">
-                                                                <select class="form-control" id="" name="emballage"
-                                                                    required>
-                                                                    <option value="" disabled selected>Type d'emballage
-                                                                    </option>
-                                                                    <option value="Cartons">Cartons</option>
-                                                                    <option value="En vrac">En vrac</option>
-                                                                    <option value="Palettes">Palettes</option>
-                                                                    <option value="Sacs">Sacs</option>
-                                                                    <option value="Ballots">Ballots</option>
-                                                                    <option value="Bidons">Bidons</option>
-                                                                    <option value="Caisses">Caisses</option>
-                                                                    <option value="Sceaux">Sceaux</option>
-                                                                    <option value="Citerne">Citerne</option>
-                                                                    <option value="Bonbonnes">Bonbonnes</option>
-                                                                    <option value="Futs">Futs</option>
-                                                                    <option value="Conteneur 20’">Conteneur 20’</option>
-                                                                    <option value="Conteneur 40’">Conteneur 40’</option>
-                                                                    <option value="Colis">Colis</option>
-                                                                    <option value="Bouteilles">Bouteilles</option>
-                                                                    <option value="Autres">Autres</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
+                                                       
+                                                        <div class="row hidden">
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                 Nombre de Colis</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title"></div>
@@ -482,7 +467,7 @@ class="res-flx-s img-avatar-sm">
                                                             </div>
                                                         </div>
                                                     
-                                                        <div class="row">
+                                                        <div class="row hidden">
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">Type
                                                                 de vehicule </div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
@@ -506,7 +491,7 @@ class="res-flx-s img-avatar-sm">
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row hidden">
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">
                                                                 Tonnage </div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
@@ -518,7 +503,7 @@ class="res-flx-s img-avatar-sm">
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row hidden">
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                 Nombre de véhicules</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title"></div>
@@ -578,7 +563,7 @@ class="res-flx-s img-avatar-sm">
 														</div>
 													</div> -->
 
-                                                        <div class="row">
+                                                        <div class="row hidden">
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                 Details de Marchandise</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
@@ -587,13 +572,13 @@ class="res-flx-s img-avatar-sm">
                                                             <div class="col-sm-7 col-xs-12 no-padding form">
                                                                 <textarea
                                                                     placeholder="Plus de details sur votre marchandise"
-                                                                    name="details_march" required></textarea>
+                                                                    name="details_march" ></textarea>
                                                                 <div class="conseil">Conseil : Donnez le maximum
                                                                     d’information pour eviter les surprises</div>
                                                             </div>
                                                         </div>
 
-                                                        <div class="row margt">
+                                                        <div class="row margt hidden">
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">Image
                                                                 Marchandise</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title"></div>
@@ -612,7 +597,7 @@ class="res-flx-s img-avatar-sm">
 
 
 
-                                                <div class="col-md-6 col-xs-12 formulaire">
+                                                <div class="col-md-6 col-xs-12 formulaire ">
                                                     <h3 class="txt-bordure sections-title">Chargement</h3>
                                                     <div class="form-group">
                                                         <div class="row">
@@ -664,7 +649,7 @@ class="res-flx-s img-avatar-sm">
                                                             <div class="col-sm-4 col-xs-12 no-padding left-title">Date
                                                                 de Chargement </div>
                                                             <div class="col-sm-6 col-xs-12 no-padding">
-                                                                <input type="date" name="date_charg" required>
+                                                                <input type="date"id="date_charg"  name="date_charg" required>
                                                             </div>
                                                         </div>
 
@@ -676,7 +661,7 @@ class="res-flx-s img-avatar-sm">
                                                                     name="adresse_charg" required></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-5 col-xs-12 no-padding left-title">
                                                                 Tolérance au retard de chargement </div>
                                                             <div class="col-sm-7 col-xs-12 no-padding form">
@@ -762,7 +747,7 @@ class="res-flx-s img-avatar-sm">
                                                             <div class="col-sm-4 col-xs-12 no-padding left-title">Au
                                                                 plus tard </div>
                                                             <div class="col-sm-6 col-xs-12 no-padding">
-                                                                <input type="date" name="date_liv" required>
+                                                                <input type="date" id="date_liv" name="date_liv" required>
                                                             </div>
                                                         </div>
 
@@ -774,7 +759,7 @@ class="res-flx-s img-avatar-sm">
                                                                     name="adresse_liv" required></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-5 col-xs-12 no-padding left-title">
                                                                 Tolérance au retard de livraison </div>
                                                             <div class="col-sm-7 col-xs-12 no-padding form">
@@ -802,7 +787,73 @@ class="res-flx-s img-avatar-sm">
                                                     </div>
                                                 </div>
                                                 <br><br>
-                                                <div class="col-md-12 col-xs-12 formulaire">
+
+                                                <div class="col-md-12 padding-12">
+                                            <div class="col-sm-3 col-xs-12 no-padding left-title">Sélectionner les véhicules: </div>
+                                            <div class="form-group">
+
+    
+
+<script>
+   $('#date_liv').on('change', function(){ 
+    var date_charg =document.getElementById("date_charg").value;
+    var date_liv = document.getElementById("date_liv").value;
+
+    validsuivi(telephone,date_charg,date_liv)
+
+
+})
+
+$('#date_charg').on('change', function(){ 
+    var date_charg =document.getElementById("date_charg").value;
+    var date_liv = document.getElementById("date_liv").value;
+
+    validsuivi(telephone,date_charg,date_liv)
+
+
+})
+
+function validsuivi(telephone,date_charg,date_liv) {
+     
+     var telephone="";
+    <?php
+    if (isset( $_SESSION['telephone'])) {
+        ?>
+        telephone=<?php echo $_SESSION['telephone'];?>;
+        <?php
+    }
+    ?>
+      $.ajax({
+          type: "post",
+          url: "filter_vehicule.php" ,
+          'data':{"telephone":telephone,date_charg:date_charg,date_liv:date_liv},
+                                  'success': function(data) {
+ 
+                                     console.log(data+""=="0")
+                                  
+                                     $("#vehicules").html(data+""=="0"?"":data);   
+ 
+ 
+                                  },
+                                  'error': function(data) {
+                                      console.log(data)
+                                  }
+        
+      });
+ 
+      
+  }
+</script>
+                                            <select style="height: 50px;" type="text" id="vehicules" 
+                                                multiple placeholder="Pays *" required>
+                                                <option value="Select School">Selectionner les véhicules
+                                               
+                                                </option>
+                                               
+                                            </select>
+                                            </div>
+                                        </div>
+                                                <div class="col-md-12 col-xs-12 formulaire hidden">
                                                     <h3 class="txt-bordure sections-title">Facultatif</h3>
                                                     <div class="form-group">
                                                         <div class="row margt">
@@ -927,7 +978,7 @@ class="res-flx-s img-avatar-sm">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-8 col-xs-12 formulaire">
+                                                <div class="col-md-8 col-xs-12 formulaire hidden">
                                                     <h3 class="txt-bordure sections-title">Personne à contacter</h3>
                                                     <div class="form-group">
                                                         <div class="row margt">
@@ -979,6 +1030,7 @@ class="res-flx-s img-avatar-sm">
                                                         <div class="col-md-12 no-padding">
                                                             <textarea name="autre_info"placeholder="Autres informations" id="" cols="30" rows="4"></textarea>
                                     </div>
+                                    
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8 col-xs-12 formulaire">

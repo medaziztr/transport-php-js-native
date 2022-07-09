@@ -34,9 +34,23 @@
 		
                                             <div class="container">
                                                 <div class="col-md-8 col-xs-12 formulaire">
-                                                    <h3 class="txt-bordure sections-title">Caracteristiques</h3>
+                                                    <h3 class="txt-bordure sections-title">INFORMATIONS GÉNÉRALES</h3>
 
                                                     <div class="form-group">
+                                                    <div class="row">
+                                                            <div class="col-sm-3 col-xs-12 no-padding left-title">Nom du client </div>
+                                                            
+                                                            <div class="col-sm-5 col-xs-12 no-padding">
+                                                                <input type="text" name="client" class="col-xs-12" value=<?php echo $res['client'] ?>>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-3 col-xs-12 no-padding left-title">Téléphone client </div>
+                                                            
+                                                            <div class="col-sm-5 col-xs-12 no-padding">
+                                                                <input type="number" name="telephoneclient" class="col-xs-12" value=<?php echo $res['telephoneclient'] ?>>
+                                                            </div>
+                                                        </div>
                                                         <div class="row">
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">Type
                                                                 de Marchandise </div>
@@ -44,7 +58,7 @@
                                                                 <font color="red">*</font>
                                                             </div>
                                                             <div class="col-sm-5 col-xs-12 no-padding">
-                                                                <select class="form-control" id="" name="marchandise"
+                                                                <select class="form-control" id="marchandise" name="marchandise"
                                                                     required>
 																	<option value="Demenagement"<?php if($res['marchandise']=='Demenagement') echo "selected" ?>>Demenagement</option>
 									<option value="Produit alimentaires"<?php if($res['marchandise']=='Produit alimentaires') echo "selected" ?>>Produit alimentaires</option>
@@ -67,9 +81,12 @@
 
                                                                 </select>
                                                             </div>
+                                                            <div class="col-sm-5 col-xs-12 no-padding" id="othervalue" style='display: none'>
+                                                                <input type="text" name="marchandise1" class="col-xs-12" value=<?php echo $res['marchandise'] ?>>
+                                                            </div>
                                                         </div>
 
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">Type
                                                                 d'emballage </div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
@@ -97,7 +114,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                 Nombre de Colis</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title"></div>
@@ -106,7 +123,7 @@
                                                             </div>
                                                         </div>
                                                     
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">Type
                                                                 de vehicule </div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
@@ -127,7 +144,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-3 col-xs-12 no-padding left-title">
                                                                 Tonnage </div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
@@ -139,7 +156,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                 Nombre de véhicules</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title"></div>
@@ -199,7 +216,7 @@
 														</div>
 													</div> -->
 
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">
                                                                 Details de Marchandise</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title">
@@ -214,7 +231,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="row margt">
+                                                        <div class="row margt" hidden>
                                                             <div class="col-sm-3 col-xs-12  no-padding left-title">Image
                                                                 Marchandise</div>
                                                             <div class="col-sm-1 hidden-xs no-padding left-title"></div>
@@ -317,13 +334,13 @@
                                                                     name="adresse_charg" required><?php echo $res['adresse_charg'] ?></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" hidden>
                                                             <div class="col-md-12 no-padding left-title">
                                                                 Tolérance au retard de chargement </div>
                                                            
                                                         </div>
 
-                                                        <div class="row" id="nbjr2" >
+                                                        <div class="row" id="nbjr2" hidden >
                                                             <div class="col-sm-4 col-xs-12 no-padding left-title">Nombre
                                                                 de jours </div>
                                                             <div class="col-sm-3 col-xs-12 no-padding">
@@ -422,14 +439,16 @@
                                                                     name="adresse_liv" required><?php echo $res['adresse_liv'] ?></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+
+
+                                                        <div class="row" hidden>
                                                             <div class="col-md-12 no-padding left-title">
                                                                 Tolérance au retard de livraison </div>
                                                           
                                                         </div>
 
 
-                                                        <div class="row" id="nbjr" >
+                                                        <div class="row" id="nbjr" hidden>
                                                             <div class="col-sm-4 col-xs-12 no-padding left-title">Nombre
                                                                 de jours </div>
                                                             <div class="col-sm-3 col-xs-12 no-padding">
@@ -439,7 +458,71 @@
                                                     </div>
                                                 </div>
                                                 <br><br>
-                                                <div class="col-md-12 col-xs-12 formulaire">
+                                                
+                                                <div class="row">
+                                                            <div class="col-sm-12 col-xs-12 no-padding left-title">Sélectionner les véhicules:</div>
+                                                            <div class="col-sm-12 col-xs-12 no-padding form-group">
+                                                        
+<script>
+   $('#date_liv').on('change', function(){ 
+    var date_charg =document.getElementById("date_charg").value;
+    var date_liv = document.getElementById("date_liv").value;
+
+    validsuivi(telephone,date_charg,date_liv)
+
+
+})
+
+$('#date_charg').on('change', function(){ 
+    var date_charg =document.getElementById("date_charg").value;
+    var date_liv = document.getElementById("date_liv").value;
+
+    validsuivi(telephone,date_charg,date_liv)
+
+
+})
+
+function validsuivi(telephone,date_charg,date_liv) {
+     
+     var telephone="";
+    <?php
+    if (isset( $_SESSION['telephone'])) {
+        ?>
+        telephone=<?php echo $_SESSION['telephone'];?>;
+        <?php
+    }
+    ?>
+      $.ajax({
+          type: "post",
+          url: "filter_vehicule.php" ,
+          'data':{"telephone":telephone,date_charg:date_charg,date_liv:date_liv},
+                                  'success': function(data) {
+ 
+                                     console.log(data+""=="0")
+                                  
+                                     $("#vehicules").html(data+""=="0"?"":data);   
+ 
+ 
+                                  },
+                                  'error': function(data) {
+                                      console.log(data)
+                                  }
+        
+      });
+ 
+      
+  }
+</script>
+                                            <select style="height: 50px;" type="text" id="vehicules" 
+                                                multiple placeholder="Pays *" required>
+                                                <option value="Select School">Selectionner les véhicules
+                                               
+                                                </option>
+                                               
+                                            </select>      
+                                                        </div>
+                                                        </div>
+                                                <div class="col-md-12 col-xs-12 formulaire" hidden>
                                                     <h3 class="txt-bordure sections-title">Facultatif</h3>
                                                     <div class="form-group">
                                                         <div class="row margt">
@@ -465,7 +548,7 @@
 
                                                         </div>
   
-                                                        <div class="row margt" id="prixpropdetails" >
+                                                        <div class="row margt" id="prixpropdetails" hidden >
                                                                 <div class="col-sm-2 col-xs-12 no-padding left-title">Modalité de payement
 </div>
                                                                 <div class="col-sm-4 col-xs-12 no-padding">
@@ -501,7 +584,7 @@
 
 
 
-                                                        <div class="row margt" >
+                                                        <div class="row margt" hidden>
                                                             <div class="col-sm-2 col-xs-12 no-padding left-title">Valeur
                                                                 de la marchandise </div>
                                                            
@@ -526,7 +609,7 @@
                                                      
 
 
-                                                            <div class="row margt" >
+                                                            <div class="row margt" hidden >
                                                                 <div class="col-sm-2 col-xs-12 no-padding left-title">Mode de payement
 </div>
                                                              
@@ -548,7 +631,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-8 col-xs-12 formulaire">
+                                                <div class="col-md-8 col-xs-12 formulaire" hidden>
                                                     <h3 class="txt-bordure sections-title">Personne à contacter</h3>
                                                     <div class="form-group">
                                                         <div class="row margt">
@@ -584,10 +667,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <h3 class="txt-bordure sections-title">Autres informations</h3>
+                                                        <h3 class="txt-bordure sections-title" hidden>Autres informations</h3>
 
 
-                                                        <div class="col-md-12 no-padding">
+                                                        <div class="col-md-12 no-padding" hidden>
                                                             <textarea name="autre_info"placeholder="Autres informations" id="" cols="30" rows="4"><?php echo $res['autre_info']?></textarea>
                                     </div>
                                                     </div>

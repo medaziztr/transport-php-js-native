@@ -342,17 +342,17 @@ class="res-flx-s img-avatar-sm">
                                                 var result=`<div 
 
 class="res-flx-s img-avatar-sm">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.id_notifications}"
-onclick="Changetest(`+row.id_notifications+`);"
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${row.Id_status}"
+onclick="Changetest(`+row.Id_status+`);"
 >
   Consulter
 </button>
 
 <!-- Modal -->
-<div class="modal fade"  onmouseover="submitCheck(`+row.id_notifications+`);"
-id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<form id="postuler${row.id_notifications}" action="post-valide.php"  method="POST" >
-<input type="text"name="ToControle" hidden  value="${ToControle}">
+<div class="modal fade"  onmouseover="submitCheck(`+row.Id_status+`);"
+id="exampleModal${row.Id_status}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form id="postuler${row.Id_status}" action="post-valide.php"  method="POST" >
+<form id="postuler" action="post-status.php" method="POST">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -365,69 +365,45 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
       <div class="modal-body" style="overflow-x: auto;">
 
       <label id="postulerError${row.id_notifications}" hidden style="backg"></label>
-      <table id='empT' class='display dataTable'>
-                                                        <thead>
-                                                            <tr style="background-color: unset;">
-                                                            <th></th>
-                                                                <th>Image</th>
-                                                                <th>Matricule</th>
-                                                                <th>Genre</th>
-
-                                                                <th>Marque</th>
-                                                                <th>Poids disponible</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
+   
    
   
                                                         <input type="text"name="id_charg" hidden value="${row.id_charg}">
 
 
 `;
-                                                for (let index = 0; index < val.length; index++) {
-                                                     const element = val[index];
-                                                     result+=`
-                                                     <tr>
-                                                     <td>
-                                                     <input type="text"name="id_postuler" hidden  value="${row.id_postuler}">
-                                                     <input type="text"name="telephone" hidden value="${row.telephone}">
-                                                     <input type="text"name="to_telephone" hidden value="${row.telephonenotifications}">
-
-                                                     <input type="text"name="checkId[]" hidden value="${element.id_abonnement}">
-                                                     
-                                                     <input id="id${row.id_notifications+""+index}" type="hidden" name="check[]" ${element.checked?'value="1"':'value="0"'}>
- <input onchange="$('#id${row.id_notifications+""+index}').val(this.checked?1:0)" type="checkbox" id="dummy-id" 
- name="dummy-name" ${element.checked?'checked':''} 
- <?php if ($row['type']=="transporteur") {
-            # code...
-       ?>
-       ${row.type=="Soumission" && row.chargement_telephone ==  <?php echo $_SESSION['telephone']; ?> ?'':'disabled'}
-        <?php }
-       ?>
- 
-  >
-                                                     
-                                                      </td>
-                                                     <td><img src="./img/uploaded/${element.img_vehicule?element.img_vehicule : 'logo.png'}"> </td>
-                                                     <td>${element.matricule} </td>
-                                                     <td>${element.type_vehicule} </td>
-                                                     <td>${element.marque} </td>
-                                                     <td>${element.poid_max} Tonnes </td>
-
-    </tr>`
-                                                    console.log()
-                                                }
+                                            
 
                                                 return result+= `
-                                                </form>
-                                                </tbody>
-                                                </table>
-                                               
-                                                ${row.type=="Soumission"?` <br>
-                                                <label><u><b>Message</b></u></table>
-                                                <br>
-                                                <label> ${row.message}</table>`:""}
+                                              
+                                      
+<div class="form-group">                
+
+<div class="row">
+<input id="id_chargement" hidden name="id_chargement"
+value="<?php echo  $id_charg; ?>" type="number">
+
+<input id="to_telephone" hidden name="to_telephone"
+value="<?php echo  $res['telephone']; ?>" >
+<input id="mail" hidden name="mail"
+value="<?php echo  $res['email']; ?>" >
+
+<div class="col-md-12 padding-12">
+<label>Date de début du suivit:</label>
+
+<input id="Date_D" name="Date_D" type="date" value="<?php echo  $data==null? date("Y-m-d", strtotime(str_replace('/', '-', $res["date_charg"] ))) :date("Y-m-d", strtotime(str_replace('/', '-',explode("-",  $data["Date_D"])[2]."/".explode("-",$data["Date_D"])[1]."/".explode("-",$data["Date_D"])[0] )))  ; ?>" >
+</div>
+<div class="col-md-12 padding-12">
+<label>Date de fin du suivit:</label>
+
+<input id="Date_D" name="Date_F" type="date" value="<?php echo   $data==null? date("Y-m-d", strtotime(str_replace('/', '-', $res["date_charg"] ))) :date("Y-m-d", strtotime(str_replace('/', '-',explode("-",  $data["Date_F"])[2]."/".explode("-",$data["Date_F"])[1]."/".explode("-",$data["Date_F"])[0]  ))); ?>" >
+</div>
+
+</div>
+</div>
+
+
+</div>
                                                 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -435,17 +411,17 @@ id="exampleModal${row.id_notifications}" tabindex="-1" role="dialog" aria-labell
             # code...
        ?>
        ${row.type=="Soumission" && row.chargement_telephone ==  <?php echo $_SESSION['telephone']; ?> ?'        <button type="submit"  class="btn btn-primary ">Valider</button>':""}
-        <?php }else if ($row['type']=="client") {
-       ?>
+      
             <button type="submit" id="btnSubmit${row.id_notifications}"
             disabled
             class="btn btn-primary ">Valider</button>
 
-<?php }
-       ?>
       </div>
     </div>
   </div>
+  <button type="submit" class="btn btn-primary pull-right">Enregistrer
+</button>
+</form>
   </form>
 </div> 
 

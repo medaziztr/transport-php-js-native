@@ -393,7 +393,7 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
                             <i class="fa fa-download"></i> Download Invoice
                         </a>
                         <a 
-                        href="<?php echo 'http://suivi.telefret.com/'.$row['Id_dispo'];?>"
+                        href="<?php echo 'https://gestionsuivi.telefret.com/'.$row['Id_dispo'];?>"
                         
                         class="btn btn-lg btn-primary">
                             <i class="fa fa-link"></i> Suivre le véhicule

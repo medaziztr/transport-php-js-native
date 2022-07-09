@@ -115,6 +115,43 @@
 // }
 
 
+$(function(){
+ $("#marchandise").on('change', function(){
+    alert(this.value)
+        if(this.value == 'Autres'){
+           document.getElementById('othervalue').style.display = 'block';
+           } else {
+           document.getElementById('othervalue').style.display = 'none';
+           } })
+  
+});
+        
+
+function validsuivistatus(id_notification,a) {
+     
+
+    console.log("id_notificationid_notificationid_notification",a)
+     var val="";
+    
+      $.ajax({
+          type: "post",
+          url: "change_statusgps.php?id_charg="+a ,
+          'data':{"id_abonnement":id_notification},
+                                  'success': function(data) {
+ 
+                                     console.log(data+""=="0")
+                                  
+        $("#btssuivi"+id_notification).html(data+""=="0"?"Désactiver":"Activer");   
+ 
+                                  },
+                                  'error': function(data) {
+                                      console.log(data)
+                                  }
+        
+      });
+ 
+      
+  }
 
 function validsuivi(id_notification) {
      
@@ -149,6 +186,49 @@ function validsuivi(id_notification) {
 
      
  }
+ 
+function submitCheckstatus(id_notification) {
+
+
+
+console.log("datadatadatadatadatadatadatadatadata",'#postulerstatus'+id_notification)
+console.log($('#id_chargement'+id_notification))
+        var form = $('#postulerstatus'+id_notification);
+        var id_chargement= $('#id_chargement'+id_notification).val()
+
+        var Id_status= $('#Id_status'+id_notification).val()
+        var Date_D= $('#Date_D'+id_notification).val()
+        var Date_F= $('#Date_F'+id_notification).val()
+
+        $.ajax({
+            type: "POST",
+            url: "post-status1.php?id_chargement="+id_chargement+"&Id_status="+Id_status+"&Date_D="+Date_D+"&Date_F="+Date_F,
+            dataType: 'json',
+            'data': {'id_chargement':id_chargement,
+                'Id_status':Id_status,
+                'Date_D':Date_D,
+                'Date_F':Date_F},
+            success: function(data) {
+                  
+                // Ajax call completed successfully
+                alert("Enregistrement effectuer avec succès.");
+
+                $("#error"+id_notification).show();
+    setTimeout(function() {
+        $("#error"+id_notification).hide();
+    }, 5000);
+            },
+            error: function(data) {
+                  
+                // Some error in ajax call
+                alert("some Error");
+            }
+        });
+  
+
+ 
+}
+
 function submitCheck(id_notification) {
 
     var form = $('#postuler'+id_notification)[0];
@@ -608,15 +688,14 @@ table.dataTable,.dataTables_wrapper {
 						  						<ul class="list-inline">
 												
                                                     <?php
-                                                        if((isset($_SESSION['login_user'])) AND ($_SESSION['type']!="admin")) {
+                                                        if((isset($_SESSION['login_user'])) AND false) {
 															 ?>
 															 
 															 <li><a href="historique_client.php?telephone=<?php echo $_SESSION['telephone'] ?>" class="hidden-xs">Mon historique</a></li>
 													<?php
-                                                            if ($_SESSION['type']=="transporteur"){
+                                                            if ($_SESSION['type']=="transporteur" and false){
                                                     ?>
 														
-						  							            <li><a href="abonnement.php" class="hidden-xs">Mes véhicules</a></li>
 															<?php 
 															} 
                                                             $type=$_SESSION['type'];
@@ -644,9 +723,9 @@ table.dataTable,.dataTables_wrapper {
 															?>
 															
 														
-															<li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
+															<li><a href="https://gestionsuivi.telefret.com" target="_blank">Suivi</a></li>
 
-                                                            <li><a href="notifications.php" >Mes Notifications <span class="badge " style="background-color: #e71010;" id="nbrnotification"><?php echo $totalRecordwithFilter; ?></span></a></li>
+                                                            <li hidden><a href="notifications.php" >Mes Notifications <span class="badge " style="background-color: #e71010;" id="nbrnotification"><?php echo $totalRecordwithFilter; ?></span></a></li>
 
 															
                                                     <?php
@@ -656,7 +735,6 @@ table.dataTable,.dataTables_wrapper {
                                                     <?php
                                                         if(!isset($_SESSION['login_user'])) {
 													?>
-															<li class="pull-right"><a data-toggle="modal" data-target="#inscription" class="hidden-lg hidden-md">S'inscrire</a></li>
                                                     <?php
                                                             if(!empty($_GET['message'])) {
 																echo "<li class='pull-right'><a id='logintest' data-toggle='modal' data-target='#login' class='hidden-lg hidden-md'>Réessayer</a></li>" ; 
@@ -699,14 +777,7 @@ table.dataTable,.dataTables_wrapper {
 
 					  					<div class="col-lg-7 col-md-7 hidden-xs hidden-sm">
                                             <div class="topbar-right">
-                                                <ul class="social-links list-inline pull-right">
-                                                    <i class="fa fa-phone"></i> +237 655 767 535 &nbsp; 
-                                                    <i class="fa fa-envelope"></i> contact@telefret.com &nbsp;
-                                                    <li><a href="callto:80081"><i class="fa fa-skype"></i></a></li>
-                                                    <li><a href="https://www.facebook.com/telefretcom"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a href="https://wa.me/+237653914382"><i class="fab fa-whatsapp"></i></a></li>
-                                                    
-                                                </ul>
+                                           
  
                                             </div>
 					  					</div>
@@ -729,43 +800,20 @@ table.dataTable,.dataTables_wrapper {
 
 								<div class="collapse navbar-collapse navbar-collapse">
 									<ul class="nav navbar-nav pad-l-30 navsze">
-                                    
+                                	                  
                                         <?php 
                                             if  (isset($_SESSION['login_user'])) { 
                                                 
-                                                if ($_SESSION['type']=='admin'){
-                                        ?> 
-                                                    <li><a href="index-admin.php">Espace Admin</a></li> 
-													
-													<li><a href="pubs.php">Espace Publicités</a></li> 
-                                                    
-                                                    <li><a href="http://suivi.telefret.com" target="_blank">Suivi</a></li>
+                                        ?> 	
+                                                                                            <li><a href="index-admin.php">Espace Admin</a></li> 
+                                            															
+													<li><a href="espace-client.php">Programmer un voyage</a></li> 
 
-                                       <?php 
-                                                }
-    
-                                                else if($_SESSION['type']=='transporteur'){ 
-                                        ?>
-                                        
-                                                    <li><a href="espace-transporteur.php">Espace Transporteurs</a></li> 
-													<li><a href="espace-client.php">Espace Expediteurs</a></li>
-													<!--<li><a href="mon-compte.php">Mon compte</a></li>-->
-                                        
-                                       <?php    
-                                                }
-                                                else if($_SESSION['type']=='client'){ 
-                                        ?>
-                                        
-                                                    <li><a href="espace-client.php">Espace Expediteurs</a></li>
-													<!-- <li><a href="mon-compte.php">Mon compte</a></li>-->
-                                       <?php        
-                                                } 
-                                            }
-                                        
-                                            else {
-                                        ?>
-                                            <li><a href="espace-transporteur.php">Espace Transporteurs</a></li>
-                                            <li><a href="espace-client.php">Espace Expediteurs</a></li>
+                                                    <li><a href="pubs.php">Statut véhicules</a></li> 
+
+                                                    
+                                                    <li><a href="https://gestionsuivi.telefret.com" target="_blank">Suivi</a></li>
+                                  
                                         <?php
                                             }
                                         ?>             
@@ -778,7 +826,6 @@ table.dataTable,.dataTables_wrapper {
                                         <?php
                                             if(! isset($_SESSION['login_user'])) {
                                                 ?>
-                                                <li><a data-toggle='modal' data-target='#inscription' href='#'>S'inscrire</a></li>
                                         <?php
                                                 if(!empty($_GET['message'])) {
                                                     echo "<li><a data-toggle='modal' data-target='#login' href='#'>Réessayer</a></li>" ; 
@@ -814,6 +861,8 @@ table.dataTable,.dataTables_wrapper {
 								</div><!-- /.navbar-collapse -->
 							</div><!-- /.container -->
   
+                            <!-- <iframe class="full-screen-preview__frame" src="//suivi.telefret.com" name="preview-frame" frameborder="0" noresize="noresize" data-view="fullScreenPreview" allow="geolocation 'self'; autoplay 'self'" style="height: 632px;">
+</iframe> -->
 							<div class="modal fade fond" id="login" tabindex="-1" role="dialog" aria-labelledby="quoteModalLabel" aria-hidden="true">
 							  <div class="w-50">
 							    <div class="modal-content">
@@ -909,7 +958,6 @@ table.dataTable,.dataTables_wrapper {
 															}
 															?>
 															<a href="sendpass.php">Mot de Passe oublié ?</a><br>
-															<a href="#" data-toggle="modal" data-target="#inscription" >Vous n'avez pas de compte ? inscrivez vous </a>
 															<input class="pull-right" type="submit" value="Connexion">
                                                         </div>
                                                     </form>

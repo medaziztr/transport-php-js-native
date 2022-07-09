@@ -23,10 +23,8 @@ if(isset($_SESSION['login_user'])) {
 		
 		/*$_SESSION['date_limite1'];*/
     }
-    else{
         $valide=0;
-        $date_fin= date('d/m/Y', strtotime($pack));
-    }
+      
      
 	if (empty($_POST['gps'])){
             $gpst="0";
@@ -55,6 +53,7 @@ if(isset($_SESSION['login_user'])) {
     
     $copied1 = copy($_FILES['avat']['tmp_name'], $newname1);
 
+    if ($_FILES['avat1']['name']!="") {
 
     $filename2 = stripslashes($_FILES['avat1']['name']);
     
@@ -68,6 +67,10 @@ if(isset($_SESSION['login_user'])) {
     
     $copied2 = copy($_FILES['avat1']['tmp_name'], $newname2);
 
+}else
+$image_name2="";
+
+if ($_FILES['avat2']['name']!="") {
 
     $filename3 = stripslashes($_FILES['avat2']['name']);
     
@@ -80,7 +83,10 @@ if(isset($_SESSION['login_user'])) {
     $newname33=$image_name3;
     
     $copied3 = copy($_FILES['avat2']['tmp_name'], $newname3);
+}else
+$image_name3="";
 
+if ($_FILES['avat3']['name']!="") {
 
     $filename4 = stripslashes($_FILES['avat3']['name']);
     
@@ -93,9 +99,11 @@ if(isset($_SESSION['login_user'])) {
     $newname44=$image_name4;
     
     $copied4 = copy($_FILES['avat3']['tmp_name'], $newname4);
-    
+}else
+$image_name4="";
 
-    $insertSQL="INSERT INTO `abonnements` (`matricule`, `marque`, `date_deb`, `date_fin`, `gps`, `telephone`, `type_vehicule`, `poid_max`, `img_vehicule`, `valide`, `nom_chauffeur`, `telephone_chauffeur`, `cni`, `assurance`, `carte_grise`) VALUES ('$matricule', '$marque', '$today1', '$date_fin', '$gpst', '$telephone', '$type_vehicule', '$poid_max', '$image_name1', '$valide', '$nom_chauffeur', '$telephone_chauffeur', '$image_name2', '$image_name3', '$image_name4')";
+
+    $insertSQL="INSERT INTO `abonnements` (`matricule`, `marque`, `date_deb`, `gps`, `telephone`, `type_vehicule`, `poid_max`, `img_vehicule`, `valide`, `nom_chauffeur`, `telephone_chauffeur`, `cni`, `assurance`, `carte_grise`) VALUES ('$matricule', '$marque', '$today1', '$gpst', '$telephone', '$type_vehicule', '$poid_max', '$image_name1', 1, '$nom_chauffeur', '$telephone_chauffeur', '$image_name2', '$image_name3', '$image_name4')";
 
     $result = mysqli_query($db,$insertSQL);
     
